@@ -22,31 +22,19 @@
   <style>
     :root {
       --bg-primary: #090d16;
-      --bg-secondary: #111827;
       --surface-glass: rgba(19, 26, 42, 0.75);
       --surface-glass-border: rgba(255, 255, 255, 0.08);
-      --surface-card: #151d30;
-
       --accent-primary: #38bdf8;
       --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%);
-      --accent-glow: rgba(56, 189, 248, 0.35);
-
       --user-bubble: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
       --tutor-bubble: #172136;
-
       --text-main: #f8fafc;
       --text-sub: #94a3b8;
       --text-dim: #64748b;
-
-      --danger: #f43f5e;
-      --success: #10b981;
-      --warning: #f59e0b;
-
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --radius-sm: 10px;
       --radius-md: 16px;
-      --radius-lg: 24px;
       --radius-full: 9999px;
     }
 
@@ -61,11 +49,10 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Segoe UI", sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background-color: var(--bg-primary);
       background-image:
         radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 10% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
       background-attachment: fixed;
       color: var(--text-main);
@@ -73,10 +60,8 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      position: relative;
     }
 
-    /* 顶部拟真系统栏与灵动胶囊导航 */
     header {
       padding-top: calc(var(--safe-top) + 8px);
       padding-left: 16px;
@@ -85,7 +70,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: linear-gradient(180deg, rgba(9, 13, 22, 0.96) 0%, rgba(9, 13, 22, 0.85) 80%, transparent 100%);
+      background: rgba(9, 13, 22, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       z-index: 40;
@@ -105,23 +90,19 @@
     }
 
     .app-logo {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: var(--radius-sm);
       background: var(--accent-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px var(--accent-glow);
     }
 
     .app-title-group h1 {
       font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: -0.01em;
-      background: linear-gradient(90deg, #ffffff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fff;
     }
 
     .nav-actions {
@@ -141,16 +122,13 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
     }
 
     .icon-btn:active {
       transform: scale(0.92);
       background: rgba(255, 255, 255, 0.12);
-      color: var(--text-main);
     }
 
-    /* 灵动场景选择条 */
     .scenario-capsule {
       display: flex;
       align-items: center;
@@ -159,15 +137,7 @@
       border: 1px solid var(--surface-glass-border);
       padding: 6px 12px;
       border-radius: var(--radius-full);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
       cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-
-    .scenario-capsule:active {
-      transform: scale(0.98);
-      background: rgba(30, 41, 59, 0.9);
-      border-color: rgba(56, 189, 248, 0.4);
     }
 
     .scenario-left {
@@ -175,19 +145,6 @@
       align-items: center;
       gap: 8px;
       overflow: hidden;
-    }
-
-    .scenario-icon-bubble {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--accent-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      flex-shrink: 0;
     }
 
     .scenario-name {
@@ -199,26 +156,12 @@
       text-overflow: ellipsis;
     }
 
-    .scenario-pill-tag {
-      font-size: 0.7rem;
-      padding: 2px 7px;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      flex-shrink: 0;
-    }
-
-    /* 顶部通话状态胶囊 */
     .call-status-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 3px 10px;
+      font-size: 0.72rem;
+      padding: 2px 8px;
       border-radius: var(--radius-full);
       background: rgba(15, 23, 42, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -226,11 +169,10 @@
     }
 
     .status-ping {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: #64748b;
-      position: relative;
     }
 
     .call-status-pill.connected {
@@ -238,182 +180,60 @@
       border-color: rgba(16, 185, 129, 0.3);
       background: rgba(6, 78, 59, 0.25);
     }
-
-    .call-status-pill.connected .status-ping {
-      background: #10b981;
-      box-shadow: 0 0 10px #10b981;
-    }
-
-    .call-status-pill.connected .status-ping::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      border: 1.5px solid #10b981;
-      animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
+    .call-status-pill.connected .status-ping { background: #10b981; }
 
     .call-status-pill.connecting {
       color: #fbbf24;
       border-color: rgba(245, 158, 11, 0.3);
     }
+    .call-status-pill.connecting .status-ping { background: #f59e0b; }
 
-    .call-status-pill.connecting .status-ping {
-      background: #f59e0b;
-      animation: pulse 1s infinite;
-    }
-
-    @keyframes ping {
-
-      75%,
-      100% {
-        transform: scale(2.2);
-        opacity: 0;
-      }
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
-    }
-
-    /* 主聊天流区域 */
     main {
       flex: 1;
       overflow-y: auto;
       padding: 14px 16px 20px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
       -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
     }
 
-    main::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    main::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-    }
-
-    /* 欢迎卡片 */
-    .hero-welcome {
-      text-align: center;
-      padding: 24px 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      animation: fadeIn 0.4s ease-out;
-    }
-
-    .hero-orb {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #60a5fa, #4f46e5 60%, #1e1b4b);
-      box-shadow: 0 0 35px rgba(99, 102, 241, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-bottom: 6px;
-    }
-
-    .hero-orb::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 1px solid rgba(96, 165, 250, 0.35);
-      animation: spinSlow 12s linear infinite;
-    }
-
-    @keyframes spinSlow {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .hero-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .hero-desc {
-      font-size: 0.85rem;
-      color: var(--text-sub);
-      max-width: 290px;
-      line-height: 1.5;
-    }
-
-    /* 消息卡片体系 */
     .msg-group {
       display: flex;
       flex-direction: column;
       gap: 4px;
       max-width: 88%;
-      animation: messageSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: messageSlideIn 0.25s ease-out;
     }
 
     @keyframes messageSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .msg-group.user {
-      align-self: flex-end;
-      align-items: flex-end;
-    }
-
-    .msg-group.ai {
-      align-self: flex-start;
-      align-items: flex-start;
-    }
+    .msg-group.user { align-self: flex-end; align-items: flex-end; }
+    .msg-group.ai { align-self: flex-start; align-items: flex-start; }
 
     .msg-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
       font-size: 0.7rem;
       color: var(--text-dim);
       padding: 0 4px;
     }
 
     .bubble {
-      padding: 12px 16px;
-      border-radius: 20px;
-      font-size: 0.93rem;
-      line-height: 1.55;
-      position: relative;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 0.92rem;
+      line-height: 1.5;
       word-break: break-word;
       user-select: text;
       -webkit-user-select: text;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
     }
 
     .msg-group.user .bubble {
       background: var(--user-bubble);
       color: #ffffff;
       border-bottom-right-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .msg-group.ai .bubble {
@@ -423,190 +243,89 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* 纠错/改进卡片 */
-    .correction-card {
+    .card-feedback {
       align-self: center;
       width: 100%;
-      background: linear-gradient(135deg, rgba(30, 24, 18, 0.85) 0%, rgba(20, 24, 38, 0.85) 100%);
-      border: 1px solid rgba(245, 158, 11, 0.3);
       border-radius: var(--radius-md);
-      padding: 12px 14px;
+      padding: 10px 14px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      animation: messageSlideIn 0.3s ease;
+      gap: 4px;
+      font-size: 0.86rem;
       user-select: text;
       -webkit-user-select: text;
-      position: relative;
-      overflow: hidden;
+      animation: messageSlideIn 0.25s ease;
     }
 
-    .correction-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(180deg, #f59e0b, #ef4444);
+    .card-feedback.correction {
+      background: rgba(30, 24, 18, 0.9);
+      border-left: 3px solid #f59e0b;
+      border-right: 1px solid rgba(245, 158, 11, 0.2);
     }
 
-    .correction-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .card-feedback.pronunciation {
+      background: rgba(35, 18, 55, 0.9);
+      border-left: 3px solid #a855f7;
+      border-right: 1px solid rgba(168, 85, 247, 0.2);
     }
 
-    .correction-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+    .feedback-title {
       font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #fbbf24;
-      background: rgba(245, 158, 11, 0.15);
-      padding: 3px 8px;
-      border-radius: var(--radius-full);
+      margin-bottom: 2px;
     }
+    .card-feedback.correction .feedback-title { color: #fbbf24; }
+    .card-feedback.pronunciation .feedback-title { color: #c084fc; }
 
-    .correction-content {
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: #e2e8f0;
-    }
-
-    /* 发音与口音专项精修建议卡片 */
-    .pronunciation-card {
-      background: linear-gradient(135deg, rgba(35, 18, 55, 0.85) 0%, rgba(20, 24, 38, 0.85) 100%);
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      animation: messageSlideIn 0.3s ease;
-      user-select: text;
-      -webkit-user-select: text;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pronunciation-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(180deg, #a855f7, #ec4899);
-    }
-
-    .pronunciation-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .pronunciation-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #c084fc;
-      background: rgba(168, 85, 247, 0.18);
-      padding: 3px 8px;
-      border-radius: var(--radius-full);
-    }
-
-    .pronunciation-content {
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: #f3e8ff;
-    }
-
-    /* 底部操作控制面板 (iOS Dock 风格) */
     footer {
-      padding-top: 10px;
+      padding-top: 8px;
       padding-bottom: calc(var(--safe-bottom) + 12px);
       padding-left: 20px;
       padding-right: 20px;
-      background: linear-gradient(180deg, rgba(9, 13, 22, 0) 0%, rgba(9, 13, 22, 0.92) 25%, rgba(9, 13, 22, 0.98) 100%);
+      background: rgba(9, 13, 22, 0.96);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
-      position: relative;
-      z-index: 30;
+      gap: 10px;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    /* 实时音频波形 */
     .dock-visualizer {
-      height: 32px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      padding: 0 16px;
+      gap: 4px;
       width: 100%;
-      max-width: 280px;
+      max-width: 240px;
     }
 
     .audio-bar {
-      width: 3.5px;
+      width: 3px;
       height: 5px;
       border-radius: 4px;
-      background: #475569;
-      transition: height 0.08s ease, background-color 0.2s ease;
+      background: #334155;
+      transition: height 0.08s ease;
     }
 
     .dock-visualizer.active .audio-bar {
       background: var(--accent-gradient);
     }
 
-    /* 控制栏按钮组 */
     .controls-dock {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 360px;
-      padding: 0 8px;
+      max-width: 320px;
     }
 
-    .dock-btn {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-
-    .dock-btn:active {
-      transform: scale(0.9);
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-    }
-
-    /* 核心麦克风主按钮 */
     .main-call-btn {
-      width: 72px;
-      height: 72px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
       background: linear-gradient(145deg, #1e293b, #0f172a);
       border: 2px solid rgba(56, 189, 248, 0.4);
@@ -615,370 +334,132 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      position: relative;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: transform 0.15s ease;
     }
 
-    .main-call-btn::before {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
-    }
-
-    .main-call-btn:active {
-      transform: scale(0.93);
-    }
-
+    .main-call-btn:active { transform: scale(0.92); }
     .main-call-btn.active {
       background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-      border-color: rgba(255, 255, 255, 0.3);
-      color: #ffffff;
-      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
-      animation: pulseActive 2s infinite;
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #fff;
     }
 
-    .main-call-btn.active::before {
-      opacity: 1;
-    }
-
-    @keyframes pulseActive {
-
-      0%,
-      100% {
-        box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
-      }
-
-      50% {
-        box-shadow: 0 0 45px rgba(239, 68, 68, 0.7);
-      }
-    }
-
-    /* 原生级 iOS 底部滑出抽屉 (Bottom Sheet) */
+    /* 抽屉弹窗 (Bottom Sheet) */
     .sheet-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       z-index: 100;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
     }
 
-    .sheet-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
+    .sheet-overlay.open { opacity: 1; visibility: visible; }
 
     .sheet-container {
       background: #111827;
-      border-top-left-radius: 28px;
-      border-top-right-radius: 28px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: none;
-      padding: 12px 20px calc(var(--safe-bottom) + 20px);
-      max-height: 86vh;
+      padding: 14px 18px calc(var(--safe-bottom) + 16px);
+      max-height: 82vh;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
       transform: translateY(100%);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
     }
 
-    .sheet-overlay.open .sheet-container {
-      transform: translateY(0);
-    }
-
-    .sheet-handle {
-      width: 44px;
-      height: 5px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.25);
-      margin: 0 auto 4px;
-      cursor: pointer;
-    }
+    .sheet-overlay.open .sheet-container { transform: translateY(0); }
 
     .sheet-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 6px;
     }
 
-    .sheet-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .sheet-close-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: none;
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
+    .sheet-title { font-size: 1rem; font-weight: 700; color: #fff; }
 
     .sheet-body {
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding-right: 2px;
-      -webkit-overflow-scrolling: touch;
+      gap: 14px;
     }
 
-    .sheet-body::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    .sheet-body::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-sub);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .app-input,
-    .app-select,
-    .app-textarea {
+    .app-input, .app-select, .app-textarea {
       width: 100%;
       background: #090d16;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius-sm);
-      padding: 12px 14px;
+      padding: 10px 12px;
       color: #fff;
-      font-size: 0.92rem;
-      font-family: inherit;
+      font-size: 0.9rem;
       outline: none;
-      transition: border-color 0.2s ease;
     }
 
-    .app-input:focus,
-    .app-select:focus,
-    .app-textarea:focus {
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
-    }
-
-    .mobile-tip-card {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      border-radius: var(--radius-sm);
+    .btn-action-primary {
+      width: 100%;
       padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 0.8rem;
-      color: #bae6fd;
-      line-height: 1.45;
+      border-radius: var(--radius-md);
+      background: var(--accent-gradient);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
     }
 
-    /* 场景卡片选择列表 */
     .scenario-grid {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .scenario-option-card {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 14px;
-      border-radius: var(--radius-md);
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
       background: #0d1322;
       border: 1px solid rgba(255, 255, 255, 0.06);
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-
-    .scenario-option-card:active {
-      transform: scale(0.98);
     }
 
     .scenario-option-card.selected {
-      background: rgba(56, 189, 248, 0.1);
+      background: rgba(56, 189, 248, 0.12);
       border-color: rgba(56, 189, 248, 0.5);
     }
 
-    .scenario-opt-icon {
-      font-size: 1.4rem;
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .scenario-opt-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .scenario-opt-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #f1f5f9;
-    }
-
-    .scenario-opt-desc {
-      font-size: 0.76rem;
-      color: var(--text-dim);
-      line-height: 1.35;
-    }
-
-    .scenario-radio-circle {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .scenario-option-card.selected .scenario-radio-circle {
-      border-color: var(--accent-primary);
-    }
-
-    .scenario-option-card.selected .scenario-radio-circle::after {
-      content: '';
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent-primary);
-    }
-
-    .btn-action-primary {
-      width: 100%;
-      padding: 14px;
-      border-radius: var(--radius-md);
-      background: var(--accent-gradient);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.98rem;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
-      transition: transform 0.15s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn-action-primary:active {
-      transform: scale(0.98);
-      filter: brightness(0.92);
-    }
-
-    .btn-action-subtle {
-      padding: 8px 12px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #e2e8f0;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .history-card {
-      background: #090d16;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .history-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding-bottom: 8px;
-    }
-
-    .history-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent-primary);
-    }
-
-    .history-date {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-    }
-
-    .history-preview {
-      font-size: 0.82rem;
-      color: var(--text-sub);
-      line-height: 1.5;
-      max-height: 120px;
-      overflow-y: auto;
-    }
+    .scenario-opt-icon { font-size: 1.2rem; }
+    .scenario-opt-info { flex: 1; display: flex; flex-direction: column; }
+    .scenario-opt-title { font-size: 0.88rem; font-weight: 600; color: #f1f5f9; }
+    .scenario-opt-desc { font-size: 0.74rem; color: var(--text-dim); }
 
     .toast-notice {
       position: fixed;
-      top: calc(var(--safe-top) + 20px);
+      top: calc(var(--safe-top) + 16px);
       left: 50%;
       transform: translateX(-50%) translateY(-20px);
       background: rgba(17, 24, 39, 0.95);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #fff;
-      padding: 10px 18px;
+      padding: 8px 16px;
       border-radius: var(--radius-full);
-      font-size: 0.82rem;
-      font-weight: 500;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
+      font-size: 0.8rem;
       z-index: 200;
       opacity: 0;
       pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s ease;
     }
-
     .toast-notice.show {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
@@ -988,20 +469,18 @@
 
 <body>
 
-  <!-- 顶部轻量 App Bar -->
   <header>
     <div class="nav-row">
       <div class="brand-section">
         <div class="app-logo">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
             <line x1="12" x2="12" y1="19" y2="22"></line>
           </svg>
         </div>
         <div class="app-title-group">
-          <h1>EchoSpeak Live</h1>
+          <h1>EchoSpeak Live Pro</h1>
           <div id="statusBadge" class="call-status-pill">
             <span class="status-ping"></span>
             <span id="statusText">待命就绪</span>
@@ -1010,135 +489,50 @@
       </div>
 
       <div class="nav-actions">
-        <button id="historyBtn" class="icon-btn" title="复盘记录" aria-label="复盘记录">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-        </button>
-        <button id="settingsBtn" class="icon-btn" title="配置中心" aria-label="设置">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
-            </path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </button>
+        <button id="historyBtn" class="icon-btn" title="复盘记录">📋</button>
+        <button id="settingsBtn" class="icon-btn" title="配置中心">⚙️</button>
       </div>
     </div>
 
-    <!-- 灵动交互胶囊：当前场景快捷入口 -->
     <div id="scenarioTrigger" class="scenario-capsule">
       <div class="scenario-left">
-        <div class="scenario-icon-bubble" id="scenarioCurrentIcon">💬</div>
+        <span id="scenarioCurrentIcon">☕</span>
         <span class="scenario-name" id="currentScenarioText">日常自由畅聊 (Casual Talk)</span>
       </div>
-      <div class="scenario-pill-tag">
-        <span>切换</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </div>
+      <span style="font-size: 0.72rem; color: var(--accent-primary);">切换模式 ▾</span>
     </div>
   </header>
 
-  <!-- 主对话流视图 -->
   <main id="chatContainer">
-    <div class="hero-welcome">
-      <div class="hero-orb">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-          <line x1="12" y1="19" x2="12" y2="23"></line>
-          <line x1="8" y1="23" x2="16" y2="23"></line>
-        </svg>
-      </div>
-      <h2 class="hero-title">像真人般随时开口练</h2>
-      <p class="hero-desc">全双工实时多模态内核，支持随时打断与语法润色。手机端点击麦克风即可无缝开启对练。</p>
-    </div>
-
     <div class="msg-group ai">
-      <div class="msg-meta">
-        <span>Gemini Coach</span>
-        <span>• 刚才</span>
-      </div>
+      <div class="msg-meta">Gemini Coach • 系统就绪</div>
       <div class="bubble">
-        Hello! I'm ready whenever you are. Just tap the mic below, and let's start talking!
+        Hello! I'm your native oral tutor. Tap the microphone below and speak naturally whenever you're ready!
       </div>
     </div>
   </main>
 
-  <!-- 底部通话控制栏 -->
   <footer>
     <div class="dock-visualizer" id="visualizer">
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
-      <div class="audio-bar"></div>
+      <div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div>
+      <div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div>
+      <div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div>
+      <div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div>
     </div>
 
     <div class="controls-dock">
-      <!-- 快捷清屏/重置 -->
-      <button id="clearChatBtn" class="dock-btn" title="清空对话流" aria-label="清空对话">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="3 6 5 6 21 6"></polyline>
-          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-        </svg>
-      </button>
-
-      <!-- 核心麦克风通话控制按钮 -->
-      <button id="mainActionBtn" class="main-call-btn" title="点击开始/结束通话" aria-label="开始对话">
-        <svg id="micIcon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-          <line x1="12" x2="12" y1="19" y2="22"></line>
-        </svg>
-      </button>
-
-      <!-- 快捷场景切换 -->
-      <button id="quickScenarioBtn" class="dock-btn" title="快速换题" aria-label="场景选择">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-        </svg>
-      </button>
+      <button id="clearChatBtn" class="icon-btn" title="清空对话">🗑️</button>
+      <button id="mainActionBtn" class="main-call-btn">🎙️</button>
+      <button id="quickScenarioBtn" class="icon-btn" title="场景切换">🎯</button>
     </div>
   </footer>
 
-  <!-- 底部抽屉：场景预设 -->
+  <!-- 话题场景多维度矩阵抽屉 -->
   <div id="scenarioModal" class="sheet-overlay">
     <div class="sheet-container">
-      <div class="sheet-handle" id="handleScenarioSheet"></div>
       <div class="sheet-header">
-        <div class="sheet-title">演练场景与角色定制</div>
-        <button class="sheet-close-btn" id="closeScenarioSheetBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+        <div class="sheet-title">练习场景矩阵 (9大核心维度)</div>
+        <button class="icon-btn" id="closeScenarioSheetBtn">✕</button>
       </div>
 
       <div class="sheet-body">
@@ -1146,219 +540,196 @@
           <div class="scenario-option-card selected" data-key="casual">
             <div class="scenario-opt-icon">☕</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">日常自由畅聊</div>
-              <div class="scenario-opt-desc">Casual Talk · 地道口语短语，轻松闲聊生活琐事</div>
+              <div class="scenario-opt-title">日常自由畅聊 (Casual Talk)</div>
+              <div class="scenario-opt-desc">无压力闲聊周末计划、天气、兴趣爱好、地道俚语</div>
             </div>
-            <div class="scenario-radio-circle"></div>
           </div>
 
           <div class="scenario-option-card" data-key="ielts">
             <div class="scenario-opt-icon">🎓</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">雅思口语模拟考官</div>
-              <div class="scenario-opt-desc">IELTS Speaking · 严格按评分维度追问与纠偏</div>
+              <div class="scenario-opt-title">雅思口语全真模考 (IELTS Speaking)</div>
+              <div class="scenario-opt-desc">严谨考官人设，涵盖 Part 1/2/3 连环追问与打分纠偏</div>
             </div>
-            <div class="scenario-radio-circle"></div>
           </div>
 
           <div class="scenario-option-card" data-key="job_interview">
             <div class="scenario-opt-icon">💼</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">外企/硅谷行为面试</div>
-              <div class="scenario-opt-desc">STAR Method · 深度挖掘工作经历与领导力案例</div>
+              <div class="scenario-opt-title">外企/硅谷行为面试 (STAR Interview)</div>
+              <div class="scenario-opt-desc">深度考察工作成就、团队冲突应对与跨文化领导力</div>
             </div>
-            <div class="scenario-radio-circle"></div>
           </div>
 
-          <div class="scenario-option-card" data-key="coffee">
-            <div class="scenario-opt-icon">🥐</div>
+          <div class="scenario-option-card" data-key="business_neg">
+            <div class="scenario-opt-icon">🤝</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">伦敦精品咖啡馆点单</div>
-              <div class="scenario-opt-desc">Ordering Coffee · 练习烘焙风味、奶泡与英式日常问候</div>
+              <div class="scenario-opt-title">商业谈判与汇报 (Business & Pitch)</div>
+              <div class="scenario-opt-desc">练习产品路演、预算谈判、交期争议与商务斡旋</div>
             </div>
-            <div class="scenario-radio-circle"></div>
           </div>
 
           <div class="scenario-option-card" data-key="accent_coach">
             <div class="scenario-opt-icon">🗣️</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">发音与口音专项精修</div>
-              <div class="scenario-opt-desc">Accent Coach · 重点监听咬舌音/元音长短/重音与连读</div>
+              <div class="scenario-opt-title">发音与口音精修 (Pronunciation)</div>
+              <div class="scenario-opt-desc">专项监听 /θ/, /r/, /l/、长短元音、连读弱读与语调</div>
             </div>
-            <div class="scenario-radio-circle"></div>
+          </div>
+
+          <div class="scenario-option-card" data-key="coffee">
+            <div class="scenario-opt-icon">🥐</div>
+            <div class="scenario-opt-info">
+              <div class="scenario-opt-title">国外探店与生活点单 (Café & Dining)</div>
+              <div class="scenario-opt-desc">精品咖啡定制要求、餐厅点餐、过敏原说明与结账小费</div>
+            </div>
+          </div>
+
+          <div class="scenario-option-card" data-key="travel_customs">
+            <div class="scenario-opt-icon">✈️</div>
+            <div class="scenario-opt-info">
+              <div class="scenario-opt-title">海外旅行与海关入境 (Travel & Border)</div>
+              <div class="scenario-opt-desc">机场转机、海关严苛盘问、酒店退改签与境外就医问诊</div>
+            </div>
+          </div>
+
+          <div class="scenario-option-card" data-key="deep_discussion">
+            <div class="scenario-opt-icon">🧠</div>
+            <div class="scenario-opt-info">
+              <div class="scenario-opt-title">深度辩论与文化哲思 (Debate & Ideas)</div>
+              <div class="scenario-opt-desc">探讨人工智能伦理、全球化、心理学与当下社会议题</div>
+            </div>
           </div>
 
           <div class="scenario-option-card" data-key="custom">
             <div class="scenario-opt-icon">✨</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">专属个性化定制</div>
-              <div class="scenario-opt-desc">输入任意角色或指定考试主题，随心定制</div>
+              <div class="scenario-opt-title">专属个性化定制 (Custom Scenario)</div>
+              <div class="scenario-opt-desc">输入任意指定人设（如：挑剔的租房中介、航班机长等）</div>
             </div>
-            <div class="scenario-radio-circle"></div>
           </div>
         </div>
 
-        <div id="customScenarioWrapper" style="display: none;" class="form-group">
-          <label class="form-label">自定义情景设定与人设</label>
+        <div id="customScenarioWrapper" style="display: none;">
           <textarea id="customScenarioInput" class="app-textarea" rows="3"
-            placeholder="例如：你是一个洛杉矶机场的入境海关官员，态度严肃专业，正在对我进行入境盘问..."></textarea>
+            placeholder="例如：你是一个纽约的合租室友，正在跟我商讨公寓卫生分工和水电费分摊..."></textarea>
         </div>
 
-        <button class="btn-action-primary" id="confirmScenarioBtn">
-          <span>确认选定此模式</span>
-        </button>
+        <button class="btn-action-primary" id="confirmScenarioBtn">选定此模式</button>
       </div>
     </div>
   </div>
 
-  <!-- 底部抽屉：系统参数配置 -->
+  <!-- 设置抽屉 -->
   <div id="settingsModal" class="sheet-overlay">
     <div class="sheet-container">
-      <div class="sheet-handle" id="handleSettingsSheet"></div>
       <div class="sheet-header">
-        <div class="sheet-title">引擎与声音偏好</div>
-        <button class="sheet-close-btn" id="closeSettingsSheetBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+        <div class="sheet-title">核心引擎配置</div>
+        <button class="icon-btn" id="closeSettingsSheetBtn">✕</button>
       </div>
 
       <div class="sheet-body">
-        <div class="mobile-tip-card">
-          <strong>📱 手机原生点开即用优化：</strong>
-          <span>• <b>单次会话免确认</b>：进入后首次轻点即保持流活跃，通话挂断后仅软静音，不会再次弹窗。</span>
-          <span>• <b>防息屏锁定</b>：通话开启时自动开启屏幕常亮，防止手机锁屏切断。</span>
-          <span>• <b>变成独立 App</b>：在 iPhone Safari 点击底部【分享】➜【添加到主屏幕】，即可全屏独立运行！</span>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Google AI Studio API Key</label>
+        <div>
+          <label style="font-size:0.75rem; color:var(--text-sub);">Google AI Studio API Key</label>
           <input type="password" id="apiKeyInput" class="app-input" placeholder="AIzaSy..." />
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Gemini 实时多模态模型</label>
+        <div>
+          <label style="font-size:0.75rem; color:var(--text-sub);">Gemini 模型版本</label>
           <select id="modelSelect" class="app-select">
-            <option value="models/gemini-3.1-flash-live-preview">gemini-3.1-flash-live-preview (官方最新双向实时多模态模型 - 推荐)</option>
-            <option value="custom">自定义输入其他模型名...</option>
+            <option value="models/gemini-2.0-flash-exp">gemini-2.0-flash-exp (当前最强低延迟)</option>
+            <option value="models/gemini-2.0-flash-realtime">gemini-2.0-flash-realtime</option>
+            <option value="custom">自定义输入其他模型...</option>
           </select>
         </div>
 
-        <div id="customModelWrapper" style="display: none;" class="form-group">
-          <label class="form-label">完整模型标识符</label>
-          <input type="text" id="customModelInput" class="app-input" placeholder="例如 models/gemini-2.5-flash" />
+        <div id="customModelWrapper" style="display:none;">
+          <input type="text" id="customModelInput" class="app-input" placeholder="输入完整模型名称" />
         </div>
 
-        <div class="form-group">
-          <label class="form-label">母语发音音色</label>
+        <div>
+          <label style="font-size:0.75rem; color:var(--text-sub);">导师发音音色</label>
           <select id="voiceSelect" class="app-select">
-            <option value="Aoede">Aoede · 温柔自然 (女声)</option>
-            <option value="Puck">Puck · 活力阳光 (男声)</option>
-            <option value="Charon">Charon · 沉稳低音 (男声)</option>
-            <option value="Kore">Kore · 舒缓清脆 (女声)</option>
-            <option value="Fenrir">Fenrir · 磁性清晰 (男声)</option>
+            <option value="Aoede">Aoede (温柔/自然 - 女声)</option>
+            <option value="Puck">Puck (活力/美语 - 男声)</option>
+            <option value="Charon">Charon (沉稳/低音 - 男声)</option>
+            <option value="Kore">Kore (舒缓/清脆 - 女声)</option>
+            <option value="Fenrir">Fenrir (清晰/磁性 - 男声)</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">口音与发音体系 (Accent & Dialect)</label>
+        <div>
+          <label style="font-size:0.75rem; color:var(--text-sub);">口音与发音体系</label>
           <select id="accentSelect" class="app-select">
-            <option value="en-US">🇺🇸 美式发音 (General American)</option>
-            <option value="en-GB">🇬🇧 英式发音 (British RP / BBC 腔)</option>
-            <option value="en-AU">🇦🇺 澳式发音 (Australian English)</option>
-            <option value="en-CA">🇨🇦 加式发音 (Canadian English)</option>
+            <option value="en-US">🇺🇸 美式标准发音 (General American)</option>
+            <option value="en-GB">🇬🇧 英式标准发音 (British RP)</option>
+            <option value="en-AU">🇦🇺 澳式英语 (Australian English)</option>
           </select>
         </div>
 
-        <button class="btn-action-primary" id="saveSettingsBtn">
-          <span>保存配置</span>
-        </button>
+        <button class="btn-action-primary" id="saveSettingsBtn">保存并应用</button>
       </div>
     </div>
   </div>
 
-  <!-- 底部抽屉：复盘与笔记 -->
+  <!-- 历史复盘笔记抽屉 -->
   <div id="historyModal" class="sheet-overlay">
     <div class="sheet-container">
-      <div class="sheet-handle" id="handleHistorySheet"></div>
       <div class="sheet-header">
-        <div class="sheet-title">练习记录与语法复盘</div>
-        <div style="display: flex; gap: 8px;">
-          <button id="copyHistoryMarkdownBtn" class="btn-action-subtle">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-            <span>导出 Markdown</span>
-          </button>
-          <button class="sheet-close-btn" id="closeHistorySheetBtn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
+        <div class="sheet-title">对话复盘笔记</div>
+        <button id="copyHistoryMarkdownBtn" style="padding: 4px 10px; background: rgba(255,255,255,0.1); border:none; border-radius:6px; color:#fff; font-size:0.8rem;">复制 Markdown</button>
       </div>
-
-      <div class="sheet-body">
-        <div id="historyListContainer" style="display:flex; flex-direction:column; gap:12px;"></div>
-      </div>
+      <div class="sheet-body" id="historyListContainer"></div>
+      <button class="btn-action-primary" id="closeHistorySheetBtn">关闭</button>
     </div>
   </div>
 
-  <!-- 浮动 Toast 消息组件 -->
-  <div id="toastNotice" class="toast-notice">提示信息</div>
+  <div id="toastNotice" class="toast-notice">提示</div>
 
   <script>
     // ==========================================
-    // 状态、持久化配置与场景映射
+    // 场景矩阵配置
     // ==========================================
-    let isLive = false;
-    let ws = null;
-    let audioContext = null;
-    let micStream = null;          // 手机端单例持久麦克风流
-    let micSourceNode = null;
-    let scriptProcessor = null;
-    let scheduledTime = 0;
-    let activeSources = [];
-    let screenWakeLock = null;     // 手机屏幕防息屏锁
-
-    let currentSession = {
-      startTime: null,
-      scenario: '',
-      exchanges: []
-    };
-
     const SCENARIOS = {
       casual: {
         icon: "☕",
         name: "日常自由畅聊 (Casual Talk)",
-        prompt: "You are a friendly, casual native oral conversation partner. Chat about daily life topics naturally. Keep it snappy and colloquial."
+        prompt: "You are a friendly, lively native English conversational partner. Chat casually about everyday topics. Speak concisely (1-2 sentences per response) so the user has the floor."
       },
       ielts: {
         icon: "🎓",
-        name: "雅思口语模拟 (IELTS Speaking)",
-        prompt: "You are a strict and professional IELTS Speaking Examiner. Conduct the conversation mimicking standard IELTS Speaking test criteria, ask insightful follow-up questions."
+        name: "雅思口语模考 (IELTS Speaking)",
+        prompt: "You are a certified IELTS Speaking examiner. Follow standard IELTS interview style (Part 1/2/3). Ask one thoughtful question at a time and push the user to elaborate."
       },
       job_interview: {
         icon: "💼",
-        name: "行为面试演练 (STAR Interview)",
-        prompt: "You are an experienced hiring manager conducting a behavioral job interview in English. Ask challenging STAR-method questions and probe deeper into my answers."
+        name: "外企行为面试 (STAR Interview)",
+        prompt: "You are an executive interviewer at a top tech company. Conduct a rigorous behavioral interview using the STAR method. Dig into specific challenges and achievements."
       },
-      coffee: {
-        icon: "🥐",
-        name: "咖啡馆点单 (Coffee Ordering)",
-        prompt: "You are a busy barista at a high-end specialty coffee shop in London. Greet the customer and take their order with authentic local slang."
+      business_neg: {
+        icon: "🤝",
+        name: "商业谈判与汇报 (Business & Pitch)",
+        prompt: "You are a prospective business partner or investor. Actively discuss contract clauses, price concessions, delivery timelines, and project scopes."
       },
       accent_coach: {
         icon: "🗣️",
-        name: "发音与口音专项精修 (Accent Coach)",
-        prompt: "You are a master English Accent and Phonetics Coach. Listen with extreme acoustic precision to the user's spoken audio, including phoneme clarity, syllable stress, vowel length, linking, and intonation. Concurrently converse with the user while diagnosing any phoneme errors (like /θ/, /s/, /v/, /w/, /r/, /l/, vowel laxness vs tense vowels) or unnatural accent habits, giving clear physiological mouth/tongue placement guidance."
+        name: "发音与口音精修 (Pronunciation)",
+        prompt: "You are a master phonetics coach. Concurrently converse while diagnosing vowel laxness, consonants (/th/, /r/, /l/), and intonation issues."
+      },
+      coffee: {
+        icon: "🥐",
+        name: "国外探店点单 (Café & Dining)",
+        prompt: "You are a fast-paced barista in London or New York. Greet the customer and clarify order nuances (milk choices, single origins, pastry warming)."
+      },
+      travel_customs: {
+        icon: "✈️",
+        name: "旅行与海关入境 (Travel & Border)",
+        prompt: "You are an immigration officer at London Heathrow airport. Ask firm, standard border-control questions regarding itinerary, accommodation, and stay duration."
+      },
+      deep_discussion: {
+        icon: "🧠",
+        name: "深度辩论哲思 (Debate & Ideas)",
+        prompt: "You are an intellectual debate partner. Challenge the user's perspectives politely, encouraging critical thinking on societal, cultural, and technological dilemmas."
       },
       custom: {
         icon: "✨",
@@ -1367,30 +738,39 @@
       }
     };
 
+    // ==========================================
+    // 全局状态管理与自适应音频缓冲队列 (Jitter Buffer)
+    // ==========================================
+    let isLive = false;
+    let ws = null;
+    let audioContext = null;
+    let micStream = null;
+    let scriptProcessor = null;
+    let screenWakeLock = null;
+
+    // 自适应音频调度：核心修复丢包与断续
+    let scheduledTime = 0;
+    let activeSources = [];
+    const JITTER_BUFFER_OFFSET = 0.12; // 120ms 声学平滑缓冲垫
+
+    let currentSession = { startTime: null, scenario: '', exchanges: [] };
+    let tutorTextBuffer = "";
+
     // DOM 元素引用
     const statusBadge = document.getElementById('statusBadge');
     const statusText = document.getElementById('statusText');
     const chatContainer = document.getElementById('chatContainer');
     const mainActionBtn = document.getElementById('mainActionBtn');
-    const micIcon = document.getElementById('micIcon');
     const visualizer = document.getElementById('visualizer');
     const waveBars = visualizer.querySelectorAll('.audio-bar');
     const clearChatBtn = document.getElementById('clearChatBtn');
-    const quickScenarioBtn = document.getElementById('quickScenarioBtn');
 
-    // 抽屉弹窗
     const settingsModal = document.getElementById('settingsModal');
     const scenarioModal = document.getElementById('scenarioModal');
     const historyModal = document.getElementById('historyModal');
-    const settingsBtn = document.getElementById('settingsBtn');
     const scenarioTrigger = document.getElementById('scenarioTrigger');
-    const historyBtn = document.getElementById('historyBtn');
+    const quickScenarioBtn = document.getElementById('quickScenarioBtn');
 
-    const closeSettingsSheetBtn = document.getElementById('closeSettingsSheetBtn');
-    const closeScenarioSheetBtn = document.getElementById('closeScenarioSheetBtn');
-    const closeHistorySheetBtn = document.getElementById('closeHistorySheetBtn');
-
-    // 设置项控件
     const apiKeyInput = document.getElementById('apiKeyInput');
     const modelSelect = document.getElementById('modelSelect');
     const customModelWrapper = document.getElementById('customModelWrapper');
@@ -1399,26 +779,19 @@
     const accentSelect = document.getElementById('accentSelect');
     const saveSettingsBtn = document.getElementById('saveSettingsBtn');
 
-    // 场景选择控件
     const scenarioOptionCards = document.querySelectorAll('.scenario-option-card');
     const customScenarioWrapper = document.getElementById('customScenarioWrapper');
     const customScenarioInput = document.getElementById('customScenarioInput');
     const confirmScenarioBtn = document.getElementById('confirmScenarioBtn');
     const currentScenarioText = document.getElementById('currentScenarioText');
     const scenarioCurrentIcon = document.getElementById('scenarioCurrentIcon');
-
-    // 历史导出控件
     const historyListContainer = document.getElementById('historyListContainer');
     const copyHistoryMarkdownBtn = document.getElementById('copyHistoryMarkdownBtn');
-    const toastNotice = document.getElementById('toastNotice');
 
-    // 读取本地存储配置
+    // 读取持久化设定
     apiKeyInput.value = localStorage.getItem('gemini_api_key') || '';
-    const storedModel = localStorage.getItem('gemini_model') || 'models/gemini-3.1-flash-live-preview';
-    const knownModels = [
-      'models/gemini-3.1-flash-live-preview'
-    ];
-    if (knownModels.includes(storedModel)) {
+    const storedModel = localStorage.getItem('gemini_model') || 'models/gemini-2.0-flash-exp';
+    if (['models/gemini-2.0-flash-exp', 'models/gemini-2.0-flash-realtime'].includes(storedModel)) {
       modelSelect.value = storedModel;
     } else {
       modelSelect.value = 'custom';
@@ -1430,412 +803,197 @@
 
     let currentScenarioKey = localStorage.getItem('gemini_scenario_key') || 'casual';
     let currentCustomScenario = localStorage.getItem('gemini_scenario_custom') || '';
-    updateScenarioBadgeText();
-
-    // 移动端轻震动反馈
-    function triggerHaptic(type = 'light') {
-      if ('vibrate' in navigator) {
-        try {
-          if (type === 'light') navigator.vibrate(15);
-          else if (type === 'medium') navigator.vibrate(35);
-          else if (type === 'success') navigator.vibrate([20, 50, 20]);
-        } catch (e) { }
-      }
-    }
+    updateScenarioBadge();
 
     function showToast(msg) {
-      toastNotice.innerText = msg;
-      toastNotice.classList.add('show');
-      setTimeout(() => toastNotice.classList.remove('show'), 2400);
+      const t = document.getElementById('toastNotice');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
     }
 
-    // 手机屏幕常亮唤醒控制
-    async function requestWakeLock() {
-      try {
-        if ('wakeLock' in navigator) {
-          screenWakeLock = await navigator.wakeLock.request('screen');
-        }
-      } catch (err) {
-        console.warn('Wake Lock failed:', err);
-      }
-    }
-    function releaseWakeLock() {
-      if (screenWakeLock) {
-        try { screenWakeLock.release(); } catch (e) { }
-        screenWakeLock = null;
-      }
-    }
+    // ==========================================
+    // 弹窗与设置抽屉事件绑定
+    // ==========================================
+    function openSheet(modal) { modal.classList.add('open'); }
+    function closeSheet(modal) { modal.classList.remove('open'); }
 
-    // 手机页面切回前台时，自动恢复被系统挂起的音频上下文
-    document.addEventListener('visibilitychange', async () => {
-      if (document.visibilityState === 'visible' && audioContext && audioContext.state === 'suspended') {
-        try { await audioContext.resume(); } catch (e) { }
-      }
+    [settingsModal, scenarioModal, historyModal].forEach(m => {
+      m.addEventListener('click', (e) => { if (e.target === m) closeSheet(m); });
     });
 
-    // 抽屉交互控制
-    function openSheet(sheet) {
-      sheet.classList.add('open');
-      triggerHaptic('light');
-    }
-    function closeSheet(sheet) {
-      sheet.classList.remove('open');
-    }
-
-    [settingsModal, scenarioModal, historyModal].forEach(modal => {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeSheet(modal);
-      });
-    });
-
-    settingsBtn.addEventListener('click', () => openSheet(settingsModal));
-    closeSettingsSheetBtn.addEventListener('click', () => closeSheet(settingsModal));
-
-    scenarioTrigger.addEventListener('click', () => openScenarioSheet());
-    quickScenarioBtn.addEventListener('click', () => openScenarioSheet());
-    closeScenarioSheetBtn.addEventListener('click', () => closeSheet(scenarioModal));
-
-    historyBtn.addEventListener('click', () => {
-      renderHistoryView();
-      openSheet(historyModal);
-    });
-    closeHistorySheetBtn.addEventListener('click', () => closeSheet(historyModal));
-
-    // 点击抽屉手柄直接收起
-    ['handleScenarioSheet', 'handleSettingsSheet', 'handleHistorySheet'].forEach(id => {
-      const handle = document.getElementById(id);
-      if (handle) {
-        handle.addEventListener('click', (e) => {
-          const overlay = e.target.closest('.sheet-overlay');
-          if (overlay) closeSheet(overlay);
-        });
-      }
-    });
-
-    clearChatBtn.addEventListener('click', () => {
-      triggerHaptic('medium');
-      if (confirm('是否清空当前界面的对话？')) {
-        chatContainer.innerHTML = `
-          <div class="hero-welcome">
-            <div class="hero-orb">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                <line x1="12" y1="19" x2="12" y2="23"></line>
-              </svg>
-            </div>
-            <h2 class="hero-title">像真人般随时开口练</h2>
-            <p class="hero-desc">全双工实时多模态内核，支持随时打断与语法润色。手机端点击麦克风即可无缝开启对练。</p>
-          </div>
-        `;
-        showToast('对话已清空');
-      }
-    });
-
-    // 场景选择
-    let pendingScenarioKey = currentScenarioKey;
-
-    function openScenarioSheet() {
-      pendingScenarioKey = currentScenarioKey;
-      scenarioOptionCards.forEach(card => {
-        card.classList.toggle('selected', card.getAttribute('data-key') === pendingScenarioKey);
-      });
-      customScenarioWrapper.style.display = pendingScenarioKey === 'custom' ? 'block' : 'none';
-      customScenarioInput.value = currentCustomScenario;
-      openSheet(scenarioModal);
-    }
-
-    scenarioOptionCards.forEach(card => {
-      card.addEventListener('click', () => {
-        triggerHaptic('light');
-        scenarioOptionCards.forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        pendingScenarioKey = card.getAttribute('data-key');
-        customScenarioWrapper.style.display = pendingScenarioKey === 'custom' ? 'block' : 'none';
-      });
-    });
-
-    confirmScenarioBtn.addEventListener('click', () => {
-      currentScenarioKey = pendingScenarioKey;
-      currentCustomScenario = customScenarioInput.value.trim();
-      localStorage.setItem('gemini_scenario_key', currentScenarioKey);
-      localStorage.setItem('gemini_scenario_custom', currentCustomScenario);
-      updateScenarioBadgeText();
-      closeSheet(scenarioModal);
-      triggerHaptic('success');
-      showToast('场景已切换');
-      if (isLive) stopSession("场景已变更，请重新开启");
-    });
-
-    function updateScenarioBadgeText() {
-      const active = SCENARIOS[currentScenarioKey] || SCENARIOS.casual;
-      currentScenarioText.innerText = active.name;
-      scenarioCurrentIcon.innerText = active.icon;
-    }
+    document.getElementById('settingsBtn').addEventListener('click', () => openSheet(settingsModal));
+    document.getElementById('closeSettingsSheetBtn').addEventListener('click', () => closeSheet(settingsModal));
+    document.getElementById('historyBtn').addEventListener('click', () => { renderHistory(); openSheet(historyModal); });
+    document.getElementById('closeHistorySheetBtn').addEventListener('click', () => closeSheet(historyModal));
+    scenarioTrigger.addEventListener('click', () => openSheet(scenarioModal));
+    quickScenarioBtn.addEventListener('click', () => openSheet(scenarioModal));
+    document.getElementById('closeScenarioSheetBtn').addEventListener('click', () => closeSheet(scenarioModal));
 
     modelSelect.addEventListener('change', () => {
       customModelWrapper.style.display = modelSelect.value === 'custom' ? 'block' : 'none';
     });
 
-    saveSettingsBtn.addEventListener('click', () => {
-      const key = apiKeyInput.value.trim();
-      localStorage.setItem('gemini_api_key', key);
-      let selectedModel = modelSelect.value === 'custom' ? customModelInput.value.trim() : modelSelect.value;
-      if (selectedModel && !selectedModel.startsWith('models/')) {
-        selectedModel = 'models/' + selectedModel;
+    scenarioOptionCards.forEach(card => {
+      card.addEventListener('click', () => {
+        scenarioOptionCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        const key = card.getAttribute('data-key');
+        customScenarioWrapper.style.display = key === 'custom' ? 'block' : 'none';
+      });
+    });
+
+    confirmScenarioBtn.addEventListener('click', () => {
+      const selected = document.querySelector('.scenario-option-card.selected');
+      if (selected) {
+        currentScenarioKey = selected.getAttribute('data-key');
+        currentCustomScenario = customScenarioInput.value.trim();
+        localStorage.setItem('gemini_scenario_key', currentScenarioKey);
+        localStorage.setItem('gemini_scenario_custom', currentCustomScenario);
+        updateScenarioBadge();
+        closeSheet(scenarioModal);
+        showToast('场景已切换');
+        if (isLive) stopSession('场景切换已重置');
       }
-      localStorage.setItem('gemini_model', selectedModel);
+    });
+
+    function updateScenarioBadge() {
+      const conf = SCENARIOS[currentScenarioKey] || SCENARIOS.casual;
+      currentScenarioText.innerText = conf.name;
+      scenarioCurrentIcon.innerText = conf.icon;
+    }
+
+    saveSettingsBtn.addEventListener('click', () => {
+      localStorage.setItem('gemini_api_key', apiKeyInput.value.trim());
+      const chosenModel = modelSelect.value === 'custom' ? customModelInput.value.trim() : modelSelect.value;
+      localStorage.setItem('gemini_model', chosenModel);
       localStorage.setItem('gemini_voice', voiceSelect.value);
       localStorage.setItem('gemini_accent', accentSelect.value);
       closeSheet(settingsModal);
-      triggerHaptic('success');
-      showToast('设置已保存');
-      if (isLive) stopSession("设置已更新，请重新开启");
+      showToast('配置已保存');
+      if (isLive) stopSession('设置变更已生效');
+    });
+
+    clearChatBtn.addEventListener('click', () => {
+      if (confirm('是否清空当前屏幕对话？')) {
+        chatContainer.innerHTML = '';
+        showToast('已清屏');
+      }
     });
 
     // ==========================================
-    // Web Audio 与 Live WebSocket（手机端解锁与先导静音）
+    // Web Audio 初始化与防休眠
     // ==========================================
     function initAudioContext() {
       if (!audioContext) {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         audioContext = new AudioCtx({ sampleRate: 24000 });
       }
-      if (audioContext.state === 'suspended') {
-        audioContext.resume();
-      }
-      // iOS Safari 音频解锁补丁：播放极短静音缓冲，彻底打通扬声器
+      if (audioContext.state === 'suspended') audioContext.resume();
+
+      // iOS 解锁补丁
       try {
-        const silentBuffer = audioContext.createBuffer(1, 1, 24000);
-        const silentSource = audioContext.createBufferSource();
-        silentSource.buffer = silentBuffer;
-        silentSource.connect(audioContext.destination);
-        silentSource.start(0);
-      } catch (e) { }
+        const buf = audioContext.createBuffer(1, 1, 24000);
+        const src = audioContext.createBufferSource();
+        src.buffer = buf;
+        src.connect(audioContext.destination);
+        src.start(0);
+      } catch (e) {}
+    }
+
+    async function requestWakeLock() {
+      try {
+        if ('wakeLock' in navigator) screenWakeLock = await navigator.wakeLock.request('screen');
+      } catch (e) {}
+    }
+    function releaseWakeLock() {
+      if (screenWakeLock) { screenWakeLock.release(); screenWakeLock = null; }
     }
 
     // ==========================================
-    // 语音实时转录系统 (Web Speech API + Gemini 双轨驱动)
+    // 建立双向 WebSocket 连接
     // ==========================================
-    let speechRecognizer = null;
-    let isSetupComplete = false;
-    let tutorStreamBuffer = "";
-    let currentAiBubbleGroup = null;
-    let currentAiBubbleText = null;
-
-    function initSpeechRecognition() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) return;
-
-      try {
-        if (speechRecognizer) {
-          speechRecognizer.abort();
-          speechRecognizer = null;
-        }
-
-        speechRecognizer = new SpeechRecognition();
-        speechRecognizer.continuous = true;
-        speechRecognizer.interimResults = true;
-        speechRecognizer.lang = localStorage.getItem('gemini_accent') || 'en-US'; // 动态匹配英音/美音口语识别
-
-        let userBubble = null;
-        let userBubbleText = null;
-
-        speechRecognizer.onresult = (event) => {
-          if (!isLive) return;
-          let interimTranscript = '';
-          let finalTranscript = '';
-
-          for (let i = event.resultIndex; i < event.results.length; ++i) {
-            if (event.results[i].isFinal) {
-              finalTranscript += event.results[i][0].transcript;
-            } else {
-              interimTranscript += event.results[i][0].transcript;
-            }
-          }
-
-          const displayText = (finalTranscript || interimTranscript).trim();
-          if (!displayText) return;
-
-          if (!userBubble) {
-            userBubble = document.createElement('div');
-            userBubble.className = 'msg-group user';
-            const now = new Date();
-            const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-            userBubble.innerHTML = `
-              <div class="msg-meta">
-                <span>You (实时转录)</span>
-                <span>• ${timeStr}</span>
-              </div>
-              <div class="bubble"></div>
-            `;
-            chatContainer.appendChild(userBubble);
-            userBubbleText = userBubble.querySelector('.bubble');
-          }
-
-          if (userBubbleText) {
-            userBubbleText.innerText = displayText;
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-          }
-
-          if (finalTranscript) {
-            currentSession.exchanges.push({ speaker: 'You', text: finalTranscript });
-            userBubble = null;
-            userBubbleText = null;
-          }
-        };
-
-        speechRecognizer.onerror = (e) => {
-          console.warn('SpeechRecognition notice:', e.error);
-        };
-
-        speechRecognizer.onend = () => {
-          if (isLive && speechRecognizer) {
-            try { speechRecognizer.start(); } catch (e) { }
-          }
-        };
-
-        speechRecognizer.start();
-      } catch (err) {
-        console.warn('Web Speech API unavailable, falling back to server transcription:', err);
-      }
-    }
-
-    function stopSpeechRecognition() {
-      if (speechRecognizer) {
-        try { speechRecognizer.stop(); } catch (e) { }
-        speechRecognizer = null;
-      }
-    }
-
     function connectGeminiLive() {
       const apiKey = localStorage.getItem('gemini_api_key');
       if (!apiKey) {
-        showToast('请先配置 API Key');
+        showToast('请先配置 API Key！');
         openSheet(settingsModal);
         return;
       }
 
-      isSetupComplete = false;
-      tutorStreamBuffer = "";
-      currentAiBubbleGroup = null;
-      currentAiBubbleText = null;
-
       updateStatus('connecting', '建立连接中...');
-
       currentSession = {
         startTime: new Date().toLocaleString(),
         scenario: currentScenarioText.innerText,
         exchanges: []
       };
+      tutorTextBuffer = "";
 
       const host = "generativelanguage.googleapis.com";
-      // 必须使用 v1beta 端点（v1alpha 会直接返回 1008 拒绝）
-      const uri = `wss://${host}/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key=${apiKey}`;
+      const uri = `wss://${host}/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent?key=${apiKey}`;
 
       ws = new WebSocket(uri);
 
       ws.onopen = async () => {
-        updateStatus('connecting', '协议握手中...');
+        updateStatus('connected', 'Live 通话中');
         isLive = true;
         visualizer.classList.add('active');
         mainActionBtn.classList.add('active');
-        micIcon.innerHTML = `
-          <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"></rect>
-        `;
-        triggerHaptic('medium');
+        mainActionBtn.innerText = '⏹️';
         requestWakeLock();
 
-        // 仅发送握手 Setup，音频发送需严格等待收到 setupComplete
         sendInitialSetup();
         await startAudioCapture();
-        initSpeechRecognition();
       };
 
       ws.onmessage = async (event) => {
-        let data = event.data instanceof Blob ? JSON.parse(await event.data.text()) : JSON.parse(event.data);
-
-        // 核心握手完成检查：防止提前发音频导致的一两秒内秒断
-        if (data.setupComplete) {
-          isSetupComplete = true;
-          updateStatus('connected', 'Live 通话中');
-          showToast('连接就绪，请开口说话');
-          return;
-        }
-
+        const data = event.data instanceof Blob ? JSON.parse(await event.data.text()) : JSON.parse(event.data);
         handleServerMessage(data);
       };
 
       ws.onerror = (err) => {
-        console.error("Live Socket Error:", err);
+        console.error('WebSocket 错误:', err);
+        stopSession('连接发生错误');
       };
 
-      ws.onclose = (event) => {
-        console.warn("WebSocket Closed -> Code:", event.code, "Reason:", event.reason, "Clean:", event.wasClean);
-        let detail = event.reason ? ` (${event.reason})` : "";
-        let reason = "待命就绪";
-
-        if (event.code === 1008) {
-          reason = `握手被拒 [1008]: Google服务端拒绝连接${detail}。通常为IP节点地区不支持(需纯净美/日/英节点)或APIKey无该模型权限`;
-        } else if (event.code === 1007) {
-          reason = `参数被拒 [1007]: Google返回格式/参数错误${detail}`;
-        } else if (event.code === 1006) {
-          reason = `连接异常中断 [1006]${detail}: 常见于网络代理断开或节点不支持WebSocket握手`;
-        } else if (event.code !== 1000 && event.code !== 1005) {
-          reason = `连接断开 [${event.code}]${detail}`;
-        }
-        stopSession(reason);
+      ws.onclose = () => {
+        stopSession('通话已结束');
       };
     }
 
     function sendInitialSetup() {
       const voice = localStorage.getItem('gemini_voice') || 'Aoede';
       const accent = localStorage.getItem('gemini_accent') || 'en-US';
-      let model = localStorage.getItem('gemini_model') || 'models/gemini-3.1-flash-live-preview';
-      if (!model.startsWith('models/')) {
-        model = 'models/' + model;
-      }
+      const model = localStorage.getItem('gemini_model') || 'models/gemini-2.0-flash-exp';
 
-      let baseInstruction = currentScenarioKey === 'custom'
+      const baseInstruction = currentScenarioKey === 'custom'
         ? currentCustomScenario
         : (SCENARIOS[currentScenarioKey] ? SCENARIOS[currentScenarioKey].prompt : SCENARIOS.casual.prompt);
 
-      let accentDirective = "";
-      if (accent === 'en-GB') {
-        accentDirective = "You MUST speak with an authentic, elegant British Received Pronunciation (RP) accent, using British phonetics, clear t sounds, non-rhotic r, and authentic British colloquial phrasing (e.g. splendid, lovely, cheers, mate).";
-      } else if (accent === 'en-AU') {
-        accentDirective = "You MUST speak with an authentic Australian accent, using Australian vowels, gentle upward inflection, and natural Aussie expressions.";
-      } else if (accent === 'en-CA') {
-        accentDirective = "You MUST speak with a clean Canadian accent.";
-      } else {
-        accentDirective = "You MUST speak with a crisp, clear General American accent (rhotic r, natural flapping).";
-      }
-
-      // 明确指令模型在流式传输语音的同时伴随文字、发音/口音评估和精修建议
+      // 强约束双向转写输出
       const fullSystemPrompt = `
 ${baseInstruction}
 
-[ACCENT & DIALECT REQUIREMENT]:
-${accentDirective}
+[CORE DIALECT & PRONUNCIATION]:
+Speak with an authentic ${accent === 'en-GB' ? 'British RP' : accent === 'en-AU' ? 'Australian' : 'General American'} accent.
 
-[CRITICAL INSTRUCTIONS]:
-1. Keep your spoken vocal responses brief, natural and conversational (1-3 sentences).
-2. Listen attentively to the acoustic details of the user's speech, including pronunciation of phonemes (/θ/, /s/, /v/, /w/, /r/, /l/, vowel lengths), syllable stresses, and intonations.
-3. You MUST concurrently output text tags alongside your spoken audio. Format your text output strictly as:
+[CRITICAL MULTIMODAL INSTRUCTIONS]:
+1. You must ALWAYS output both AUDIO and concurrent TEXT.
+2. In your TEXT output, transcribe the user's speech, provide your vocal response, and insert constructive corrections formatted strictly as follows:
+[User said: <transcribe exactly what the user said in English>]
+[Correction: <if any grammar/phrasing defect: Original -> Better native alternative | Explanation>]
+[Pronunciation: <if any pronunciation/accent defect: Word -> Mouth/Tongue adjustment>]
 [Tutor: <your spoken response text>]
-[Correction: <if any grammar/phrasing mistake: "Original phrase" -> "Better native phrasing" | Brief reason>]
-[Pronunciation: <if any pronunciation/accent defect: "Word/Phoneme" -> "Detailed acoustic guidance (e.g. tongue position, vowel length, wrong stress)">]
 
-Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
+3. Keep your vocal answer natural, concise, and engaging (1-3 sentences).
 `;
 
       const setupMsg = {
         setup: {
           model: model,
           generationConfig: {
-            responseModalities: ["AUDIO"],
+            responseModalities: ["AUDIO"], // 主动请求音频流，伴随文本在同一管道回传
             speechConfig: {
-              languageCode: accent,
               voiceConfig: {
                 prebuiltVoiceConfig: { voiceName: voice }
               }
@@ -1849,92 +1007,85 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       ws.send(JSON.stringify(setupMsg));
     }
 
+    // ==========================================
+    // 消息解析与双向转写展示
+    // ==========================================
     function handleServerMessage(msg) {
       if (msg.serverContent && msg.serverContent.interrupted) {
         stopPlaybackImmediately();
-        tutorStreamBuffer = "";
-        currentAiBubbleGroup = null;
-        currentAiBubbleText = null;
+        tutorTextBuffer = "";
         return;
       }
 
       if (msg.serverContent && msg.serverContent.modelTurn) {
         const parts = msg.serverContent.modelTurn.parts;
         for (const part of parts) {
-          const pcmData = (part.inlineData && part.inlineData.mimeType && part.inlineData.mimeType.startsWith("audio/pcm"))
-            ? part.inlineData.data
-            : (part.audio && part.audio.data ? part.audio.data : null);
-          if (pcmData) {
-            playAudioChunk(pcmData);
+          if (part.inlineData && part.inlineData.mimeType.startsWith("audio/pcm")) {
+            playAudioChunkWithJitterBuffer(part.inlineData.data);
           }
           if (part.text) {
-            parseAndStreamText(part.text);
+            parseStreamTextTokens(part.text);
           }
         }
       }
 
       if (msg.serverContent && msg.serverContent.turnComplete) {
-        tutorStreamBuffer = "";
-        currentAiBubbleGroup = null;
-        currentAiBubbleText = null;
+        tutorTextBuffer = "";
       }
     }
 
-    // 流式累加器：解决单 chunk 正则匹配失败导致的文字吞没问题
-    function parseAndStreamText(incomingChunk) {
-      tutorStreamBuffer += incomingChunk;
+    let activeAiBubble = null;
 
-      // 1. 提取并渲染发音与口音建议卡片
-      const pronRegex = /\[Pronunciation:\s*(.*?)\s*\]/g;
-      let pronMatch;
-      while ((pronMatch = pronRegex.exec(tutorStreamBuffer)) !== null) {
-        const pronText = pronMatch[1].trim();
-        if (pronText) {
-          appendPronunciationCard(pronText);
-          currentSession.exchanges.push({ speaker: 'Pronunciation', text: pronText });
+    function parseStreamTextTokens(incomingChunk) {
+      tutorTextBuffer += incomingChunk;
+
+      // 1. 用户发言转写
+      const userRegex = /\[User said:\s*(.*?)\s*\]/g;
+      let uMatch;
+      while ((uMatch = userRegex.exec(tutorTextBuffer)) !== null) {
+        const uText = uMatch[1].trim();
+        if (uText) {
+          appendBubble('user', 'You', uText);
+          currentSession.exchanges.push({ speaker: 'You', text: uText });
         }
-        tutorStreamBuffer = tutorStreamBuffer.replace(pronMatch[0], '');
+        tutorTextBuffer = tutorTextBuffer.replace(uMatch[0], '');
       }
 
-      // 2. 提取并渲染语法地道表达纠错建议
+      // 2. 语法纠错建议卡片
       const corrRegex = /\[Correction:\s*(.*?)\s*\]/g;
-      let corrMatch;
-      while ((corrMatch = corrRegex.exec(tutorStreamBuffer)) !== null) {
-        const corrText = corrMatch[1].trim();
-        if (corrText) {
-          appendCorrectionCard(corrText);
-          currentSession.exchanges.push({ speaker: 'Correction', text: corrText });
+      let cMatch;
+      while ((cMatch = corrRegex.exec(tutorTextBuffer)) !== null) {
+        const cText = cMatch[1].trim();
+        if (cText) {
+          appendFeedbackCard('correction', '💡 地道表达精修', cText);
+          currentSession.exchanges.push({ speaker: 'Correction', text: cText });
         }
-        tutorStreamBuffer = tutorStreamBuffer.replace(corrMatch[0], '');
+        tutorTextBuffer = tutorTextBuffer.replace(cMatch[0], '');
       }
 
-      // 3. 提取导师回复文字（支持带 [Tutor: ...] 标签或裸流式文本）
-      let cleanText = tutorStreamBuffer
-        .replace(/\[Pronunciation:[\s\S]*?\]/g, '')
-        .replace(/\[Correction:[\s\S]*?\]/g, '')
+      // 3. 发音纠偏建议卡片
+      const pronRegex = /\[Pronunciation:\s*(.*?)\s*\]/g;
+      let pMatch;
+      while ((pMatch = pronRegex.exec(tutorTextBuffer)) !== null) {
+        const pText = pMatch[1].trim();
+        if (pText) {
+          appendFeedbackCard('pronunciation', '🗣️ 发音口音指导', pText);
+          currentSession.exchanges.push({ speaker: 'Pronunciation', text: pText });
+        }
+        tutorTextBuffer = tutorTextBuffer.replace(pMatch[0], '');
+      }
+
+      // 4. AI 导师自身语音转写提取
+      const cleanTutor = tutorTextBuffer
         .replace(/\[Tutor:\s*/g, '')
         .replace(/\]/g, '')
         .trim();
 
-      if (cleanText) {
-        if (!currentAiBubbleGroup) {
-          currentAiBubbleGroup = document.createElement('div');
-          currentAiBubbleGroup.className = 'msg-group ai';
-          const now = new Date();
-          const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-          currentAiBubbleGroup.innerHTML = `
-            <div class="msg-meta">
-              <span>Gemini Coach</span>
-              <span>• ${timeStr}</span>
-            </div>
-            <div class="bubble"></div>
-          `;
-          chatContainer.appendChild(currentAiBubbleGroup);
-          currentAiBubbleText = currentAiBubbleGroup.querySelector('.bubble');
-        }
-
-        if (currentAiBubbleText) {
-          currentAiBubbleText.innerText = cleanText;
+      if (cleanTutor) {
+        if (!activeAiBubble) {
+          activeAiBubble = appendBubble('ai', 'Gemini', cleanTutor);
+        } else {
+          activeAiBubble.querySelector('.bubble').innerText = cleanTutor;
           chatContainer.scrollTop = chatContainer.scrollHeight;
         }
       }
@@ -1943,106 +1094,54 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
     function appendBubble(role, speaker, text) {
       const group = document.createElement('div');
       group.className = `msg-group ${role}`;
-
-      const now = new Date();
-      const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-
       group.innerHTML = `
-        <div class="msg-meta">
-          <span>${speaker}</span>
-          <span>• ${timeStr}</span>
-        </div>
+        <div class="msg-meta">${speaker}</div>
         <div class="bubble">${escapeHtml(text)}</div>
       `;
       chatContainer.appendChild(group);
       chatContainer.scrollTop = chatContainer.scrollHeight;
+      return group;
     }
 
-    function appendCorrectionCard(content) {
+    function appendFeedbackCard(type, title, content) {
       const card = document.createElement('div');
-      card.className = 'correction-card';
+      card.className = `card-feedback ${type}`;
       card.innerHTML = `
-        <div class="correction-header">
-          <div class="correction-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
-            <span>地道表达精修</span>
-          </div>
-        </div>
-        <div class="correction-content">${escapeHtml(content)}</div>
-      `;
-      chatContainer.appendChild(card);
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-
-    function appendPronunciationCard(content) {
-      const card = document.createElement('div');
-      card.className = 'pronunciation-card';
-      card.innerHTML = `
-        <div class="pronunciation-header">
-          <div class="pronunciation-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-            <span>发音与口音精修</span>
-          </div>
-        </div>
-        <div class="pronunciation-content">${escapeHtml(content)}</div>
+        <div class="feedback-title">${title}</div>
+        <div>${escapeHtml(content)}</div>
       `;
       chatContainer.appendChild(card);
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
     // ==========================================
-    // 声学引擎：手机端持久单例流与复用（免重复弹窗）
+    // 麦克风录入与抗网络抖动音频播放 (Jitter Buffer)
     // ==========================================
     async function startAudioCapture() {
-      const isStreamActive = micStream && micStream.active && micStream.getAudioTracks().some(t => t.readyState === 'live');
-
-      if (!isStreamActive) {
-        try {
-          micStream = await navigator.mediaDevices.getUserMedia({
-            audio: {
-              sampleRate: { ideal: 16000 },
-              channelCount: 1,
-              echoCancellation: true,
-              noiseSuppression: true,
-              autoGainControl: true
-            }
-          });
-        } catch (err) {
-          alert('无法获取麦克风。若在微信/网盘中打开，请点右上角选择【在系统浏览器打开】！');
-          stopSession('麦克风权限受限');
-          return;
+      micStream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          sampleRate: { ideal: 16000 },
+          channelCount: 1,
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
         }
-      }
+      });
 
-      // 激活流轨道
-      micStream.getAudioTracks().forEach(t => t.enabled = true);
-
-      if (!micSourceNode) {
-        micSourceNode = audioContext.createMediaStreamSource(micStream);
-      }
-      if (!scriptProcessor) {
-        scriptProcessor = audioContext.createScriptProcessor(4096, 1, 1);
-      }
+      const source = audioContext.createMediaStreamSource(micStream);
+      scriptProcessor = audioContext.createScriptProcessor(4096, 1, 1);
 
       scriptProcessor.onaudioprocess = (e) => {
-        // 核心防护：必须等 setupComplete 握手完成才能发送音频，彻底解决一两秒秒断问题
-        if (!isLive || !isSetupComplete) return;
+        if (!isLive) return;
         const inputData = e.inputBuffer.getChannelData(0);
         updateVisualizer(inputData);
 
-        const targetRate = 16000;
-        const ratio = audioContext.sampleRate / targetRate;
-        const outLength = Math.round(inputData.length / ratio);
-        const pcm16 = new Int16Array(outLength);
+        // 快速下采样至 16000Hz PCM
+        const ratio = audioContext.sampleRate / 16000;
+        const outLen = Math.round(inputData.length / ratio);
+        const pcm16 = new Int16Array(outLen);
 
-        for (let i = 0; i < outLength; i++) {
+        for (let i = 0; i < outLen; i++) {
           let s = inputData[Math.round(i * ratio)];
           s = Math.max(-1, Math.min(1, s));
           pcm16[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
@@ -2055,20 +1154,18 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
         if (ws && ws.readyState === WebSocket.OPEN) {
           ws.send(JSON.stringify({
             realtimeInput: {
-              audio: {
-                mimeType: "audio/pcm;rate=16000",
-                data: btoa(binary)
-              }
+              mediaChunks: [{ mimeType: "audio/pcm;rate=16000", data: btoa(binary) }]
             }
           }));
         }
       };
 
-      micSourceNode.connect(scriptProcessor);
+      source.connect(scriptProcessor);
       scriptProcessor.connect(audioContext.destination);
     }
 
-    function playAudioChunk(base64Pcm) {
+    // 引入 120ms 缓冲垫，熨平跨国网络 TCP 丢包微抖
+    function playAudioChunkWithJitterBuffer(base64Pcm) {
       const binary = atob(base64Pcm);
       const bytes = new Uint8Array(binary.length);
       for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
@@ -2085,7 +1182,9 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       source.connect(audioContext.destination);
 
       const now = audioContext.currentTime;
-      if (scheduledTime < now) scheduledTime = now;
+      if (scheduledTime < now) {
+        scheduledTime = now + JITTER_BUFFER_OFFSET;
+      }
       source.start(scheduledTime);
       scheduledTime += audioBuffer.duration;
 
@@ -2097,97 +1196,71 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
     }
 
     function stopPlaybackImmediately() {
-      activeSources.forEach(s => { try { s.stop(); } catch (e) { } });
+      activeSources.forEach(s => { try { s.stop(); } catch(e){} });
       activeSources = [];
       scheduledTime = 0;
+      activeAiBubble = null;
     }
 
-    function saveCurrentSessionToHistory() {
+    // ==========================================
+    // 历史归档与 Markdown 导出
+    // ==========================================
+    function saveSession() {
       if (currentSession.exchanges.length === 0) return;
-      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
-      history.unshift(currentSession);
-      if (history.length > 30) history.pop();
-      localStorage.setItem('gemini_history', JSON.stringify(history));
+      const hist = JSON.parse(localStorage.getItem('gemini_history') || '[]');
+      hist.unshift(currentSession);
+      if (hist.length > 25) hist.pop();
+      localStorage.setItem('gemini_history', JSON.stringify(hist));
     }
 
-    function renderHistoryView() {
-      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
-      if (history.length === 0) {
-        historyListContainer.innerHTML = '<div style="color:var(--text-dim); text-align:center; padding:30px 0; font-size:0.85rem;">暂无对话练习记录，开启通话后将自动归档。</div>';
+    function renderHistory() {
+      const hist = JSON.parse(localStorage.getItem('gemini_history') || '[]');
+      if (hist.length === 0) {
+        historyListContainer.innerHTML = '<div style="color:var(--text-dim); text-align:center; padding:20px;">暂无历史对练记录</div>';
         return;
       }
-      historyListContainer.innerHTML = history.map((session, i) => `
-        <div class="history-card">
-          <div class="history-card-header">
-            <div class="history-badge">${escapeHtml(session.scenario)}</div>
-            <div class="history-date">${session.startTime}</div>
-          </div>
-          <div class="history-preview">
-            ${session.exchanges.slice(0, 4).map(e => `
-              <div style="margin-bottom: 4px;">
-                <strong style="color: ${e.speaker === 'You' ? 'var(--accent-primary)' : e.speaker === 'Correction' ? '#fbbf24' : e.speaker === 'Pronunciation' ? '#c084fc' : '#e2e8f0'}">${e.speaker}:</strong> 
-                ${escapeHtml(e.text)}
-              </div>
-            `).join('')}
-            ${session.exchanges.length > 4 ? '<div style="color:var(--text-dim); font-size:0.75rem;">...更多交流见导出文档</div>' : ''}
+      historyListContainer.innerHTML = hist.map((s, idx) => `
+        <div style="background:#090d16; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px; font-size:0.82rem;">
+          <div style="color:var(--accent-primary); font-weight:600; margin-bottom:4px;">${s.scenario} · ${s.startTime}</div>
+          <div style="color:var(--text-sub); max-height:80px; overflow:hidden; text-overflow:ellipsis;">
+            ${s.exchanges.slice(0, 3).map(e => `<b>${e.speaker}:</b> ${escapeHtml(e.text)}`).join('<br>')}
           </div>
         </div>
       `).join('');
     }
 
     copyHistoryMarkdownBtn.addEventListener('click', () => {
-      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
-      if (history.length === 0) {
-        showToast('暂无可导出的练习记录');
-        return;
-      }
+      const hist = JSON.parse(localStorage.getItem('gemini_history') || '[]');
+      if (hist.length === 0) return;
 
-      let md = `# EchoSpeak 口语对练复盘笔记\n\n`;
-      history.forEach((s, idx) => {
-        md += `## 会话 ${idx + 1} (${s.startTime})\n- **演练场景**: ${s.scenario}\n\n`;
+      let md = `# EchoSpeak 对练笔记\n\n`;
+      hist.forEach((s, i) => {
+        md += `## 会话 ${i + 1} (${s.startTime}) - ${s.scenario}\n\n`;
         s.exchanges.forEach(e => {
-          if (e.speaker === 'Correction') {
-            md += `> 💡 **地道表达**: ${e.text}\n\n`;
-          } else if (e.speaker === 'Pronunciation') {
-            md += `> 🗣️ **发音口音纠错**: ${e.text}\n\n`;
-          } else {
-            md += `**${e.speaker}**: ${e.text}\n\n`;
-          }
+          if (e.speaker === 'Correction') md += `> 💡 表达纠错: ${e.text}\n\n`;
+          else if (e.speaker === 'Pronunciation') md += `> 🗣️ 发音指导: ${e.text}\n\n`;
+          else md += `**${e.speaker}**: ${e.text}\n\n`;
         });
         md += `---\n\n`;
       });
 
-      navigator.clipboard.writeText(md).then(() => {
-        triggerHaptic('success');
-        showToast('已复制 Markdown 到剪贴板');
-      });
+      navigator.clipboard.writeText(md).then(() => showToast('已成功复制 Markdown！'));
     });
 
-    // 挂断处理：软静音，绝不销毁流
+    // ==========================================
+    // 运行状态与控制挂断
+    // ==========================================
     function stopSession(msg = "待命就绪") {
-      if (isLive) saveCurrentSessionToHistory();
+      if (isLive) saveSession();
       isLive = false;
-      isSetupComplete = false;
-      stopSpeechRecognition();
-      releaseWakeLock(); // 释放息屏锁
+      releaseWakeLock();
       visualizer.classList.remove('active');
       mainActionBtn.classList.remove('active');
-      micIcon.innerHTML = `
-        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-        <line x1="12" y1="19" x2="12" y2="23"></line>
-      `;
+      mainActionBtn.innerText = '🎙️';
       updateStatus('disconnected', msg);
 
-      // 断开分析器，并将麦克风硬件软静音，绝不彻底 stop()，避免手机系统再次弹窗
-      if (scriptProcessor) {
-        try { scriptProcessor.disconnect(); } catch (e) { }
-        scriptProcessor = null;
-      }
-      if (micStream) {
-        micStream.getAudioTracks().forEach(t => t.enabled = false);
-      }
-
+      if (scriptProcessor) { scriptProcessor.disconnect(); scriptProcessor = null; }
+      if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
       if (ws && ws.readyState === WebSocket.OPEN) ws.close();
       stopPlaybackImmediately();
       waveBars.forEach(b => b.style.height = '5px');
@@ -2198,12 +1271,12 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       statusText.innerText = text;
     }
 
-    function updateVisualizer(pcmData) {
+    function updateVisualizer(pcm) {
       let sum = 0;
-      for (let i = 0; i < pcmData.length; i++) sum += pcmData[i] * pcmData[i];
-      const intensity = Math.min(28, Math.max(5, Math.sqrt(sum / pcmData.length) * 180));
+      for (let i = 0; i < pcm.length; i++) sum += pcm[i] * pcm[i];
+      const intensity = Math.min(22, Math.max(4, Math.sqrt(sum / pcm.length) * 160));
       waveBars.forEach((bar, idx) => {
-        const offset = Math.sin(Date.now() / 70 + idx * 0.8) * 4;
+        const offset = Math.sin(Date.now() / 80 + idx) * 3;
         bar.style.height = `${Math.max(4, intensity + offset)}px`;
       });
     }
@@ -2213,7 +1286,6 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
     }
 
     mainActionBtn.addEventListener('click', () => {
-      triggerHaptic('medium');
       initAudioContext();
       if (!isLive) connectGeminiLive();
       else stopSession();
