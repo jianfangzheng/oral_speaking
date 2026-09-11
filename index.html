@@ -669,6 +669,7 @@
       z-index: 100;
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
       transition: opacity 0.3s ease, visibility 0.3s ease;
       display: flex;
       flex-direction: column;
@@ -678,6 +679,7 @@
     .sheet-overlay.open {
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
     }
 
     .sheet-container {
@@ -2108,8 +2110,6 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
     // 建立 120ms 动态自适应缓冲垫 + 2.5ms 交叉渐变，熨平代理与公网 TCP 抖动导致的吞音、卡顿
     // ==========================================
     const JITTER_BUFFER_CUSHION = 0.12; // 120ms 动态抗抖动缓冲垫
-    let scheduledTime = 0;
-    let activeSources = [];
 
     function playAudioChunk(base64Pcm) {
       if (!audioContext) return;
