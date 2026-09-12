@@ -534,6 +534,197 @@
       color: #f1f5f9;
     }
 
+    
+    /* 播客专题与访谈跟读增强组件 */
+    .podcast-source-banner {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .podcast-source-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .podcast-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .podcast-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(99, 102, 241, 0.18);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .podcast-guest-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .podcast-duration-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .podcast-title-text {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .shadowing-action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .btn-podcast-tool {
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-sub);
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-podcast-tool:active {
+      transform: scale(0.94);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .btn-podcast-tool.highlight {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: var(--accent-primary);
+    }
+
+    .btn-podcast-tool.ai-gen {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(56, 189, 248, 0.2) 100%);
+      border-color: rgba(168, 85, 247, 0.35);
+      color: #e9d5ff;
+    }
+
+    /* 播客对话多回合胶囊指示器 */
+    .turn-stepper-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 2px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .turn-stepper-bar::-webkit-scrollbar { display: none; }
+
+    .turn-step-pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .turn-step-pill.active {
+      background: var(--accent-gradient);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+    }
+
+    .turn-step-pill.completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    /* 播客专题卡片选择列表 */
+    .podcast-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .podcast-item-card {
+      background: #0d1322;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 13px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .podcast-item-card:active {
+      transform: scale(0.98);
+    }
+
+    .podcast-item-card.selected {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+
+    .podcast-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .podcast-item-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .podcast-item-meta {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     /* ==========================================
        跟读练习模式专用组件样式
        ========================================== */
@@ -696,6 +887,28 @@
     .btn-listen-sample:active {
       transform: scale(0.95);
       background: rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-listen-sample.loading {
+      opacity: 0.85;
+      pointer-events: none;
+      background: rgba(56, 189, 248, 0.22);
+    }
+
+    .btn-listen-sample.playing {
+      background: rgba(56, 189, 248, 0.35);
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+      color: #fff;
+    }
+
+    .spin-icon {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     /* 跟读评分报告大卡片 */
@@ -1373,26 +1586,57 @@
       </div>
     </main>
 
-    <!-- 视图 2：跟读评测模式 -->
+    <!-- 视图 2：跟读评测模式（播客与访谈精选专题） -->
     <section id="shadowingView" class="view-pane hidden">
       <div class="shadowing-hero">
-        <div class="shadowing-progress-card">
-          <div class="progress-info">
-            <h3 id="shadowingTopicTitle">情景跟读关卡</h3>
-            <p id="shadowingProgressLabel">第 1 / 8 关 · 场景跟读</p>
+        <!-- 播客来源与受访者 Banner -->
+        <div class="podcast-source-banner">
+          <div class="podcast-source-info">
+            <div class="podcast-badge-row">
+              <span class="podcast-badge" id="podcastSourceTag">🎙️ Lex Fridman Podcast</span>
+              <span class="podcast-guest-tag" id="podcastGuestTag">Guest: Sam Altman</span>
+              <span class="podcast-duration-tag" id="podcastDurationTag">约 5 分钟篇幅</span>
+            </div>
+            <div class="podcast-title-text" id="shadowingTopicTitle">AGI 发展与人类未来的抉择</div>
           </div>
-          <div style="display: flex; gap: 8px;">
-            <button id="prevLessonBtn" class="nav-arrow-btn" title="上一句">
+          <button id="openPodcastLibBtn" class="btn-podcast-tool highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>换播客</span>
+          </button>
+        </div>
+
+        <!-- 工具栏：随机抽取、AI 实时生成新访谈、前/后翻句 -->
+        <div class="shadowing-action-bar">
+          <div style="display:flex; gap:6px;">
+            <button id="randomPodcastBtn" class="btn-podcast-tool" title="随机抽取一段真实访谈">
+              <span>🎲 随机访谈</span>
+            </button>
+            <button id="generatePodcastBtn" class="btn-podcast-tool ai-gen" title="连接 Gemini 实时生成最新深度播客文稿">
+              <span>✨ AI 扩充文稿</span>
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <button id="prevLessonBtn" class="nav-arrow-btn" title="上一个回合">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
-            <button id="nextLessonBtn" class="nav-arrow-btn" title="下一句">
+            <span id="turnCounterLabel" style="font-size:0.75rem; color:var(--text-sub); font-weight:600; min-width:46px; text-align:center;">1 / 5</span>
+            <button id="nextLessonBtn" class="nav-arrow-btn" title="下一个回合">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </button>
           </div>
+        </div>
+
+        <!-- 对话回合进度胶囊 -->
+        <div class="turn-stepper-bar" id="turnStepperBar">
+          <!-- 动态生成的回合胶囊 -->
         </div>
 
         <!-- 双方字幕先行展示区 -->
@@ -1403,13 +1647,13 @@
               <line x1="12" y1="16" x2="12" y2="12"></line>
               <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
-            <span id="scriptSceneContext">场景上下文：咖啡厅点餐与定制</span>
+            <span id="scriptSceneContext">场景上下文：主持人就核心难题提问受访嘉宾</span>
           </div>
 
-          <!-- 对方上文台词 (先导上下文) -->
+          <!-- 对方上文台词 (主持人提问) -->
           <div class="script-turn" id="partnerTurnBox">
             <div class="script-speaker">
-              <span id="partnerSpeakerName">Barista (咖啡师)</span>
+              <span id="partnerSpeakerName">Host (主持人)</span>
               <button id="playPartnerSampleBtn" class="btn-listen-sample">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1417,16 +1661,16 @@
                 <span>听原音</span>
               </button>
             </div>
-            <div class="script-en" id="partnerEnText">Good morning! What can I get started for you today?</div>
-            <div class="script-zh" id="partnerZhText">早上好！今天想喝点什么呢？</div>
+            <div class="script-en" id="partnerEnText">Loading...</div>
+            <div class="script-zh" id="partnerZhText">加载中...</div>
           </div>
 
-          <!-- 练习人目标跟读句 (待读内容) -->
+          <!-- 练习人目标跟读句 (受访嘉宾精彩阐述) -->
           <div class="script-turn active-turn" id="userTurnBox">
             <div class="script-speaker">
-              <span>You (请跟读此句)</span>
+              <span id="userSpeakerRole">Guest (您跟读受访者观点)</span>
               <div style="display:flex; gap:6px; align-items:center;">
-                <span class="target-badge">目标句</span>
+                <span class="target-badge">受访者台词</span>
                 <button id="playTargetSampleBtn" class="btn-listen-sample">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1435,9 +1679,9 @@
                 </button>
               </div>
             </div>
-            <div class="script-en" id="targetEnText">Could I have an iced oat latte with an extra shot, please?</div>
-            <div class="script-phonetic" id="targetPhoneticText">/kʊd aɪ hæv ən aɪst oʊt ˈlɑːteɪ wɪð ən ˈekstrə ʃɑːt pliːz/</div>
-            <div class="script-zh" id="targetZhText">可以来一杯冰燕麦拿铁加一份浓缩吗，谢谢？</div>
+            <div class="script-en" id="targetEnText">Loading...</div>
+            <div class="script-phonetic" id="targetPhoneticText">/.../</div>
+            <div class="script-zh" id="targetZhText">加载中...</div>
           </div>
         </div>
 
@@ -1497,6 +1741,34 @@
       </button>
     </div>
   </footer>
+
+    <!-- 底部抽屉：精选播客与深度访谈文稿库 -->
+  <div id="podcastModal" class="sheet-overlay">
+    <div class="sheet-container">
+      <div class="sheet-handle" id="handlePodcastSheet"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">🎙️ 精选播客与访谈语料库 (5~8分钟)</div>
+        <button class="sheet-close-btn" id="closePodcastSheetBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sheet-body">
+        <div class="mobile-tip-card">
+          <strong>💡 播客访谈跟读指南：</strong>
+          <span>• 选取真实嘉宾受访发言，包含最纯正地道的母语口语表达、语调跌宕与论述逻辑。</span>
+          <span>• 整体篇幅约 5 分钟（4~6 个连贯问答回合），支持单回合跟读与完整篇章连读。</span>
+        </div>
+
+        <div class="podcast-grid" id="podcastListContainer">
+          <!-- 动态渲染的播客节目列表 -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- 底部抽屉：丰富话题库选择 -->
   <div id="scenarioModal" class="sheet-overlay">
@@ -1653,17 +1925,36 @@
           </select>
         </div>
 
+        <!-- 实时全双工语音模型 (专职负责自由对话模式与示范发音) -->
         <div class="form-group">
-          <label class="form-label">Gemini 实时双向对话模型</label>
-          <select id="modelSelect" class="app-select">
-            <option value="models/gemini-3.1-flash-live-preview">gemini-3.1-flash-live-preview (双向全双工官方推荐)</option>
-            <option value="custom">自定义其他模型标识符...</option>
+          <label class="form-label">🎙️ Gemini 实时语音模型 (负责自由对话与高保真示范朗读)</label>
+          <select id="liveModelSelect" class="app-select">
+            <option value="models/gemini-3.1-flash-live-preview">gemini-3.1-flash-live-preview (双向全双工官方推荐 · 支持自然语调与呼吸停顿)</option>
+            <option value="models/gemini-2.0-flash-live">gemini-2.0-flash-live (双向语音备选)</option>
+            <option value="custom">自定义实时语音模型...</option>
           </select>
         </div>
 
-        <div id="customModelWrapper" style="display: none;" class="form-group">
-          <label class="form-label">完整模型标识符</label>
-          <input type="text" id="customModelInput" class="app-input" placeholder="例如 models/gemini-2.5-flash" />
+        <div id="customLiveModelWrapper" style="display: none;" class="form-group">
+          <label class="form-label">完整实时语音模型标识符</label>
+          <input type="text" id="customLiveModelInput" class="app-input" placeholder="例如 models/gemini-3.1-flash-live-preview" />
+        </div>
+
+        <!-- 文本与文稿扩充模型 (专职负责10轮深度播客访谈生成与跟读录音评测) -->
+        <div class="form-group">
+          <label class="form-label">📝 Gemini 文本与文稿扩充模型 (负责10轮长文稿生成与AI深度评测)</label>
+          <select id="textModelSelect" class="app-select">
+            <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite (官方最新推荐 · 10轮长访谈秒级生成)</option>
+            <option value="auto">自动智能探测可用模型 (通过 ModelService.ListModels 自动适配)</option>
+            <option value="gemini-2.5-flash-lite">gemini-2.5-flash-lite (轻量备选)</option>
+            <option value="gemini-2.0-flash">gemini-2.0-flash (多模态全功能备选)</option>
+            <option value="custom">自定义文本扩充模型...</option>
+          </select>
+        </div>
+
+        <div id="customTextModelWrapper" style="display: none;" class="form-group">
+          <label class="form-label">完整文本扩充模型标识符</label>
+          <input type="text" id="customTextModelInput" class="app-input" placeholder="例如 gemini-3.5-flash-lite" />
         </div>
 
         <div class="form-group">
@@ -1774,96 +2065,643 @@
     };
 
     // 精选跟读题库（双方字幕先行展示，覆盖高频生活与职场场景）
-    const SHADOWING_LESSONS = [
+    
+    // =========================================================
+    // 真实播客与深度访谈多回合语料库 (每个 4~6 回合连贯访谈，总长约 4~8 分钟)
+    // 选取知名播客中真实受访者 (Guest) 的精彩谈话内容作为跟读练习重点
+    // =========================================================
+    const DEFAULT_PODCAST_EPISODES = [
       {
-        topic: "咖啡厅点单与定制",
-        context: "在精品咖啡馆向咖啡师点单并要求调整细节",
-        partner: "Barista",
-        partnerEn: "Good morning! What can I get started for you today?",
-        partnerZh: "早上好！今天想喝点什么呢？",
-        targetEn: "Could I have an iced oat latte with an extra shot, please?",
-        targetPhonetic: "/kʊd aɪ hæv ən aɪst oʊt ˈlɑːteɪ wɪð ən ˈekstrə ʃɑːt pliːz/",
-        targetZh: "可以来一杯冰燕麦拿铁加一份浓缩吗，谢谢？",
-        keyTip: "注意 'could I' 的连读 /kʊ-daɪ/，以及 'latte' 的重音在后半部分"
+            "id": "lex_sam_altman",
+            "podcast": "Lex Fridman Podcast",
+            "host": "Lex Fridman",
+            "guest": "Sam Altman (OpenAI CEO)",
+            "guestRole": "Guest (OpenAI CEO)",
+            "topic": "AGI 智能爆发、算力极限与人类未来的抉择",
+            "category": "科技前沿与人工智能",
+            "duration": "约 8-10 分钟 · 10 回合",
+            "context": "探讨通用人工智能(AGI)的发展临界点，算力能源瓶颈、开源安全、未来编程范式以及对人类文明社会结构的重塑。",
+            "turns": [
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "Sam, do you believe we are on the verge of creating a system that fundamentally surpasses human intelligence in almost every domain?",
+                        "partnerZh": "Sam，你是否相信我们正处于创造出在几乎所有领域从根本上超越人类智能的系统的前夕？",
+                        "targetEn": "I think we are definitely on the exponential curve, but the true breakthrough won't just be raw computing power—it's how these models self-reason and discover novel scientific principles.",
+                        "targetPhonetic": "/aɪ θɪŋk wi ɑːr ˈdefɪnətli ɑːn ði ˌekspəˈnenʃl kɜːrv, bət ðə truː ˈbreɪkθruː woʊnt dʒəst bi rɔː kəmˈpjuːtɪŋ ˈpaʊər—ɪts haʊ ðiːz ˈmɑːdlz self ˈriːzn ənd dɪˈskʌvər ˈnɑːvl ˌsaɪənˈtɪfɪk ˈprɪnsəplz/",
+                        "targetZh": "我认为我们绝对处于指数级曲线上，但真正的突破不仅仅在于纯粹的算力，而在于这些模型如何进行自我推理并发现全新的科学规律。",
+                        "keyTip": "注意 'exponential curve' (/ˌekspəˈnenʃl kɜːrv/) 的重音连贯，'won't just be' 中 t 音的轻柔弱化"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "What keeps you up at night when you think about the pace of this deployment?",
+                        "partnerZh": "当想到这一技术的部署速度时，最让你夜不能寐的是什么？",
+                        "targetEn": "It is the socioeconomic transition speed. If society has decades to adapt to technological shifts, it flourishes; but when foundational labor shifts in five years, institutional lag is the real danger.",
+                        "targetPhonetic": "/ɪt ɪz ðə ˌsoʊsioʊˌekəˈnɑːmɪk trænˈzɪʃn spiːd. ɪf səˈsaɪəti hæz ˈdekeɪdz tu əˈdæpt tuː ˌteknəˈlɑːdʒɪkl ʃɪfts, ɪt ˈflɜːrɪʃɪz; bət wen faʊnˈdeɪʃənl ˈleɪbər ʃɪfts ɪn faɪv jɪrz, ˌɪnstɪˈtuːʃənl læɡ ɪz ðə ˈriːəl ˈdeɪndʒər/",
+                        "targetZh": "是社会经济的转型速度。如果社会有几十年的时间来适应技术变革，它就会繁荣；但当基础劳动力结构在五年内剧变时，体制响应的滞后才是真正的危险。",
+                        "keyTip": "'socioeconomic' (/ˌsoʊsioʊˌekəˈnɑːmɪk/) 读出清晰的节奏层次，'institutional lag' 连贯发音"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "Do you see a world where AI companions replace human-to-human connection?",
+                        "partnerZh": "你是否预见到一个人工智能伴侣取代人与人之间真实连接的世界？",
+                        "targetEn": "People deeply crave authenticity. While an AI companion can offer incredible empathy and support, humans are wired to care about what other conscious humans think and feel.",
+                        "targetPhonetic": "/ˈpiːpl ˈdiːpli kreɪv ˌɔːθenˈtɪsəti. waɪl ən ˌeɪˈaɪ kəmˈpænjən kæn ˈɔːfər ɪnˈkredəbl ˈempəθi ənd səˈpɔːrt, ˈhjuːmənz ɑːr waɪərd tu ker əˈbaʊt wʌt ˈʌðər ˈkɑːnʃəs ˈhjuːmənz θɪŋk ənd fiːl/",
+                        "targetZh": "人们对真实感有着深刻的渴望。尽管AI伴侣能提供令人难以置信的同理心与支持，但人类的基因决定了我们天生在乎其他拥有意识的同类所思所感。",
+                        "keyTip": "重点咬准 'authenticity' (/ˌɔːθenˈtɪsəti/) 的咬舌音 /θ/ 与第四音节重音，'humans are wired' 滑畅衔接"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "Looking back at the earliest days of building these neural nets, what surprised you most?",
+                        "partnerZh": "回看构建这些神经网络的早期阶段，最让你惊讶的是什么？",
+                        "targetEn": "The sheer unreasonable effectiveness of scaling. Every single time we doubted whether adding more parameters and cleaner data would unlock new reasoning capabilities, the loss curves proved us wrong.",
+                        "targetPhonetic": "/ðə ʃɪr ʌnˈriːznəbl ɪˈfektɪvnəs əv ˈskeɪlɪŋ. ˈevri ˈsɪŋɡl taɪm wi ˈdaʊtɪd ˈweðər ˈædɪŋ mɔːr pəˈræmɪtərz ənd ˈkliːnər ˈdeɪtə wʊd ʌnˈlɑːk nuː ˈriːznɪŋ ˌkeɪpəˈbɪlətiz, ðə lɔːs kɜːrvz pruːvd ʌs rɔːŋ/",
+                        "targetZh": "是规模扩展那令人难以置信的惊人有效性。每一次我们怀疑增加参数和更纯净的数据是否能解锁全新推理能力时，损失函数曲线都证明我们的疑虑是多余的。",
+                        "keyTip": "强调句 'sheer unreasonable effectiveness' 语速适中、重音分明，'proved us wrong' 落地坚定"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "What advice would you give to ambitious young engineers entering this brave new era?",
+                        "partnerZh": "对于进入这个崭新时代的有雄心的年轻工程师，你有什么建议？",
+                        "targetEn": "Don't cling to yesterday's engineering paradigms. Learn how to steer AI tools, master first-principles thinking, and relentlessly work on problems that genuinely uplift people's everyday lives.",
+                        "targetPhonetic": "/doʊnt klɪŋ tu jəˈstərdeɪz ˌendʒɪˈnɪrɪŋ ˈpærədaɪmz. lɜːrn haʊ tu stɪr ˌeɪˈaɪ tuːlz, ˈmæstər fɜːrst ˈprɪnsəplz ˈθɪŋkɪŋ, ənd rɪˈlentləsli wɜːrk ɑːn ˈprɑːbləmz ðæt ˈdʒenjuɪnli ˈʌplɪft ˈpiːplz ˈevrideɪ laɪvz/",
+                        "targetZh": "不要死守昨天的工程范式。学会掌控AI工具，精通第一性原理思考，并坚定不移地致力于解决那些能真正改善大众日常生活的实际问题。",
+                        "keyTip": "'paradigms' (/ˈpærədaɪmz/) 发音清晰，'relentlessly work on' 表现出激情与决心"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "What is your perspective on open-source weights versus closed frontier models in safety research?",
+                        "partnerZh": "在安全研究方面，你如何看待开源权重与闭源前沿模型的博弈？",
+                        "targetEn": "Both have crucial roles. Open source democratises access and invites global scrutiny, but frontier training runs require rigorous red-teaming before raw weights circulate unrestricted.",
+                        "targetPhonetic": "/boʊθ hæv ˈkruːʃl roʊlz. ˈoʊpən sɔːrs dɪˈmɑːkrətaɪzɪz ˈækses ənd ɪnˈvaɪts ˈɡloʊbl ˈskruːtəni, bət ˈfrʌntɪr ˈtreɪnɪŋ rʌnz rɪˈkwaɪər ˈrɪɡərəs red ˈtiːmɪŋ bɪˈfɔːr rɔː weɪts ˈsɜːrkjəleɪt ˌʌnrɪˈstrɪktɪd/",
+                        "targetZh": "两者都扮演着至关重要的角色。开源普及了算力访问并引入全球审查，但前沿模型的训练在权重无限制流传前必须经过极其严密的安全红队测试。",
+                        "keyTip": "'democratises access' (/dɪˈmɑːkrətaɪzɪz ˈækses/) 读准重音，'red-teaming' 复合词首重音"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "Will traditional human programming and software engineering cease to exist within our lifetime?",
+                        "partnerZh": "在我们的有生之年，传统人类编程与软件工程会彻底消失吗？",
+                        "targetEn": "Programming as mechanical syntax typing will dissolve, but high-level software engineering—architecting resilient systems, understanding human problems, and defining intent—will become more vital than ever.",
+                        "targetPhonetic": "/ˈproʊɡræmɪŋ æz məˈkænɪkl ˈsɪntæks ˈtaɪpɪŋ wɪl dɪˈzɑːlv, bət haɪ ˈlevl ˈsɔːftwer ˌendʒɪˈnɪrɪŋ—ˈɑːrkɪtektɪŋ rɪˈzɪliənt ˈsɪstəmz, ˌʌndərˈstændɪŋ ˈhjuːmən ˈprɑːbləmz, ənd dɪˈfaɪnɪŋ ɪnˈtent—wɪl bɪˈkʌm mɔːr ˈvaɪtl ðæn ˈevər/",
+                        "targetZh": "作为机械敲击语法的编程将会消解，但高阶软件工程——架构高韧性系统、洞察人类痛点与界定问题意图——将变得比以往任何时候都更加关键。",
+                        "keyTip": "对照结构 'syntax typing will dissolve' 与 'architecting resilient systems' 表现出清晰逻辑"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "How do you personally maintain mental clarity under intense public scrutiny and leadership pressure?",
+                        "partnerZh": "在巨大的公众审视与领导压力之下，你个人是如何保持内心清明专注的？",
+                        "targetEn": "I spend substantial uninterrupted time offline with close friends and family. Staying deeply anchored in reality prevents you from being seduced by praise or derailed by ungrounded cynicism.",
+                        "targetPhonetic": "/aɪ spend səbˈstænʃl ˌʌnɪntəˈrʌptɪd taɪm ˌɔːfˈlaɪn wɪð kloʊs frendz ənd ˈfæməli. ˈsteɪɪŋ ˈdiːpli ˈæŋkərd ɪn riˈæləti prɪˈvents juː frəm ˈbiːɪŋ dɪˈreɪld baɪ ʌnˈɡraʊndɪd ˈsɪnɪsɪzəm/",
+                        "targetZh": "我会花大量不被打扰的时间远离网络，陪伴亲近的挚友与家人。深深扎根于现实生活，能让你既不被吹捧所迷惑，也不被无端的冷嘲热讽带偏。",
+                        "keyTip": "'Staying deeply anchored' 语调沉着，'derailed by' 顺畅滑读"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "What is your biggest hope for the legacy of this technology a century from now?",
+                        "partnerZh": "展望一个世纪后，你对这项技术留给人类的遗产最大的期许是什么？",
+                        "targetEn": "Curing intractable diseases, solving clean nuclear fusion, and unlocking cosmic physics. If AI elevates human creative potential so that suffering diminishes across the globe, it will be our greatest milestone.",
+                        "targetPhonetic": "/ˈkjʊrɪŋ ɪnˈtræktəbl dɪˈziːzɪz, ˈsɑːlvɪŋ kliːn ˈnuːkliər ˈfjuːʒn, ənd ʌnˈlɑːkɪŋ ˈkɑːzmɪk ˈfɪzɪks. ɪf ˌeɪˈaɪ ˈeləveɪts ˈhjuːmən kriˈeɪtɪv pəˈtenʃl soʊ ðæt ˈsʌfərɪŋ dɪˈmɪnɪʃɪz əˈkrɔːs ðə ɡloʊb, ɪt wɪl bi ˈaʊər ˈɡreɪtɪst ˈmaɪlstoʊn/",
+                        "targetZh": "攻克顽疾、实现清洁可控核聚变，并解开宇宙物理谜题。如果AI能够提升人类的创造潜能，使苦难在全球范围内显著减少，那将是人类最伟大的里程碑。",
+                        "keyTip": "排比连贯 'Curing diseases, solving fusion, unlocking physics' 语势层层递进"
+                  },
+                  {
+                        "partner": "Lex Fridman",
+                        "partnerEn": "Sam, what gives you the greatest peace when you contemplate the immense mystery of the universe?",
+                        "partnerZh": "Sam，当你静思宇宙这浩瀚的未知之谜时，什么带给你最大的平静与慰藉？",
+                        "targetEn": "The astonishing realization that conscious matter emerged from silent stardust to understand its own existence. Whatever happens next, participating in that cosmic journey is profoundly beautiful.",
+                        "targetPhonetic": "/ði əˈstɑːnɪʃɪŋ ˌriːələˈzeɪʃn ðæt ˈkɑːnʃəs ˈmætər ɪˈmɜːrdʒd frəm ˈsaɪlənt ˈstɑːrdʌst tu ˌʌndərˈstænd ɪts oʊn ɪɡˈzɪstəns. wʌtˈevər ˈhæpənz nekst, pɑːrˈtɪsɪpeɪtɪŋ ɪn ðæt ˈkɑːzmɪk ˈdʒɜːrni ɪz prəˈfaʊndli ˈbjuːtɪfl/",
+                        "targetZh": "是这样一个令人惊叹的事实：拥有意识的生命物质从沉寂的星尘中诞生，并开始理解自身的存在。无论未来发生什么，参与这段宇宙旅程本身就已经无比震撼美丽。",
+                        "keyTip": "'conscious matter' (/ˈkɑːnʃəs ˈmætər/) 充满哲思，结尾 'profoundly beautiful' 舒展收音"
+                  }
+            ]
       },
       {
-        topic: "商务会议开场破冰",
-        context: "跨国远程视频会议主持开场并确认音画质量",
-        partner: "Colleague",
-        partnerEn: "Hey everyone, can you hear me alright on your end?",
-        partnerZh: "嗨大家，大家那边听得到我的声音吗？",
-        targetEn: "Loud and clear! Let's dive right into today's agenda items.",
-        targetPhonetic: "/laʊd ənd klɪr! lets daɪv raɪt ˈɪntuː təˈdeɪz əˈdʒendə ˈaɪtəmz/",
-        targetZh: "非常清晰！我们直接开始看今天会议的议程吧。",
-        keyTip: "注意 'loud and clear' 中的弱读 'and' 发成 /ənd/，'dive right into' 流畅连读"
+            "id": "huberman_matthew_walker",
+            "podcast": "Huberman Lab",
+            "host": "Dr. Andrew Huberman",
+            "guest": "Dr. Matthew Walker (UC Berkeley 神经科学教授)",
+            "guestRole": "Guest (Sleep Neuroscientist)",
+            "topic": "深度睡眠机制、大脑排毒与记忆强化的神经科学",
+            "category": "脑科学与健康生活",
+            "duration": "约 8-10 分钟 · 10 回合",
+            "context": "伯克利睡眠专家与神经生物学家深度剖析昼夜节律、腺苷积聚、REM睡眠与核心体温调节对认知功能的决定性影响。",
+            "turns": [
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "Matthew, why is sleep universally conserved across evolution, despite making animals completely vulnerable to predators?",
+                        "partnerZh": "Matthew，尽管睡眠会让动物极易受到捕食者的攻击，为什么在进化长河中睡眠却被所有物种普遍保留了下来？",
+                        "targetEn": "Mother Nature would never make a design error of that magnitude. Sleep is the single most effective biological mechanism we have to reset our brain and physical health every 24 hours.",
+                        "targetPhonetic": "/ˈmʌðər ˈneɪtʃər wʊd ˈnevər meɪk ə dɪˈzaɪn ˈerər əv ðæt ˈmæɡnɪtuːd. sliːp ɪz ðə ˈsɪŋɡl moʊst ɪˈfektɪv ˌbaɪəˈlɑːdʒɪkl ˈmekənɪzəm wi hæv tu ˌriːˈset ˈaʊər breɪn ənd ˈfɪzɪkl helθ ˈevri ˈtwenti fɔːr ˈaʊərz/",
+                        "targetZh": "大自然绝不会犯下如此重大的设计失误。睡眠是我们每24小时重置大脑与身体健康最行之有效的独一无二的生物机制。",
+                        "keyTip": "'biological mechanism' (/ˌbaɪəˈlɑːdʒɪkl ˈmekənɪzəm/) 连读流畅，节奏有条理"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "Can you explain what the glymphatic system actually does during deep non-REM sleep?",
+                        "partnerZh": "你能解释一下在大脑深度的非快速眼动睡眠期间，胶质淋巴系统实际上在做什么吗？",
+                        "targetEn": "During deep stages, your glial cells shrink by almost sixty percent, allowing cerebrospinal fluid to rush through like a biological dishwasher, flushing out toxic metabolic waste like beta-amyloid.",
+                        "targetPhonetic": "/ˈdjʊrɪŋ diːp ˈsteɪdʒɪz, jɔːr ˈɡliːəl selz ʃrɪŋk baɪ ˈɔːlmoʊst ˈsɪksti pərˈsent, əˈlaʊɪŋ ˌserɪbroʊˈspaɪnl ˈfluːɪd tu rʌʃ θruː laɪk ə ˌbaɪəˈlɑːdʒɪkl ˈdɪʃwɑːʃər, ˈflʌʃɪŋ aʊt ˈtɑːksɪk ˌmetəˈbɑːlɪk weɪst laɪk ˈbeɪtə ˈæmɪlɔɪd/",
+                        "targetZh": "在深度睡眠阶段，神经胶质细胞会收缩近60%，让脑脊液像生物洗碗机一样奔流穿梭，冲刷清除像β-淀粉样蛋白这样的有毒代谢废物。",
+                        "keyTip": "生动比喻 'biological dishwasher' 语调稍作强调，'cerebrospinal fluid' 读音稳定"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "What happens to our emotional resilience and prefrontal cortex when we operate on just five hours of sleep?",
+                        "partnerZh": "当我们仅仅睡五个小时时，我们的大脑前额叶皮层和情绪韧性会发生什么？",
+                        "targetEn": "The communication link between your prefrontal rational cortex and the emotional amygdala gets severed, plunging you into an irrational, emotionally volatile, and hypersensitive state.",
+                        "targetPhonetic": "/ðə kəˌmjuːnɪˈkeɪʃn lɪŋk bɪˈtwiːn jɔːr priːˈfrʌntl ˈræʃənl ˈkɔːrteks ənd ði ɪˈmoʊʃənl əˈmɪɡdələ ɡets ˈsevərd, ˈplʌndʒɪŋ juː ˈɪntuː ən ɪˈræʃənl, ɪˈmoʊʃənəli ˈvɑːlətl, ənd ˌhaɪpərˈsensətɪv steɪt/",
+                        "targetZh": "理性前额叶皮层与情绪中枢杏仁核之间的沟通通路被切断，直接将你拖入非理性、情绪极易波动和过度敏感的应激状态。",
+                        "keyTip": "'prefrontal rational cortex' 与 'amygdala' (/əˈmɪɡdələ/) 准确掌握重音，'hypersensitive' 结尾自然停顿"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "If someone can take away only one golden rule for optimizing their sleep tonight, what would it be?",
+                        "partnerZh": "如果大家今晚只能带走一条优化睡眠的黄金法则，那会是什么？",
+                        "targetEn": "Regularity is king. Go to bed and wake up at the exact same time every day, including weekends, because your circadian rhythm thrives on predictability above all else.",
+                        "targetPhonetic": "/ˌreɡjəˈlærəti ɪz kɪŋ. ɡoʊ tu bed ənd weɪk ʌp æt ði ɪɡˈzækt seɪm taɪm ˈevri deɪ, ɪnˈkluːdɪŋ ˈwiːkendz, bɪˈkəz jɔːr sɜːrˈkeɪdiən ˈrɪðəm θraɪvz ɑːn prɪˌdɪktəˈbɪləti əˈbʌv ɔːl els/",
+                        "targetZh": "规律性是重中之重。每天在完全相同的时间就寝与起床，包括周末，因为你的昼夜节律最依赖于可预测性，高于一切。",
+                        "keyTip": "短句 'Regularity is king' 干脆有力，'circadian rhythm' (/sɜːrˈkeɪdiən ˈrɪðəm/) 发音精准地道"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "How does caffeine chemically interact with our adenosine sleep pressure receptors throughout the day?",
+                        "partnerZh": "白天的咖啡因是如何在化学层面与我们的腺苷睡眠压力受体相互作用的？",
+                        "targetEn": "Caffeine functions as an antagonist, binding to adenosine receptors without activating them. While you feel alert, adenosine continues accumulating behind the dam, triggering a vicious afternoon crash once caffeine wears off.",
+                        "targetPhonetic": "/ˈkæfiːn ˈfʌŋkʃnz æz ən ænˈtæɡənɪst, ˈbaɪndɪŋ tu əˈdenəsiːn rɪˈseptərz wɪðˈaʊt ˈæktɪveɪtɪŋ ðem. waɪl juː fiːl əˈlɜːrt, əˈdenəsiːn kənˈtɪnjuːz əˈkjuːmjəleɪtɪŋ bɪˈhaɪnd ðə dæm, ˈtrɪɡərɪŋ ə ˈvɪʃəs ˌæftərˈnuːn kræʃ wʌns ˈkæfiːn werz ɔːf/",
+                        "targetZh": "咖啡因充当了拮抗剂，与腺苷受体结合却不激活它们。虽然你感到清醒，但腺苷依然在大坝后不断积蓄，一旦咖啡因代谢殆尽，就会引发严重的午后断崖式疲劳。",
+                        "keyTip": "'antagonist' (/ænˈtæɡənɪst/) 发音准确，'behind the dam' 比喻形象生动"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "What about alcohol? Many people still believe having a drink before bed helps them sleep more deeply.",
+                        "partnerZh": "那么酒精呢？很多人依然相信睡前喝一杯能帮助睡得更香。",
+                        "targetEn": "Alcohol is a potent sedative that simply knocks out your cortex; sedation is completely distinct from restorative sleep. Crucially, alcohol destroys rapid eye movement sleep, compromising emotional memory processing.",
+                        "targetPhonetic": "/ˈælkəhɔːl ɪz ə ˈpoʊtnt ˈsedətɪv ðæt ˈsɪmpli nɑːks aʊt jɔːr ˈkɔːrteks; sɪˈdeɪʃn ɪz kəmˈpliːtli dɪˈstɪŋkt frəm rɪˈstɔːrətɪv sliːp. ˈkruːʃəli, ˈælkəhɔːl dɪˈstrɔɪz ˈræpɪd aɪ ˈmuːvmənt sliːp, ˈkɑːmprəmaɪzɪŋ ɪˈmoʊʃənl ˈmeməri ˈprɑːsesɪŋ/",
+                        "targetZh": "酒精是强效镇静剂，它只是击昏了你的大脑皮层；被麻醉镇静与恢复性睡眠截然不同。关键是，酒精会摧毁快速眼动睡眠，严重损害情绪记忆的处理。",
+                        "keyTip": "'potent sedative' 读准双元音，'sedation is completely distinct' 语速坚定清晰"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "How crucial is environmental bedroom temperature for triggering natural slow-wave sleep?",
+                        "partnerZh": "卧室环境温度对于诱发天然慢波深度睡眠究竟有多关键？",
+                        "targetEn": "It is essential. Your core body temperature must drop by about two to three degrees Fahrenheit to initiate slumber. A cool bedroom around sixty-five degrees significantly outperforms a warm room for sleep depth.",
+                        "targetPhonetic": "/ɪt ɪz ɪˈsenʃl. jɔːr kɔːr ˈbɑːdi ˈtemprətʃər mʌst drɑːp baɪ əˈbaʊt tuː tu θriː dɪˈɡriːz ˈfærənhaɪt tu ɪˈnɪʃieɪt ˈslʌmbər. ə kuːl ˈbedruːm əˈraʊnd ˈsɪksti faɪv dɪˈɡriːz sɪɡˈnɪfɪkəntli ˌaʊtpərˈfɔːrmz ə wɔːrm ruːm fɔːr sliːp depθ/",
+                        "targetZh": "至关重要。你的身体核心体温必须下降约2到3华氏度才能启动睡眠。65度左右的凉爽卧室在睡眠深度上显著优于闷热的房间。",
+                        "keyTip": "'initiate slumber' 发音优雅，'significantly outperforms' 吐字清脆"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "Can we truly repay chronic sleep debt by sleeping twelve hours on Saturday and Sunday?",
+                        "partnerZh": "我们真的能通过周六日暴睡12个小时来还清平时的慢性睡眠债吗？",
+                        "targetEn": "Sleep is not like a financial balance sheet; the brain never recovers all lost hours. Binge sleeping on weekends creates severe social jet lag, leaving your circadian clock disoriented when Monday arrives.",
+                        "targetPhonetic": "/sliːp ɪz nɑːt laɪk ə faɪˈnænʃl ˈbæləns ʃiːt; ðə breɪn ˈnevər rɪˈkʌvərz ɔːl lɔːst ˈaʊərz. bɪndʒ ˈsliːpɪŋ ɑːn ˈwiːkendz kriˈeɪts sɪˈvɪr ˈsoʊʃl dʒet læɡ, ˈliːvɪŋ jɔːr sɜːrˈkeɪdiən klɑːk dɪsˈɔːriˌented wen ˈmʌndeɪ əˈraɪvz/",
+                        "targetZh": "睡眠不是财务资产负债表，大脑永远无法追回所有丢失的时间。周末报复性补觉会制造严重的社交时差，让你的生物钟在周一到来时陷入紊乱。",
+                        "keyTip": "'financial balance sheet' 连读自然，'disoriented' (/dɪsˈɔːriˌented/) 重音分明"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "What is the neurological effect of viewing early morning sunlight on sleep onset that night?",
+                        "partnerZh": "早晨接触自然光对当晚的入睡有何种神经生物学机制？",
+                        "targetEn": "Morning photons activate melanopsin ganglion cells, signaling the suprachiasmatic nucleus to suppress melatonin and elevate cortisol, which automatically presets your evening melatonin countdown sixteen hours later.",
+                        "targetPhonetic": "/ˈmɔːrnɪŋ ˈfoʊtɑːnz ˈæktɪveɪt ˌmeləˈnɑːpsɪn ˈɡæŋɡliən selz, ˈsɪɡnəlɪŋ ðə ˌsuːprəkəˌkæzmætɪk ˈnuːkliəs tu səˈpres ˌmeləˈtoʊnɪn ənd ˈeləveɪt ˈkɔːrtəsɔːl, wɪtʃ ˌɔːtəˈmætɪkli priːˈsets jɔːr ˈiːvnɪŋ ˌmeləˈtoʊnɪn ˈkaʊntdaʊn ˈsɪksˈtiːn ˈaʊərz ˈleɪtər/",
+                        "targetZh": "早晨的光子激活视网膜黑视蛋白神经节细胞，向视交叉上核发送信号以抑制褪黑素并提升皮质醇，这会自动预设16小时后夜晚褪黑素释放的倒计时。",
+                        "keyTip": "'suprachiasmatic nucleus' 与 'melatonin countdown' 语速适中，突出科学严谨感"
+                  },
+                  {
+                        "partner": "Andrew Huberman",
+                        "partnerEn": "Matthew, what is your closing reflection for people striving to thrive in an overworked society?",
+                        "partnerZh": "Matthew，对于在过度劳累的现代社会中奋斗的人们，你最后的寄语是什么？",
+                        "targetEn": "Do not treat sleep as a negotiable luxury. Sleep is the single non-negotiable biological foundation upon which your intellect, emotional poise, and lifespan are built.",
+                        "targetPhonetic": "/duː nɑːt triːt sliːp æz ə nɪˈɡoʊʃəbl ˈlʌkʃəri. sliːp ɪz ðə ˈsɪŋɡl nɑːn nɪˈɡoʊʃəbl ˌbaɪəˈlɑːdʒɪkl faʊnˈdeɪʃn əˈpɑːn wɪtʃ jɔːr ˈɪntəlekt, ɪˈmoʊʃənl pɔɪz, ənd ˈlaɪfspæn ɑːr bɪlt/",
+                        "targetZh": "不要把睡眠当成可以妥协的奢侈品。睡眠是筑造你的智慧、情绪从容与生命寿限的独一无二、不可妥协的生物学基石。",
+                        "keyTip": "'non-negotiable biological foundation' 发音铿锵有力，'emotional poise' 自然收束"
+                  }
+            ]
       },
       {
-        topic: "餐厅牛排熟度沟通",
-        context: "高级西餐厅点餐并沟通牛排熟度与配菜",
-        partner: "Waiter",
-        partnerEn: "How would you like your ribeye steak prepared tonight, sir?",
-        partnerZh: "请问您今晚的肉眼牛排想要几分熟呢？",
-        targetEn: "Medium-rare, please, with the truffle mashed potatoes on the side.",
-        targetPhonetic: "/ˈmiːdiəm reər pliːz wɪð ðə ˈtrʌfl mæʃt pəˈteɪtoʊz ɑːn ðə saɪd/",
-        targetZh: "五分熟，配菜想要松露土豆泥放在旁边，谢谢。",
-        keyTip: "注意 'medium-rare' 的复合连读，'mashed' 词尾发 /t/ 音"
+            "id": "tim_ferriss_jensen_huang",
+            "podcast": "The Tim Ferriss Show",
+            "host": "Tim Ferriss",
+            "guest": "Jensen Huang (NVIDIA CEO)",
+            "guestRole": "Guest (NVIDIA Founder & CEO)",
+            "topic": "第一性原理、高容忍度逆境与技术巨头的非共识下注",
+            "category": "商业格局与坚毅领导力",
+            "duration": "约 8-10 分钟 · 10 回合",
+            "context": "英伟达创始人黄仁勋分享从洗碗工到万亿算力帝国的逆境哲学，解析如何忍受长达十年的非共识技术孤独与全栈软硬件协同设计。",
+            "turns": [
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "Jensen, you often say that one of the greatest advantages a person can have in life is low expectations and high pain tolerance. Why?",
+                        "partnerZh": "Jensen，你经常说一个人在人生中最大的优势之一就是低期望和高耐痛力。为什么这么说？",
+                        "targetEn": "Because resilience matters so much more than raw intelligence. Great accomplishments come from surviving suffering, adapting through despair, and building endurance when everyone else gives up.",
+                        "targetPhonetic": "/bɪˈkəz rɪˈzɪliəns ˈmætərz soʊ mʌtʃ mɔːr ðæn rɔː ɪnˈtelɪdʒəns. ɡreɪt əˈkɑːmplɪʃmənts kʌm frəm sərˈvaɪvɪŋ ˈsʌfərɪŋ, əˈdæptɪŋ θruː dɪˈsper, ənd ˈbɪldɪŋ ɪnˈdʊrəns wen ˈevriwʌn els ɡɪvz ʌp/",
+                        "targetZh": "因为韧性远比单纯的聪明重要得多。伟大的成就源于在痛苦中存活下来，在绝望中调整适应，并在其他所有人都放弃时建立起超强的持久力。",
+                        "keyTip": "'resilience' (/rɪˈzɪliəns/) 语调坚定，'surviving suffering' 双重 s 音干净利落"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "When you committed NVIDIA to accelerated computing and CUDA decades ago, Wall Street punished the stock severely. How did you stay the course?",
+                        "partnerZh": "几十年前当你带领英伟达全力投入加速计算和 CUDA 时，华尔街重罚了股价。你是如何坚定前行的？",
+                        "targetEn": "We were guided by fundamental physics, not financial quarterly reports. We knew the physics of CPU scaling was hitting an insurmountable thermal wall, and accelerated parallel computing was the only viable future.",
+                        "targetPhonetic": "/wi wɜːr ˈɡaɪdɪd baɪ ˌfʌndəˈmentl ˈfɪzɪks, nɑːt faɪˈnænʃl ˈkwɔːrtərli rɪˈpɔːrts. wi njuː ðə ˈfɪzɪks əv ˌsiː piː ˈjuː ˈskeɪlɪŋ wəz ˈhɪtɪŋ ən ˌɪnsərˈmaʊntəbl ˈθɜːrml wɔːl, ənd əkˈseləreɪtɪd ˈpærəlel kəmˈpjuːtɪŋ wəz ði ˈoʊnli ˈvaɪəbl ˈfjuːtʃər/",
+                        "targetZh": "我们是指引于基础物理学，而不是财务季度报表。我们知道CPU扩展的物理学正在撞上一堵无法克服的热功耗之墙，而加速并行计算是唯一可行的未来。",
+                        "keyTip": "'insurmountable' (/ˌɪnsərˈmaʊntəbl/) 连读，'viable future' 语气果断"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "What is your philosophy on corporate hierarchy and communication speed inside the company?",
+                        "partnerZh": "你对公司内部的层级结构和沟通速度持何种哲学？",
+                        "targetEn": "Zero bureaucracy. Information must travel at the speed of light. I have fifty direct reports because agility requires that strategy and frontline execution remain in direct, continuous feedback loops.",
+                        "targetPhonetic": "/ˈzɪroʊ bjʊˈrɑːkrəsi. ˌɪnfərˈmeɪʃn mʌst ˈtrævl æt ðə spiːd əv laɪt. aɪ hæv ˈfɪfti dəˈrekt rɪˈpɔːrts bɪˈkəz əˈdʒɪləti rɪˈkwaɪərz ðæt ˈstrætədʒi ənd ˈfrʌntlaɪn ˌeksɪˈkjuːʃn rɪˈmeɪn ɪn dəˈrekt, kənˈtɪnjuəs ˈfiːdbæk luːps/",
+                        "targetZh": "零官僚主义。信息传递必须达到光速。我有五十位直接下属，因为敏捷性要求战略决策与一线执行必须保持直接、持续的反馈闭环。",
+                        "keyTip": "'Zero bureaucracy' (/ˈzɪroʊ bjʊˈrɑːkrəsi/) 发音掷地有声，'speed of light' 自然连读"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "Looking at the AI industrial revolution ahead, what is the biggest misconception founders have today?",
+                        "partnerZh": "展望眼前的AI工业革命，如今创业者最大的误区是什么？",
+                        "targetEn": "Thinking that AI is merely an efficiency software plug-in. AI is fundamentally a new factory that produces digital intelligence at near-zero marginal cost, transforming every industry into an intelligence manufacturer.",
+                        "targetPhonetic": "/ˈθɪŋkɪŋ ðæt ˌeɪˈaɪ ɪz ˈmɪrli ən ɪˈfɪʃnsi ˈsɔːftwer plʌɡ ɪn. ˌeɪˈaɪ ɪz ˌfʌndəˈmentəli ə nuː ˈfæktri ðæt prəˈduːsɪz ˈdɪdʒɪtl ɪnˈtelɪdʒəns æt nɪr ˈzɪroʊ ˈmɑːrdʒɪnl kɔːst, trænsˈfɔːrmɪŋ ˈevri ˈɪndəstri ˈɪntuː ən ɪnˈtelɪdʒəns ˌmænjuˈfæktʃərər/",
+                        "targetZh": "误以为AI只是一种效率软件插件。AI从根本上说是一种生产数字智能的新型工厂，其边际成本接近于零，它正在将每一个行业转变为智能制造商。",
+                        "keyTip": "'near-zero marginal cost' (/nɪr ˈzɪroʊ ˈmɑːrdʒɪnl kɔːst/) 节奏沉稳，体现战略纵深感"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "How do you foster radical intellectual honesty in an executive team without bruising personal egos?",
+                        "partnerZh": "你如何在不挫伤管理层个人自尊心的情况下，在团队中培育出彻底的知性诚实？",
+                        "targetEn": "We completely separate personal ego from the engineering hypothesis. When an experiment fails, the hypothesis was incorrect, not the engineer. Cultivate a culture where discovering truth triumphs over defending pride.",
+                        "targetPhonetic": "/wi kəmˈpliːtli ˈsepəreɪt ˈpɜːrsənl ˈiːɡoʊ frəm ði ˌendʒɪˈnɪrɪŋ haɪˈpɑːθəsɪs. wen ən ɪkˈsperɪmənt feɪlz, ðə haɪˈpɑːθəsɪs wəz ˌɪnkəˈrekt, nɑːt ði ˌendʒɪˈnɪr. ˈkʌltɪveɪt ə ˈkʌltʃər wer dɪˈskʌvərɪŋ truːθ ˈtraɪəmfs ˈoʊvər dɪˈfendɪŋ praɪd/",
+                        "targetZh": "我们将个人小我与工程假说彻底剥离开来。当实验失败时，是假说不正确，而不是工程师不行。营造一种发现客观真理远胜于捍卫虚荣自尊的文化。",
+                        "keyTip": "'engineering hypothesis' 吐字清晰，'triumphs over' 坚定明朗"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "NVIDIA had several existential brushes with bankruptcy in the early years. What anchored you mentally during those crises?",
+                        "partnerZh": "英伟达早期曾数次与破产擦肩而过。在那些危机中，是什么在精神上支撑着你？",
+                        "targetEn": "Operating thirty days from insolvency clarifies your thinking tremendously. Desperation strips away frivolous vanity and focuses every ounce of mental energy entirely on product excellence.",
+                        "targetPhonetic": "/ˈɑːpəreɪtɪŋ ˈθɜːrti deɪz frəm ɪnˈsɑːlvənsi ˈklærəfaɪz jɔːr ˈθɪŋkɪŋ trəˈmendəsli. ˌdespəˈreɪʃn strɪps əˈweɪ ˈfrɪvələs ˈvænəti ənd ˈfoʊkəsɪz ˈevri aʊns əv ˈmentl ˈenərdʒi ɪnˈtaɪərli ɑːn ˈprɑːdʌkt ˈeksələns/",
+                        "targetZh": "始终处于距离破产三十天的状态能极大地澄清洗练你的思维。走投无路的紧迫感会剥离所有轻浮的虚荣，将每一分心力完全聚焦于产品本身的极致卓越。",
+                        "keyTip": "'frivolous vanity' (/ˈfrɪvələs ˈvænəti/) 发音地道，'every ounce of mental energy' 读出力量"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "What is your daily operating rhythm for sustaining intense focus across demanding decades?",
+                        "partnerZh": "数十年来维持如此高强度的专注，你的日常作息规律是怎样的？",
+                        "targetEn": "I wake up very early without an alarm, dedicating the first quiet hours to foundational problem-solving before operational messages arrive. Deep purpose creates vastly more endurance than caffeine ever could.",
+                        "targetPhonetic": "/aɪ weɪk ʌp ˈveri ˈɜːrli wɪðˈaʊt ən əˈlɑːrm, ˈdedɪkeɪtɪŋ ðə fɜːrst ˈkwaɪət ˈaʊərz tu faʊnˈdeɪʃənl ˈprɑːbləm ˌsɑːlvɪŋ bɪˈfɔːr ˌɑːpəˈreɪʃənl ˈmesɪdʒɪz əˈraɪv. diːp ˈpɜːrpəs kriˈeɪts ˈvæstli mɔːr ɪnˈdʊrəns ðæn ˈkæfiːn ˈevər kʊd/",
+                        "targetZh": "我在没有闹钟的情况下很早醒来，将清晨最初安静的几个小时奉献给底层问题思考，随后才处理运营信息。深刻的使命感所激发的持久力，远胜过任何咖啡因。",
+                        "keyTip": "'Deep purpose creates vastly more endurance' 语速平稳深沉"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "How do you view the physical limits of Moore's Law and the shift toward full-stack system co-design?",
+                        "partnerZh": "你怎么看待摩尔定律的物理极限，以及向全栈系统协同设计的转向？",
+                        "targetEn": "Transistor scaling is effectively over, meaning chip advances alone cannot deliver exponential leaps. You must innovate across the entire stack—software libraries, interconnects, optics, and data center thermal architecture.",
+                        "targetPhonetic": "/trænˈzɪstər ˈskeɪlɪŋ ɪz ɪˈfektɪvli ˈoʊvər, ˈmiːnɪŋ tʃɪp ədˈvænsɪz əˈloʊn ˈkænɑːt dɪˈlɪvər ˌekspəˈnenʃl liːps. juː mʌst ˈɪnəveɪt əˈkrɔːs ði ɪnˈtaɪər stæk—ˈsɔːftwer ˈlaɪbrəriz, ˌɪntərkəˈnekts, ˈɑːptɪks, ənd ˈdeɪtə ˈsentər ˈθɜːrml ˈɑːrkɪtektʃər/",
+                        "targetZh": "晶体管微缩实际上已经终结，这意味着仅靠芯片自身的进步已无法带来指数级飞跃。你必须在整个全栈中创新——从软件算法库、高速互连、光互联一直到数据中心的热架构。",
+                        "keyTip": "'exponential leaps' 读出冲击力，列举各项要素时语调平稳清晰"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "What advice would you give to professionals worried about AI rendering their skills obsolete?",
+                        "partnerZh": "对于担心AI使自己的职业技能过时的职场人，你有何建议？",
+                        "targetEn": "AI won't take your career, but a person expertly steering AI will. Become fluent with these digital extensions, learn how to frame profound questions, and augment your creative agency.",
+                        "targetPhonetic": "/ˌeɪˈaɪ woʊnt teɪk jɔːr kəˈrɪr, bət ə ˈpɜːrsn ˈekspərtli ˈstɪrɪŋ ˌeɪˈaɪ wɪl. bɪˈkʌm ˈfluːənt wɪð ðiːz ˈdɪdʒɪtl ɪkˈstenʃnz, lɜːrn haʊ tu freɪm prəˈfaʊnd ˈkwestʃənz, ənd ɔːɡˈment jɔːr kriˈeɪtɪv ˈeɪdʒənsi/",
+                        "targetZh": "AI不会夺走你的职业，但熟练驾驭AI的人会。迅速精通这些数字延伸工具，学会构建深刻的问题，并全面放大你自己的创造力能动性。",
+                        "keyTip": "'Become fluent' 与 'augment your creative agency' 发音流畅自如"
+                  },
+                  {
+                        "partner": "Tim Ferriss",
+                        "partnerEn": "Jensen, looking across your entire life, what core truth has anchored your spirit most?",
+                        "partnerZh": "Jensen，纵观你的一生，哪条核心真理最深刻地锚定了你的精神？",
+                        "targetEn": "Trust the laws of physics, honor the craft of long-term engineering, and never allow cynical voices to dampen the pure childlike joy of solving grand challenges.",
+                        "targetPhonetic": "/trʌst ðə lɔːz əv ˈfɪzɪks, ˈɑːnər ðə kræft əv lɔːŋ tɜːrm ˌendʒɪˈnɪrɪŋ, ənd ˈnevər əˈlaʊ ˈsɪnɪkl ˈvɔɪsɪz tu ˈdæmpən ðə pjʊr ˈtʃaɪldlaɪk dʒɔɪ əv ˈsɑːlvɪŋ ɡrænd ˈtʃælɪndʒɪz/",
+                        "targetZh": "坚信物理定律，尊崇长期主义的工程匠心，永远不要让冷嘲热讽的声音浇灭解决宏大挑战时那种纯粹孩童般的喜悦。",
+                        "keyTip": "'pure childlike joy' 饱含温情与感召力，尾句稳健落地"
+                  }
+            ]
       },
       {
-        topic: "雅思口语话题探讨",
-        context: "就现代人依赖手机的社会现象阐述看法",
-        partner: "Examiner",
-        partnerEn: "Do you think smartphones have isolated people more than connected them?",
-        partnerZh: "你认为智能手机是在让人更孤立还是更有连接感？",
-        targetEn: "While it enables instant connectivity, it undeniably weakens genuine face-to-face interaction.",
-        targetPhonetic: "/waɪl ɪt ɪˈneɪblz ˈɪnstənt ˌkɑːnekˈtɪvəti, ɪt ˌʌndɪˈnaɪəbli ˈwiːkənz ˈdʒenjuɪn feɪs tə feɪs ˌɪntərˈækʃn/",
-        targetZh: "虽然它能实现即时联络，但不可否认它削弱了人与人之间真实的面对面交流。",
-        keyTip: "高级词汇 'undeniably' 节奏重音在第三音节，'face-to-face' 语调平滑上扬后降调"
+            "id": "diary_of_a_ceo_steve_bartlett",
+            "podcast": "The Diary of a CEO",
+            "host": "Steven Bartlett (英国知名投资人)",
+            "guest": "Emma Watson (演员与联合国亲善大使)",
+            "guestRole": "Guest (British Actress & Advocate)",
+            "topic": "名利场外的自我找寻、英伦文化与公众审视下的成长",
+            "category": "影视艺术与个人成长",
+            "duration": "约 8-10 分钟 · 10 回合",
+            "context": "纯正英式发音访谈示范：英国演员 Emma Watson 与 Steven Bartlett 坦诚探讨青年成名后的迷茫、完美主义的消解与建立内在自洽主权。",
+            "turns": [
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "Emma, spending your entire adolescence in front of the world's cameras, how did you preserve a genuine sense of identity?",
+                        "partnerZh": "Emma，整个青春期都在全世界的聚光灯下度过，你是如何守住自己真实的自我认同的？",
+                        "targetEn": "To be completely candid, for a long while I didn't. I was playing a character both on set and in interviews, until I stepped away to university and realised I had to cultivate my own quiet sovereignty.",
+                        "targetPhonetic": "/tə bi kəmˈpliːtli ˈkændɪd, fɔːr ə lɒŋ waɪl aɪ ˈdɪdnt. aɪ wɒz ˈpleɪɪŋ ə ˈkærəktə bəʊθ ɒn set ənd ɪn ˈɪntəvjuːz, ənˈtɪl aɪ stept əˈweɪ tə ˌjuːnɪˈvɜːsəti ənd ˈrɪəlaɪzd aɪ hæd tə ˈkʌltɪveɪt maɪ əʊn ˈkwaɪət ˈsɒvrənti/",
+                        "targetZh": "坦白讲，有很长一段时间我并没有守住。无论在片场还是访谈中我都在扮演一个角色，直到我暂退回到大学，才意识到我必须建立起属于自己的宁静主权。",
+                        "keyTip": "纯正英式发音：注意 'sovereignty' (/ˈsɒvrənti/) 的短元音，'character' (/ˈkærəktə/) 的非卷舌结尾"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "What was the tipping point where you decided to stop seeking external validation?",
+                        "partnerZh": "让你决定停止向外界寻求认可的转折点是什么？",
+                        "targetEn": "It happened when I noticed the applause never actually filled the void inside. True peace only arrived when I aligned my public voice with causes I would fight for even if nobody was listening.",
+                        "targetPhonetic": "/ɪt ˈhæpənd wen aɪ ˈnəʊtɪst ði əˈplɔːz ˈnevər ˈæktʃuəli fɪld ðə vɔɪd ɪnˈsaɪd. truː piːs ˈəʊnli əˈraɪvd wen aɪ əˈlaɪnd maɪ ˈpʌblɪk vɔɪs wɪð ˈkɔːzɪz aɪ wʊd faɪt fɔːr ˈiːvn ɪf ˈnəʊbədi wɒz ˈlɪsnɪŋ/",
+                        "targetZh": "转折发生在我注意到掌声其实永远填不满内心的空洞之时。真正的平和只有在我的发声与我所信仰的事业相契合时才降临——即使空无一人倾听，我也愿为之奋斗。",
+                        "keyTip": "英式优雅语调：'applause' (/əˈplɔːz/) 饱满深沉，'nobody was listening' 语速舒缓优雅"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "How do you navigate self-doubt when standing before international institutions like the United Nations?",
+                        "partnerZh": "当站在联合国这样庄严的国际机构面前时，你如何化解内心的自我怀疑？",
+                        "targetEn": "I acknowledge the fear instead of repressing it. I tell myself: if not me, who? If not now, when? When your mission transcends your personal ego, the trembling voice simply turns into conviction.",
+                        "targetPhonetic": "/aɪ əkˈnɒlɪdʒ ðə fɪər ɪnˈsted əv rɪˈpresɪŋ ɪt. aɪ tel maɪˈself: ɪf nɒt miː, huː? ɪf nɒt naʊ, wen? wen jɔː ˈmɪʃn trænˈsendz jɔː ˈpɜːsənl ˈiːɡəʊ, ðə ˈtremblɪŋ vɔɪs ˈsɪmpli tɜːnz ˈɪntuː kənˈvɪkʃn/",
+                        "targetZh": "我正视恐惧而不是压抑它。我问自己：如果不是我，那是谁？如果不是现在，那是何时？当你的使命超越了个人小我，颤抖的声音自会化为坚定的信念。",
+                        "keyTip": "英式修辞断句：'If not me, who? If not now, when?' 升调提问紧凑有力，'conviction' (/kənˈvɪkʃn/) 掷地有声"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "What does success mean to you today compared to ten years ago?",
+                        "partnerZh": "与十年前相比，如今成功对你而言意味着什么？",
+                        "targetEn": "Success now is having agency over my own calendar, surrounded by people who love me for who I am at the kitchen table, rather than any box office metric or social media headline.",
+                        "targetPhonetic": "/səkˈses naʊ ɪz ˈhævɪŋ ˈeɪdʒənsi ˈəʊvə maɪ əʊn ˈkælɪndə, səˈraʊndɪd baɪ ˈpiːpl huː lʌv miː fɔː huː aɪ æm æt ðə ˈkɪtʃɪn ˈteɪbl, ˈrɑːðə ðæn ˈeni bɒks ˈɒfɪs ˈmetrɪk ɔː ˈsəʊʃl ˈmiːdiə ˈhedlaɪn/",
+                        "targetZh": "现在的成功是能够自主掌控我的日程，身边环绕着在餐桌旁真心爱我本真模样的人，而不是任何票房指标或社交媒体头条。",
+                        "keyTip": "'agency over my own calendar' 发音温润自然，'kitchen table' 英式短促 t 爆破"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "Emma, how do you handle the inner torment of perfectionism in your artistic work?",
+                        "partnerZh": "Emma，在你的艺术创作中，你是如何应对完美主义所带来的内心煎熬的？",
+                        "targetEn": "Perfectionism is merely fear disguised as high standards. I had to learn that vulnerability and raw, imperfect edges connect far more deeply with humanity than sterile, flawless polish.",
+                        "targetPhonetic": "/pəˈfekʃənɪzm ɪz ˈmɪəli fɪə dɪsˈɡaɪzd æz haɪ ˈstændədz. aɪ hæd tə lɜːn ðæt ˌvʌlnərəˈbɪləti ənd rɔː, ɪmˈpɜːfɪkt ˈedʒɪz kəˈnekt fɑː mɔː ˈdiːpli wɪð hjuːˈmænəti ðæn ˈstəraɪl, ˈflɔːləs ˈpɒlɪʃ/",
+                        "targetZh": "完美主义不过是乔装成高标准的恐惧罢了。我必须懂得，坦率的脆弱与未经修饰的毛边，远比毫无瑕疵的刻板抛光更能打动人心。",
+                        "keyTip": "英音：'Perfectionism' 非卷舌音，'sterile' (/ˈstəraɪl/) 优雅双元音"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "What was the psychological shift when you stepped behind the camera to direct your own projects?",
+                        "partnerZh": "当你走到摄像机后面执导自己的作品时，经历了怎样的心理转变？",
+                        "targetEn": "It was terrifying yet profoundly liberating. Directing forced me to trust my intuitive aesthetic voice completely, rather than constantly seeking permission or reassurance from other people.",
+                        "targetPhonetic": "/ɪt wɒz ˈterɪfaɪɪŋ jet prəˈfaʊndli ˈlɪbəreɪtɪŋ. dəˈrektɪŋ fɔːst miː tu trʌst maɪ ɪnˈtjuːɪtɪv iːsˈθetɪk vɔɪs kəmˈpliːtli, ˈrɑːðə ðæn ˈkɒnstəntli ˈsiːkɪŋ pəˈmɪʃn ɔː ˌriːəˈʃʊərəns frəm ˈʌðə ˈpiːpl/",
+                        "targetZh": "既让人心生畏惧又带来了深层的解放。导演工作迫使我完完全全信赖自己直觉上的审美声音，而不是习惯性地等待别人的首肯与认可。",
+                        "keyTip": "'profoundly liberating' 语调豁然开朗，'intuitive aesthetic' 连贯发音"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "How do you protect your mental sanctuary in our hyperconnected, social media-obsessed world?",
+                        "partnerZh": "在当今过度连接、沉迷社交网络的时代，你如何守护自己的精神绿洲？",
+                        "targetEn": "I establish uncompromising digital boundaries. I abstain from comment sections, embrace handwritten letters, and tend my garden; physical soil on your hands grounds your soul wonderfully.",
+                        "targetPhonetic": "/aɪ ɪˈstæblɪʃ ˌʌnkəmˈprəmaɪzɪŋ ˈdɪdʒɪtl ˈbaʊndriz. aɪ əbˈsteɪn frəm ˈkɒment ˈsekʃnz, ɪmˈbreɪs ˈhændrɪtn ˈletəz, ənd tend maɪ ˈɡɑːdn; ˈfɪzɪkl sɔɪl ɒn jɔː hændz ɡraʊndz jɔː səʊl ˈwʌndəfəli/",
+                        "targetZh": "我建立了不可妥协的数字边界。我远离评论区，重拾手写信件，精心侍弄花园；手心触碰泥土的气息能让你的灵魂得到奇妙的安定。",
+                        "keyTip": "英伦生活气息：'abstain from' (/əbˈsteɪn/) 自然连读，'grounds your soul' 温暖舒缓"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "Millions of young women look up to you as a beacon of female empowerment. How do you define genuine empowerment?",
+                        "partnerZh": "无数年轻女性视你为女性赋权的明灯。你自己是如何定义真正的赋权的？",
+                        "targetEn": "True empowerment is the freedom to choose without moralising judgment. Whether a woman pursues executive boardrooms, dedicated motherhood, or scholarly contemplation, her sovereignty deserves unconditional dignity.",
+                        "targetPhonetic": "/truː ɪmˈpaʊəmənt ɪz ðə ˈfriːdəm tu tʃuːz wɪðˈaʊt ˈmɒrəlaɪzɪŋ ˈdʒʌdʒmənt. ˈweðər ə ˈwʊmən pəˈsjuːz ɪɡˈzekjətɪv ˈbɔːdruːmz, ˈdedɪkeɪtɪd ˈmʌðəhʊd, ɔː ˈskɒləli ˌkɒntəmˈpleɪʃn, hɜː ˈsɒvrənti dɪˈzɜːvz ˌʌnkənˈdɪʃənl ˈdɪɡnəti/",
+                        "targetZh": "真正的赋权是免于道德审判的选择自由。无论一位女性选择商界董事会、全身心相夫教子，还是深居书斋潜心学术，她的自主权都应当得到无条件的尊严。",
+                        "keyTip": "'freedom to choose without judgment' 节奏端庄，'unconditional dignity' 发音饱满"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "If you could whisper to your teenage self during the dizzying height of global fame, what would you say?",
+                        "partnerZh": "如果能对身处全球名气漩涡巅峰时的那个十几岁的自己低语，你会说什么？",
+                        "targetEn": "Take a breath, darling. You do not have to shoulder the weight of everyone's idealized expectations. It is entirely acceptable to be unpolished, curious, and still finding your way.",
+                        "targetPhonetic": "/teɪk ə breθ, ˈdɑːlɪŋ. juː duː nɒt hæv tu ˈʃəʊldə ðə weɪt əv ˈevriwʌnz aɪˈdɪəlaɪzd ˌekspekˈteɪʃnz. ɪt ɪz ɪnˈtaɪəli əkˈseptəbl tu bi ʌnˈpɒlɪʃt, ˈkjʊəriəs, ənd stɪl ˈfaɪndɪŋ jɔː weɪ/",
+                        "targetZh": "深呼吸，亲爱的。你不必背负所有人对你完美设定的厚望。未加雕琢、怀抱好奇、在摸索中前行，是完完全全值得被接纳与温柔以待的。",
+                        "keyTip": "温情英式语调：'Take a breath, darling' 宛若知己叮咛，'entirely acceptable' 充满疗愈感"
+                  },
+                  {
+                        "partner": "Steven Bartlett",
+                        "partnerEn": "Emma, what is the single most enduring philosophy you hold closest to your heart today?",
+                        "partnerZh": "Emma，今天你内心深处最珍视的一条人生哲学是什么？",
+                        "targetEn": "That living with radical authenticity may occasionally disappoint others, but living to satisfy the expectations of strangers will inevitably abandon your own soul. Choose your authentic self.",
+                        "targetPhonetic": "/ðæt ˈlɪvɪŋ wɪð ˈrædɪkl ɔːˈθentɪsəti meɪ əˈkeɪʒnəli ˌdɪsəˈpɔɪnt ˈʌðəz, bət ˈlɪvɪŋ tu ˈsætɪsfaɪ ði ˌekspekˈteɪʃnz əv ˈstreɪndʒəz wɪl ɪnˈevɪtəbli əˈbændən jɔːr əʊn səʊl. tʃuːz jɔːr ɔːˈθentɪk self/",
+                        "targetZh": "彻底忠于真实自我或许偶尔会令他人失望，但为了迎合陌生人的期许而活却注定会抛弃你自己的灵魂。永远选择做真实的自己。",
+                        "keyTip": "'radical authenticity' 读出坚定，终句 'Choose your authentic self' 掷地有声"
+                  }
+            ]
       },
       {
-        topic: "酒店房型升级沟通",
-        context: "向前台礼貌探讨因纪念日升级安静房型的可能性",
-        partner: "Front Desk",
-        partnerEn: "Welcome to The Grand! May I take your reservation confirmation?",
-        partnerZh: "欢迎莅临！可以请出示一下您的预订确认单吗？",
-        targetEn: "Here you go. It's our anniversary, so would a complimentary upgrade be possible?",
-        targetPhonetic: "/hɪr juː ɡoʊ. ɪts ˈaʊər ˌænɪˈvɜːrsəri, soʊ wʊd ə ˌkɑːmplɪˈmentri ˈʌpɡreɪd biː ˈpɑːsəbl/",
-        targetZh: "给您。今天是我们纪念日，请问有可能提供免费升级吗？",
-        keyTip: "礼貌语气升调，'complimentary' 重音落在第4音节 /men/"
+            "id": "bbc_inquiry_green_tech",
+            "podcast": "BBC The Inquiry",
+            "host": "Charmaine Cozier",
+            "guest": "Prof. David MacKay (能源转型首席顾问)",
+            "guestRole": "Guest (Chief Scientific Advisor)",
+            "topic": "气候临界点、核聚变与全球清洁能源大洗牌",
+            "category": "科学与全球地缘环境",
+            "duration": "约 8-10 分钟 · 10 回合",
+            "context": "纯正英式 BBC 纪实深度调查访谈：从硬核物理定律与电网负荷，探讨零碳转型的真实工程可行路径、输电卡点与核聚变未来。",
+            "turns": [
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "Professor, can solar and wind alone power an entire industrialised modern economy without constant brownouts?",
+                        "partnerZh": "教授，光靠太阳能和风能是否能在不频繁发生电压低迷的情况下，撑起整个现代化工业经济？",
+                        "targetEn": "Numbers must trump wishful thinking. While renewables are expanding splendidly, their intermittency requires massive baseline clean power like nuclear or seasonal hydrogen storage to ensure grid reliability.",
+                        "targetPhonetic": "/ˈnʌmbəz mʌst trʌmp ˈwɪʃfl ˈθɪŋkɪŋ. waɪl rɪˈnjuːəblz ɑːr ɪkˈspændɪŋ ˈsplendɪdli, ðeər ˌɪntəˈmɪtənsi rɪˈkwaɪəz ˈmæsɪv ˈbeɪslaɪn kliːn ˈpaʊə laɪk ˈnjuːkliər ɔː ˈsiːzənl ˈhaɪdrədʒən ˈstɔːrɪdʒ tu ɪnˈʃʊə ɡrɪd rɪˌlaɪəˈbɪləti/",
+                        "targetZh": "数据必须胜过一厢情愿。虽然可再生能源发展势头极好，但其间歇性要求必须有核电或季节性储氢等庞大的基荷清洁电源，以确保电网的绝对可靠。",
+                        "keyTip": "BBC 腔：'splendidly' (/ˈsplendɪdli/) 地道英式副词，'intermittency' (/ˌɪntəˈmɪtənsi/) 清晰咬音"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "What is the biggest engineering choke-point currently holding back this global transition?",
+                        "partnerZh": "目前制约全球这场转型的最大工程卡点是什么？",
+                        "targetEn": "It is transmission infrastructure and copper mining capacity. Building offshore wind turbines is relatively swift, but upgrading transmission super-grids takes over a decade of bureaucratic planning.",
+                        "targetPhonetic": "/ɪt ɪz trænzˈmɪʃn ˈɪnfrəstrʌktʃə ənd ˈkɒpə ˈmaɪnɪŋ kəˈpæsəti. ˈbɪldɪŋ ˈɒfʃɔː wɪnd ˈtɜːbaɪnz ɪz ˈrelətɪvli swɪft, bət ʌpˈɡreɪdɪŋ trænzˈmɪʃn ˈsuːpə ɡrɪdz teɪks ˈəʊvər ə ˈdekeɪd əv ˌbjʊərəˈkrætɪk ˈplænɪŋ/",
+                        "targetZh": "是输电基础设施与铜矿产能。建造海上风力发电机相对较快，但升级超高压输电电网却需要十多年的官僚规划与审批周期。",
+                        "keyTip": "英式发音：'offshore' (/ˈɒfʃɔː/) 短元音，'transmission infrastructure' 发音平顺"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "Are you optimistic that developing nations can leapfrog traditional fossil fuels effectively?",
+                        "partnerZh": "你是否乐观地认为发展中国家能够有效跨越传统化石能源阶段？",
+                        "targetEn": "Decidedly so. Much like mobile telecommunications bypassed landlines across Africa, decentralized solar mini-grids combined with localized battery storage are already transforming rural livelihoods.",
+                        "targetPhonetic": "/dɪˈsaɪdɪdli səʊ. mʌtʃ laɪk ˈməʊbaɪl ˌtelɪkəˌmjuːnɪˈkeɪʃnz ˈbaɪpɑːst ˈlændlaɪnz əˈkrɒs ˈæfrɪkə, diːˈsentrəlaɪzd ˈsəʊlə ˈmɪni ɡrɪdz kəmˈbaɪnd wɪð ˈləʊkəlaɪzd ˈbætəri ˈstɔːrɪdʒ ɑːr ɔːlˈredi trænsˈfɔːmɪŋ ˈrʊərəl ˈlaɪvlihʊdz/",
+                        "targetZh": "我极为乐观。正如移动通信在整个非洲绕过了固定电话一样，分布式太阳能微电网与本地化电池储能的结合已经在改变广大乡村的生活生计。",
+                        "keyTip": "'Decidedly so' (/dɪˈsaɪdɪdli səʊ/) 语气坚定绅士，'bypassed' (/ˈbaɪpɑːst/) 读出标准英式 /ɑː/"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "What is your closing thought for citizens who feel utterly powerless about climate reports?",
+                        "partnerZh": "对于面对气候报告感到彻底无能为力的普通公众，你最后的寄语是什么？",
+                        "targetEn": "Do not dwell in apocalyptic despair. Collective behavioral shifts paired with pragmatic engineering deployment remain the most potent catalyst in human history.",
+                        "targetPhonetic": "/duː nɒt dwel ɪn əˌpɒkəˈlɪptɪk dɪˈspeə. kəˈlektɪv bɪˈheɪvjərəl ʃɪfts peəd wɪð præɡˈmætɪk ˌendʒɪˈnɪərɪŋ dɪˈplɔɪmənt rɪˈmeɪn ðə məʊst ˈpəʊtnt ˈkætəlɪst ɪn ˈhjuːmən ˈhɪstri/",
+                        "targetZh": "不要沉溺于末日般的绝望中。集体行为的转变与务实的工程落地相结合，始终是人类历史上最强大的变革催化剂。",
+                        "keyTip": "'apocalyptic despair' (/əˌpɒkəˈlɪptɪk dɪˈspeə/) 重音准确，'potent catalyst' 清晰有力"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "How do you assess the economic viability of utility-scale lithium battery storage for multiple overcast weeks?",
+                        "partnerZh": "对于应对连续数周阴雨天气，你如何评估公用事业级锂电池储能的经济可行性？",
+                        "targetEn": "Chemical batteries are superb for intraday four-hour frequency balancing, but using them for multi-week seasonal backup is prohibitively expensive. We need long-duration pumped hydro and green hydrogen.",
+                        "targetPhonetic": "/ˈkemɪkl ˈbætəriz ɑːr suːˈpɜːb fɔːr ˌɪntrəˈdeɪ fɔːr ˈaʊə ˈfriːkwənsi ˈbælənsɪŋ, bət ˈjuːzɪŋ ðem fɔːr ˈmʌlti wiːk ˈsiːzənl ˈbækʌp ɪz prəˈhɪbɪtɪvli ɪkˈspensɪv. wi niːd lɒŋ djʊˈreɪʃn pʌmpt ˈhaɪdrəʊ ənd ɡriːn ˈhaɪdrədʒən/",
+                        "targetZh": "化学电池对于日内4小时的调频平衡表现极佳，但用它们来做数周的跨季节备用储能成本高到无法承受。我们必须依赖长时抽水蓄能与绿氢储备。",
+                        "keyTip": "'prohibitively expensive' (/prəˈhɪbɪtɪvli ɪkˈspensɪv/) 英音清晰，逻辑分明"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "What role will small modular nuclear reactors play in providing urban industrial heat?",
+                        "partnerZh": "小型模块化核反应堆在为城市工业供热方面将扮演何种角色？",
+                        "targetEn": "Small modular reactors represent an extraordinary frontier. By manufacturing standardized reactor cores in factories, we can slash capital costs and supply dependable zero-carbon thermal heat directly to heavy manufacturing.",
+                        "targetPhonetic": "/smɔːl ˈmɒdjʊlə riˈæktəz ˌreprɪˈzent ən ɪkˈstrɔːdnri ˈfrʌntɪə. baɪ ˌmænjuˈfæktʃərɪŋ ˈstændədaɪzd riˈæktə kɔːz ɪn ˈfæktəriz, wi kæn slæʃ ˈkæpɪtl kɒsts ənd səˈplaɪ dɪˈpendəbl ˈzɪərəʊ ˈkɑːbən ˈθɜːml hiːt dəˈrektli tu ˈhevi ˌmænjuˈfæktʃərɪŋ/",
+                        "targetZh": "小型模块化反应堆代表了令人瞩目的前沿。通过在工厂标准化制造反应堆堆芯，我们能够大幅削减建设资本成本，并直接为重工业提供可靠的零碳高品位热能。",
+                        "keyTip": "'Small modular reactors' 与 'dependable zero-carbon heat' 读出发言权威感"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "Is Direct Air Capture of carbon dioxide realistic given the fundamental laws of thermodynamics?",
+                        "partnerZh": "鉴于热力学基本定律，从空气中直接捕获二氧化碳在现实中可行吗？",
+                        "targetEn": "Thermodynamically, extracting four hundred parts per million of carbon dioxide from ambient air requires tremendous energy. Direct capture should be reserved strictly for unavoidable residual emissions, never as an excuse to prolong coal burning.",
+                        "targetPhonetic": "/ˌθɜːməʊdaɪˈnæmɪkli, ɪkˈstræktɪŋ fɔːr ˈhʌndrəd pɑːts pɜː ˈmɪljən əv ˈkɑːbən daɪˈɒksaɪd frəm ˈæmbiənt eə rɪˈkwaɪəz trɪˈmendəs ˈenədʒi. dəˈrekt ˈkæptʃə ʃʊd bi rɪˈzɜːvd ˈstrɪktli fɔːr ˌʌnəˈvɔɪdəbl rɪˈzɪdjuəl ɪˈmɪʃnz, ˈnevər æz ən ɪkˈskjuːs tu prəˈlɒŋ kəʊl ˈbɜːnɪŋ/",
+                        "targetZh": "从热力学上讲，从环境中提取仅占百万分之四百浓度的二氧化碳需要消耗巨大的能量。直接空气捕获应当严格留给无法避免的残余排放，绝不能成为延长燃煤的借口。",
+                        "keyTip": "'Thermodynamically' 吐字工整，'unavoidable residual emissions' 层次清晰"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "How vulnerable are clean energy supply chains to geopolitical tensions over critical rare earth minerals?",
+                        "partnerZh": "清洁能源供应链对于关键稀土矿产的地缘政治紧张局势有多脆弱？",
+                        "targetEn": "Exceedingly vulnerable. Refining neodymium, dysprosium, and battery-grade lithium is heavily concentrated in very few territories. Diversifying processing geography is just as critical for national security as energy independence itself.",
+                        "targetPhonetic": "/ɪkˈsiːdɪŋli ˈvʌlnərəbl. rɪˈfaɪnɪŋ ˌniːəʊˈdɪmiəm, dɪsˈprəʊziəm, ənd ˈbætəri ɡreɪd ˈlɪθiəm ɪz ˈhevɪli ˈkɒnsntreɪtɪd ɪn ˈveri fjuː ˈterɪtriz. daɪˈvɜːsɪfaɪɪŋ ˈprəʊsesɪŋ dʒiˈɒɡrəfi ɪz dʒəst æz ˈkrɪtɪkl fɔː ˈnæʃnəl sɪˈkjʊərəti æz ˈenədʒi ˌɪndɪˈpendəns ɪtˈself/",
+                        "targetZh": "极度脆弱。钕、镝以及电池级锂的提纯深加工高度集中在极少数地区。分散加工提炼的地理布局，对于国家安全而言与能源独立本身同样关键。",
+                        "keyTip": "'Exceedingly vulnerable' 掷地有声，英式 /ʌ/ 与 /iː/ 区别分明"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "What about agricultural emissions and the role of dietary shifts toward plant-based proteins?",
+                        "partnerZh": "农业排放以及向植物蛋白膳食结构的转变在减排中扮演何种角色？",
+                        "targetEn": "Agriculture accounts for nearly a quarter of global emissions through livestock methane and deforestation. Shifting subsidies toward regenerative farming and alternative proteins produces faster climate dividends than almost any technical intervention.",
+                        "targetPhonetic": "/ˈæɡrɪkʌltʃər əˈkaʊnts fɔː ˈnɪəli ə ˈkwɔːtər əv ˈɡləʊbl ɪˈmɪʃnz θruː ˈlaɪvstɒk ˈmiːθeɪn ənd diːˌfɒrɪˈsteɪʃn. ˈʃɪftɪŋ ˈsʌbsɪdiz təˈwɔːdz rɪˈdʒenərətɪv ˈfɑːmɪŋ ənd ɔːlˈtɜːnətɪv ˈprəʊtiːnz prəˈdjuːsɪz ˈfɑːstə ˈklaɪmət ˈdɪvɪdendz ðæn ˈɔːlməʊst ˈeni ˈteknɪkl ˌɪntəˈvenʃn/",
+                        "targetZh": "农业因牲畜甲烷和森林砍伐占到全球排放的近四分之一。将政府补贴转向再生农业与替代蛋白，所产生的气候红利几乎快于任何单纯的技术干预手段。",
+                        "keyTip": "'regenerative farming' 与 'climate dividends' (/ˈdɪvɪdendz/) 发音地道"
+                  },
+                  {
+                        "partner": "BBC Host",
+                        "partnerEn": "Professor MacKay, what is the single guiding compass leaders should hold when negotiating environmental policy?",
+                        "partnerZh": "MacKay 教授，各国领导人在协商环境政策时应当秉持的唯一指南针是什么？",
+                        "targetEn": "Have an honest conversation with arithmetic. Replace vague political slogans with concrete engineering plans that add up; physics does not negotiate with human diplomacy.",
+                        "targetPhonetic": "/hæv ən ˈɒnɪst ˌkɒnvəˈseɪʃn wɪð əˈrɪθmətɪk. rɪˈpleɪs veɪɡ pəˈlɪtɪkl ˈsləʊɡənz wɪð ˈkɒŋkriːt ˌendʒɪˈnɪərɪŋ plænz ðæt æd ʌp; ˈfɪzɪks dʌz nɒt nɪˈɡəʊʃieɪt wɪð ˈhjuːmən dɪˈpləʊməsi/",
+                        "targetZh": "与基础算术展开一场诚实的对话。用经得起验算的切实工程规划取代含糊的政治口号；客观物理法则绝不会与人类的外交斡旋妥协。",
+                        "keyTip": "英式睿智幽默：'arithmetic' (/əˈrɪθmətɪk/) 重音在第二音节，'physics does not negotiate' 警醒深刻"
+                  }
+            ]
       },
       {
-        topic: "外企面试回答示范",
-        context: "回答面试官询问关于自己如何处理跨部门冲突",
-        partner: "Interviewer",
-        partnerEn: "How do you usually handle disagreements within your project team?",
-        partnerZh: "在项目团队中出现分歧时，你通常如何处理？",
-        targetEn: "I prioritize open communication, align on shared metrics, and seek common ground.",
-        targetPhonetic: "/aɪ praɪˈɔːrətaɪz ˈoʊpən kəˌmjuːnɪˈkeɪʃn, əˈlaɪn ɑːn ʃerd ˈmetrɪks, ənd siːk ˈkɑːmən ɡraʊnd/",
-        targetZh: "我优先倡导开放沟通，锚定共同目标指标，并努力求同存异。",
-        keyTip: "排比结构三段节奏卡点，'prioritize' 与 'align on' 自然滑行"
-      },
-      {
-        topic: "机场行李延误交涉",
-        context: "抵达目的地后发现行李未送达，在行李服务柜台申报",
-        partner: "Baggage Agent",
-        partnerEn: "Can I take a look at your boarding pass and luggage claim tag?",
-        partnerZh: "我能看一下您的登机牌和行李托运条吗？",
-        targetEn: "Sure. My bag didn't appear on the carousel. Could you track its whereabouts?",
-        targetPhonetic: "/ʃʊr. maɪ bæɡ ˈdɪdnt əˈpɪr ɑːn ðə ˌkærəˈsel. kʊd juː træk ɪts ˈwerəbaʊts/",
-        targetZh: "好的。我的箱子没在传送带上出现，能麻烦您查一下它目前在哪吗？",
-        keyTip: "'carousel' 重音在末尾 /sel/，'whereabouts' 发音清晰"
-      },
-      {
-        topic: "硅谷创业 Pitch 答辩",
-        context: "向投资人阐述产品核心技术壁垒与用户留存",
-        partner: "Investor",
-        partnerEn: "What's the unique moat stopping competitors from copying this overnight?",
-        partnerZh: "你们独特的护城河是什么，能防止竞品一夜之间抄袭？",
-        targetEn: "Our proprietary data flywheel and proprietary AI pipeline yield a distinct compounding edge.",
-        targetPhonetic: "/ˈaʊər prəˈpraɪəteri ˈdeɪtə ˈflaɪwiːl ənd ˌeɪˈaɪ ˈpaɪplaɪn jiːld ə dɪˈstɪŋkt kəmˈpaʊndɪŋ edʒ/",
-        targetZh: "我们独有的数据飞轮与自研AI管线能产生极为显著的复利壁垒。",
-        keyTip: "'proprietary' 发音舌位转换，'compounding edge' 结尾爆破干脆"
+            "id": "stanford_e_corner_collison",
+            "podcast": "Stanford Entrepreneurial Thought Leaders",
+            "host": "Tina Seelig (Stanford Professor)",
+            "guest": "Patrick Collison (Stripe Co-founder & CEO)",
+            "guestRole": "Guest (Stripe CEO)",
+            "topic": "精益创业、代码审美与跨学科阅读的杠杆力",
+            "category": "硅谷创业与第一性原理",
+            "duration": "约 8-10 分钟 · 10 回合",
+            "context": "Stripe 创始人深度剖析如何把极致的开发者体验做到极致、书写型公司文化、人才密度与长期科技进步的杠杆力。",
+            "turns": [
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "Patrick, when Stripe began, payments was considered an unglamorous and painfully bureaucratic industry. What made you believe two young brothers could disrupt it?",
+                        "partnerZh": "Patrick，Stripe创立时，支付被视为一个缺乏吸引力且流程极其繁琐的行业。是什么让你们相信两兄弟能够颠覆它？",
+                        "targetEn": "We experienced the sheer friction firsthand as software developers. Seven lines of elegant code replacing weeks of merchant bank paperwork was an asymmetry so compelling that we couldn't ignore it.",
+                        "targetPhonetic": "/wi ɪkˈspɪriənst ðə ʃɪr ˈfrɪkʃn ˈfɜːrstˈhænd æz ˈsɔːftwer dɪˈveləpərz. ˈsevn laɪnz əv ˈelɪɡənt koʊd rɪˈpleɪsɪŋ wiːks əv ˈmɜːrtʃənt bæŋk ˈpeɪpərwɜːrk wəz ən eɪˈsɪmətri soʊ kəmˈpelɪŋ ðæt wi ˈkʊdnt ɪɡˈnɔːr ɪt/",
+                        "targetZh": "作为软件开发者，我们亲身体会到了那种巨大的阻力。用七行优雅的代码取代数周的收单银行繁琐纸质审批，这种极度悬殊的体验不对称性强烈到我们无法忽视。",
+                        "keyTip": "'asymmetry so compelling' (/eɪˈsɪmətri soʊ kəmˈpelɪŋ/) 读出创业洞察的兴奋感与笃定"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "Stripe's documentation is widely considered the gold standard across Silicon Valley. How did you embed that obsession with craft?",
+                        "partnerZh": "Stripe 的开发文档被硅谷公认为黄金标准。你们是如何将这种对工艺的痴迷融入团队的？",
+                        "targetEn": "Craft is infectious. When leaders treat API documentation with the same literary seriousness as great poetry, engineers understand that no microscopic detail in the user journey is beneath their attention.",
+                        "targetPhonetic": "/kræft ɪz ɪnˈfekʃəs. wen ˈliːdərz triːt ˌeɪ piː ˈaɪ ˌdɑːkjumenˈteɪʃn wɪð ðə seɪm ˈlɪtəreri ˈsɪriəsnəs æz ɡreɪt ˈpoʊətri, ˌendʒɪˈnɪrz ˌʌndərˈstænd ðæt noʊ ˌmaɪkrəˈskɑːpɪk ˈdiːteɪl ɪn ðə ˈjuːzər ˈdʒɜːrni ɪz bɪˈniːθ ðer əˈtenʃn/",
+                        "targetZh": "工艺与匠心是会传染的。当领导层对待API文档像对待伟大的诗歌一样严肃认真时，工程师就会明白，用户旅程中没有任何微观细节是不值得倾注心血的。",
+                        "keyTip": "'Craft is infectious' 开门见山，'literary seriousness' 发音流畅自然"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "You are famous for reading hundreds of obscure history books every year. How does historical literacy translate to product strategy?",
+                        "partnerZh": "你以每年阅读数百本冷门历史书籍而闻名。历史素养是如何转化为产品战略的？",
+                        "targetEn": "Human psychology and institutional dynamics remain remarkably constant across millennia. Studying the origins of the Industrial Revolution or the telegraph network provides the ultimate roadmap for navigating exponential technological shifts today.",
+                        "targetPhonetic": "/ˈhjuːmən saɪˈkɑːlədʒi ənd ˌɪnstɪˈtuːʃənl daɪˈnæmɪks rɪˈmeɪn rɪˈmɑːrkəbli ˈkɑːnstənt əˈkrɔːs mɪˈleniə. ˈstʌdiɪŋ ði ˈɔːrɪdʒɪnz əv ði ɪnˈdʌstriəl ˌrevəˈluːʃn ɔːr ðə ˈtelɪɡræf ˈnetwɜːrk prəˈvaɪdz ði ˈʌltɪmət ˈroʊdmæp fɔːr ˈnævɪɡeɪtɪŋ ˌekspəˈnenʃl ˌteknəˈlɑːdʒɪkl ʃɪfts təˈdeɪ/",
+                        "targetZh": "数千年来，人类的心理机制和机构组织动态几乎保持惊人的恒定。研究工业革命或电报网络的起源，能为我们在今天驾驭指数级技术变革提供最顶级的战略路线图。",
+                        "keyTip": "'across millennia' (/əˈkrɔːs mɪˈleniə/) 语调深沉，'ultimate roadmap' 读音饱满"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "What final advice would you impart to founders trying to build things of enduring significance?",
+                        "partnerZh": "对于那些想要打造具有深远恒久意义事物的创始人，你最后的建议是什么？",
+                        "targetEn": "Optimise for the rate of learning rather than premature comfort. Build alongside people who relentlessly hold you to the highest standard, and measure success by the foundational utility you create for the world.",
+                        "targetPhonetic": "/ˈɑːptɪmaɪz fɔːr ðə reɪt əv ˈlɜːrnɪŋ ˈræðər ðæn ˌpriːməˈtʊr ˈkʌmfərt. bɪld əˈlɔːŋsaɪd ˈpiːpl huː rɪˈlentləsli hoʊld juː tu ðə ˈhaɪɪst ˈstændərd, ənd ˈmeʒər səkˈses baɪ ðə faʊnˈdeɪʃənl juːˈtɪləti juː kriˈeɪt fɔːr ðə wɜːrld/",
+                        "targetZh": "专注于提升学习速率，而不是过早追求舒适区。与那些始终以最高标准要求你的人并肩作战，并用你为世界创造的基础实用价值来衡量成功。",
+                        "keyTip": "'rate of learning' 自然连读，'foundational utility' 强调末尾落音"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "Why has Stripe famously championed a rigorous written culture over traditional PowerPoint meetings?",
+                        "partnerZh": "为什么 Stripe 极力推崇严密的书面报告文化，而不是传统的 PPT 演示会议？",
+                        "targetEn": "Writing forces conceptual clarity. In a slide presentation, charismatic delivery often masks sloppy logic; a well-crafted memo forces the author to stress-test their premises before wasting colleagues' time.",
+                        "targetPhonetic": "/ˈraɪtɪŋ ˈfɔːrsɪz kənˈseptʃuəl ˈklærəti. ɪn ə slaɪd ˌpreznˈteɪʃn, ˌkærɪzˈmætɪk dɪˈlɪvəri ˈɔːfn mæsks ˈslɑːpi ˈlɑːdʒɪk; ə wel kræftɪd ˈmemoʊ ˈfɔːrsɪz ði ˈɔːθər tu stres test ðer ˈpremɪsɪz bɪˈfɔːr ˈweɪstɪŋ ˈkɑːliːɡz taɪm/",
+                        "targetZh": "写作能倒逼概念的澄澈明晰。在幻灯片演示中，充满个人魅力的演讲常常掩盖了粗糙漏洞百出的逻辑；而一份精心撰写的备忘录能迫使作者在浪费同事时间之前，先对自己的前提假设进行压力测试。",
+                        "keyTip": "'conceptual clarity' (/kənˈseptʃuəl ˈklærəti/) 吐字清晰，'stress-test their premises' 重音明确"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "When evaluating exceptional engineering and leadership talent, how do you balance experience versus raw slope?",
+                        "partnerZh": "在评估杰出的工程与管理人才时，你如何在行业经验与成长加速度（斜率）之间取得平衡？",
+                        "targetEn": "We almost always prioritize slope over intercept. In hyper-growth technology environments, a high learning velocity outpaces static domain experience within eighteen months every single time.",
+                        "targetPhonetic": "/wi ˈɔːlmoʊst ˈɔːlweɪz praɪˈɔːrətaɪz sloʊp ˈoʊvər ˈɪntərsept. ɪn ˈhaɪpər ɡroʊθ tekˈnɑːlədʒi ɪnˈvaɪrənmənts, ə haɪ ˈlɜːrnɪŋ vəˈlɑːsəti aʊtˈpeɪsɪz ˈstætɪk doʊˈmeɪn ɪkˈspɪriəns wɪðˈɪn ˌeɪˈtiːn mʌnθs ˈevri ˈsɪŋɡl taɪm/",
+                        "targetZh": "我们几乎总是看重斜率高于截距。在超高速增长的技术环境中，极高的学习加速度在18个月内每一次都会超越静态的既往行业经验。",
+                        "keyTip": "'slope over intercept' 比喻形象，'learning velocity' 自然连贯"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "How do you resolve the tension between moving with extreme speed and obsessing over craft?",
+                        "partnerZh": "你如何化解‘极致追求速度’与‘痴迷精工细作’之间的张力？",
+                        "targetEn": "They are mutually reinforcing, not contradictory. Polished, modular systems have far fewer latent bugs, which actually allows your engineering organization to ship compounding features vastly faster over years.",
+                        "targetPhonetic": "/ðeɪ ɑːr ˈmjuːtʃuəli ˌriːɪnˈfɔːrsɪŋ, nɑːt ˌkɑːntrəˈdɪktəri. ˈpɑːlɪʃt, ˈmɑːdʒələr ˈsɪstəmz hæv fɑːr ˈfjuːər ˈleɪtnt bʌɡz, wɪtʃ ˈæktʃuəli əˈlaʊz jɔːr ˌendʒɪˈnɪrɪŋ ˌɔːrɡənəˈzeɪʃn tu ʃɪp kəmˈpaʊndɪŋ ˈfiːtʃərz ˈvæstli ˈfæstər ˈoʊvər jɪrz/",
+                        "targetZh": "它们是相辅相成、绝非对立矛盾的。被打磨得精巧模块化的系统潜在缺陷极少，这反而在数年尺度上让你的工程组织能够以惊人的复利速度推出新功能。",
+                        "keyTip": "'mutually reinforcing' 自然连读，'compounding features' 语调坚定有力"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "Stripe famously created its own publishing imprint, Stripe Press. What was the motivation behind publishing physical books?",
+                        "partnerZh": "Stripe 破天荒创办了自己的实体出版机构 Stripe Press。在一家软件公司内部出版纸质书籍背后的初衷是什么？",
+                        "targetEn": "Ideas shape the technological frontier. By championing foundational books on scientific progress and human ingenuity, we hope to inspire the next generation to tackle difficult, consequential real-world problems.",
+                        "targetPhonetic": "/aɪˈdiːəz ʃeɪp ðə ˌteknəˈlɑːdʒɪkl ˈfrʌntɪr. baɪ ˈtʃæmpiənɪŋ faʊnˈdeɪʃənl bʊks ɑːn ˌsaɪənˈtɪfɪk ˈprɑːɡres ənd ˈhjuːmən ˌɪndʒəˈnuːəti, wi hoʊp tu ɪnˈspaɪər ðə nekst ˌdʒenəˈreɪʃn tu ˈtækl ˈdɪfɪkəlt, ˌkɑːnsəˈkwenʃl ˈriːəl wɜːrld ˈprɑːbləmz/",
+                        "targetZh": "思想塑造着技术的边界。通过推崇阐述科学进步与人类独创性的经典著作，我们希望激发下一代敢于向那些艰巨、影响深远的现实世界难题发起攻坚。",
+                        "keyTip": "'human ingenuity' (/ˌɪndʒəˈnuːəti/) 发音纯正，'consequential' 语调饱满"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "As Stripe expanded across dozens of countries, how did you navigate complex local banking regulations while preserving product purity?",
+                        "partnerZh": "随着 Stripe 拓展到全球数十个国家，你们如何在遵守极其复杂的本土银行监管的同时，守住产品的纯粹性？",
+                        "targetEn": "We treated global regulatory plumbing as an abstraction layer problem. We absorb the maddening idiosyncrasies of international payment rails so that developers only interact with one beautifully consistent API interface.",
+                        "targetPhonetic": "/wi ˈtriːtɪd ˈɡloʊbl ˈreɡjələtɔːri ˈplʌmɪŋ æz ən æbˈstrækʃn ˈleɪər ˈprɑːbləm. wi əbˈzɔːrb ðə ˈmædnɪŋ ˌɪdioʊˈsɪŋkrəsiz əv ˌɪntərˈnæʃnəl ˈpeɪmənt reɪlz soʊ ðæt dɪˈveləpərz ˈoʊnli ˌɪntərˈækt wɪð wʌn ˈbjuːtɪfli kənˈsɪstənt ˌeɪ piː ˈaɪ ˈɪntərfeɪs/",
+                        "targetZh": "我们将全球监管管道视为一个软件抽象层的问题。我们在底层消化吸收了全球各异支付通道令人抓狂的怪癖，从而让开发者永远只需面对一个精简优雅、完全一致的 API 界面。",
+                        "keyTip": "'abstraction layer' 计算机术语发音干练，'maddening idiosyncrasies' (/ˌɪdioʊˈsɪŋkrəsiz/) 读出幽默感"
+                  },
+                  {
+                        "partner": "Stanford Host",
+                        "partnerEn": "Patrick, looking at the coming fifty years of technological transformation, what keeps you fundamentally optimistic?",
+                        "partnerZh": "Patrick，展望未来五十年的技术巨变，究竟是什么让你保持根本性的乐观？",
+                        "targetEn": "Human potential is profoundly underutilized across the globe. When you furnish ambitious minds everywhere with modern computing tools, scientific knowledge, and economic opportunity, humanity's compounding progress is limitless.",
+                        "targetPhonetic": "/ˈhjuːmən pəˈtenʃl ɪz prəˈfaʊndli ˌʌndərˈjuːtəlaɪzd əˈkrɔːs ðə ɡloʊb. wen juː ˈfɜːrnɪʃ æmˈbɪʃəs maɪndz ˈevriwer wɪð ˈmɑːdərn kəmˈpjuːtɪŋ tuːlz, ˌsaɪənˈtɪfɪk ˈnɑːlɪdʒ, ənd ˌekəˈnɑːmɪk ˌɑːpərˈtuːnəti, hjuːˈmænətiz kəmˈpaʊndɪŋ ˈprɑːɡres ɪz ˈlɪmɪtləs/",
+                        "targetZh": "在全球范围内，人类的潜能仍被极大地低估和未充分释放。当你在世界各地为有志青年提供现代化计算工具、科学知识和经济机会时，人类的复利进步将不可限量。",
+                        "keyTip": "'profoundly underutilized' 语调深刻，'compounding progress is limitless' 掷地有声"
+                  }
+            ]
       }
-    ];
+];
+
+    // 本地语料库持久化管理（支持用户收藏与 Gemini 动态扩充）
+    let podcastEpisodes = JSON.parse(localStorage.getItem('gemini_podcast_episodes') || 'null');
+    // 自动平滑升级：若本地尚无数据，或旧数据不足8轮，自动升级为全新10轮长播客访谈
+    if (!podcastEpisodes || !Array.isArray(podcastEpisodes) || podcastEpisodes.length === 0 || (podcastEpisodes[0] && podcastEpisodes[0].turns && podcastEpisodes[0].turns.length < 8)) {
+      podcastEpisodes = DEFAULT_PODCAST_EPISODES;
+      localStorage.setItem('gemini_podcast_episodes', JSON.stringify(podcastEpisodes));
+    }
+
+    let currentPodcastIndex = 0;
+    let currentTurnIndex = 0;
+
 
     // =========================================================
     // 全局状态与持久化配置
@@ -1875,6 +2713,7 @@
     let isShadowingRecording = false;
     let ws = null;
     let audioContext = null;
+    let currentSampleAudio = null; // 跟读示范发音与听原音播放实例
     let micStream = null;          // 单例持久麦克风流（页面生命周期内只请求一次）
     let micSourceNode = null;
     let scriptProcessor = null;
@@ -1916,11 +2755,14 @@
     const closeScenarioSheetBtn = document.getElementById('closeScenarioSheetBtn');
     const closeHistorySheetBtn = document.getElementById('closeHistorySheetBtn');
 
-    // 设置项控件
+    // 设置项控件 (语音模型与文本扩充模型分别独立配置)
     const apiKeyInput = document.getElementById('apiKeyInput');
-    const modelSelect = document.getElementById('modelSelect');
-    const customModelWrapper = document.getElementById('customModelWrapper');
-    const customModelInput = document.getElementById('customModelInput');
+    const liveModelSelect = document.getElementById('liveModelSelect');
+    const customLiveModelWrapper = document.getElementById('customLiveModelWrapper');
+    const customLiveModelInput = document.getElementById('customLiveModelInput');
+    const textModelSelect = document.getElementById('textModelSelect');
+    const customTextModelWrapper = document.getElementById('customTextModelWrapper');
+    const customTextModelInput = document.getElementById('customTextModelInput');
     const voiceSelect = document.getElementById('voiceSelect');
     const accentSelect = document.getElementById('accentSelect');
     const saveSettingsBtn = document.getElementById('saveSettingsBtn');
@@ -1958,14 +2800,32 @@
     // 本地持久化缓存读写 (API Key 后续免重复输入)
     // =========================================================
     apiKeyInput.value = localStorage.getItem('gemini_api_key') || '';
-    const storedModel = localStorage.getItem('gemini_model') || 'models/gemini-3.1-flash-live-preview';
-    if (['models/gemini-3.1-flash-live-preview'].includes(storedModel)) {
-      modelSelect.value = storedModel;
-    } else {
-      modelSelect.value = 'custom';
-      customModelWrapper.style.display = 'block';
-      customModelInput.value = storedModel;
+
+    // 1. 实时语音模型 (默认 models/gemini-3.1-flash-live-preview，专职处理双向对话与示范原声)
+    let storedLiveModel = localStorage.getItem('gemini_live_model');
+    if (!storedLiveModel || !storedLiveModel.includes('live')) {
+      // 容错隔离：强制纠正误选或遗留的非 live 文本模型
+      storedLiveModel = 'models/gemini-3.1-flash-live-preview';
+      localStorage.setItem('gemini_live_model', storedLiveModel);
     }
+    if (['models/gemini-3.1-flash-live-preview', 'models/gemini-2.0-flash-live'].includes(storedLiveModel)) {
+      liveModelSelect.value = storedLiveModel;
+    } else {
+      liveModelSelect.value = 'custom';
+      customLiveModelWrapper.style.display = 'block';
+      customLiveModelInput.value = storedLiveModel;
+    }
+
+    // 2. 文本扩充与评测模型 (默认 gemini-3.5-flash-lite，专职处理10轮长访谈文稿生成与跟读评分)
+    let storedTextModel = localStorage.getItem('gemini_text_model') || 'gemini-3.5-flash-lite';
+    if (['gemini-3.5-flash-lite', 'auto', 'gemini-2.5-flash-lite', 'gemini-2.0-flash'].includes(storedTextModel)) {
+      textModelSelect.value = storedTextModel;
+    } else {
+      textModelSelect.value = 'custom';
+      customTextModelWrapper.style.display = 'block';
+      customTextModelInput.value = storedTextModel;
+    }
+
     voiceSelect.value = localStorage.getItem('gemini_voice') || 'Aoede';
     
     let currentAccent = localStorage.getItem('gemini_accent') || 'en-US';
@@ -2067,77 +2927,699 @@
         freeTalkView.classList.add('hidden');
         mainActionBtn.classList.add('shadowing-record');
         mainActionBtn.title = "点击开始/完成跟读评测";
-        loadShadowingLesson(currentLessonIndex);
+        loadPodcastEpisode(currentPodcastIndex, currentTurnIndex);
       }
     }
 
+
+
     // =========================================================
-    // 跟读模式关卡加载与示范朗读
+    // Gemini 统一模型服务与 REST 请求 (优先使用用户指定的 gemini-3.5-flash-lite)
+    // 自动通过 ModelService.ListModels 获取当前 API Key 支持的实际可用模型列表
     // =========================================================
-    function loadShadowingLesson(index) {
-      if (index < 0) index = 0;
-      if (index >= SHADOWING_LESSONS.length) index = SHADOWING_LESSONS.length - 1;
-      currentLessonIndex = index;
+    let discoveredAvailableModels = null;
 
-      const lesson = SHADOWING_LESSONS[currentLessonIndex];
-      shadowingTopicTitle.innerText = lesson.topic;
-      shadowingProgressLabel.innerText = `第 ${currentLessonIndex + 1} / ${SHADOWING_LESSONS.length} 关 · 场景跟读`;
-      scriptSceneContext.innerText = `场景上下文：${lesson.context}`;
-      partnerSpeakerName.innerText = `${lesson.partner}`;
-      partnerEnText.innerText = lesson.partnerEn;
-      partnerZhText.innerText = lesson.partnerZh;
-      targetEnText.innerText = lesson.targetEn;
-      targetPhoneticText.innerText = lesson.targetPhonetic;
-      targetZhText.innerText = lesson.targetZh;
+    async function getAvailableGenerateContentModels(apiKey, preferredModel = 'gemini-3.5-flash-lite') {
+      if (discoveredAvailableModels && discoveredAvailableModels.length > 0) {
+        return discoveredAvailableModels;
+      }
 
-      prevLessonBtn.disabled = (currentLessonIndex === 0);
-      nextLessonBtn.disabled = (currentLessonIndex === SHADOWING_LESSONS.length - 1);
+      // 用户指定优先使用 gemini 3.5 flash lite
+      const defaultCandidates = [
+        preferredModel,
+        'gemini-3.5-flash-lite',
+        'gemini-3.5-flash-lite-preview',
+        'gemini-2.5-flash-lite',
+        'gemini-2.0-flash-lite',
+        'gemini-2.0-flash',
+        'gemini-3.1-flash-lite-preview'
+      ];
 
-      // 清除旧的评测卡
+      try {
+        const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.models && Array.isArray(data.models)) {
+            const genModels = data.models
+              .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes("generateContent"))
+              .map(m => m.name.replace(/^models\//, ''));
+
+            if (genModels.length > 0) {
+              // 按照匹配度排序：首选 3.5-flash-lite，其次各类 flash-lite，其次 3.x/2.x flash
+              genModels.sort((a, b) => {
+                const score = (name) => {
+                  const n = name.toLowerCase();
+                  if (n.includes('3.5-flash-lite')) return 100;
+                  if (n.includes('3.5') && n.includes('lite')) return 95;
+                  if (n.includes('flash-lite')) return 90;
+                  if (n.includes('3.5')) return 85;
+                  if (n.includes('3.1-flash')) return 80;
+                  if (n.includes('2.5-flash')) return 75;
+                  if (n.includes('2.0-flash')) return 70;
+                  if (n.includes('flash')) return 60;
+                  return 10;
+                };
+                return score(b) - score(a);
+              });
+              discoveredAvailableModels = genModels;
+              console.log("Auto-discovered supported Gemini models on this key:", discoveredAvailableModels);
+              return discoveredAvailableModels;
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("ListModels endpoint failed, using default candidate chain:", e);
+      }
+
+      discoveredAvailableModels = defaultCandidates;
+      return defaultCandidates;
+    }
+
+    async function callGeminiGenerateContent(apiKey, payload, preferredModel = 'gemini-3.5-flash-lite') {
+      const modelsToTry = await getAvailableGenerateContentModels(apiKey, preferredModel);
+      let lastErr = null;
+
+      for (const m of modelsToTry) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${apiKey}`;
+          const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const resData = await resp.json();
+          if (resp.ok && resData.candidates && resData.candidates.length > 0) {
+            return { data: resData, modelUsed: m };
+          }
+          if (resData.error) {
+            lastErr = new Error(resData.error.message || `API 错误 (${resData.error.code})`);
+          } else {
+            lastErr = new Error(`模型 ${m} 返回无有效内容`);
+          }
+        } catch (e) {
+          lastErr = e;
+        }
+      }
+      throw lastErr || new Error("Gemini API 服务响应异常");
+    }
+
+    // =========================================================
+    // 跟读示范发音：Gemini Live 原生高保真神经网络音频引擎
+    // 采用专职 Live 实时全双工协议(v1beta)，支持真人生动演绎、自然呼吸、断句与语调
+    // 配套 24kHz PCM 转标准 WAV Blob，支持双通道 (HTML5 Audio + Web Audio) 零延迟回放
+    // =========================================================
+    const geminiAudioWavCache = new Map(); // cacheKey -> WAV Blob
+    let activeSampleWs = null;
+
+    // 将 24kHz 单声道 PCM16 Base64 数组合成标准 44 字节 WAV Blob
+    function pcm16ChunksToWavBlob(base64Chunks, sampleRate = 24000) {
+      let totalLength = 0;
+      const u8Arrays = [];
+      for (const b64 of base64Chunks) {
+        const bin = atob(b64);
+        const u8 = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+        u8Arrays.push(u8);
+        totalLength += u8.length;
+      }
+      const mergedPcm = new Uint8Array(totalLength);
+      let offset = 0;
+      for (const buf of u8Arrays) {
+        mergedPcm.set(buf, offset);
+        offset += buf.length;
+      }
+
+      const numChannels = 1;
+      const bitsPerSample = 16;
+      const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
+      const blockAlign = numChannels * (bitsPerSample / 8);
+      const dataSize = mergedPcm.length;
+
+      const header = new ArrayBuffer(44);
+      const view = new DataView(header);
+
+      function writeString(v, off, str) {
+        for (let i = 0; i < str.length; i++) v.setUint8(off + i, str.charCodeAt(i));
+      }
+
+      writeString(view, 0, 'RIFF');
+      view.setUint32(4, 36 + dataSize, true);
+      writeString(view, 8, 'WAVE');
+      writeString(view, 12, 'fmt ');
+      view.setUint32(16, 16, true);
+      view.setUint16(20, 1, true); // PCM
+      view.setUint16(22, numChannels, true);
+      view.setUint32(24, sampleRate, true);
+      view.setUint32(28, byteRate, true);
+      view.setUint16(32, blockAlign, true);
+      view.setUint16(34, bitsPerSample, true);
+      writeString(view, 36, 'data');
+      view.setUint32(40, dataSize, true);
+
+      return new Blob([header, mergedPcm], { type: 'audio/wav' });
+    }
+
+    // 播放 WAV Blob：优先原生 HTML5 Audio，失败时自动退回 Web Audio API
+    function playWavBlob(blob, onEnded) {
+      initAudioContext();
+      stopPlaybackImmediately();
+      try {
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        currentSampleAudio = audio;
+
+        audio.onended = () => {
+          URL.revokeObjectURL(url);
+          if (currentSampleAudio === audio) currentSampleAudio = null;
+          if (onEnded) onEnded();
+        };
+
+        audio.onerror = (e) => {
+          console.warn("Audio element play error, fallback to Web Audio decode:", e);
+          URL.revokeObjectURL(url);
+          playWavBlobViaWebAudio(blob, onEnded);
+        };
+
+        const p = audio.play();
+        if (p !== undefined) {
+          p.catch(err => {
+            console.warn("HTML5 Audio play rejected, fallback to Web Audio decode:", err);
+            URL.revokeObjectURL(url);
+            playWavBlobViaWebAudio(blob, onEnded);
+          });
+        }
+      } catch (err) {
+        playWavBlobViaWebAudio(blob, onEnded);
+      }
+    }
+
+    function playWavBlobViaWebAudio(blob, onEnded) {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        try {
+          initAudioContext();
+          const buffer = await audioContext.decodeAudioData(reader.result);
+          const source = audioContext.createBufferSource();
+          source.buffer = buffer;
+          source.connect(audioContext.destination);
+          source.onended = () => {
+            const idx = activeSources.indexOf(source);
+            if (idx > -1) activeSources.splice(idx, 1);
+            if (onEnded) onEnded();
+          };
+          activeSources.push(source);
+          source.start(0);
+        } catch (e) {
+          console.error("Web Audio decode error:", e);
+          if (onEnded) onEnded();
+        }
+      };
+      reader.readAsArrayBuffer(blob);
+    }
+
+    async function playSpeechSample(text, accentCode, btnElement = null) {
+      if (!text || !text.trim()) return;
+      triggerHaptic('light');
+
+      // 关键核心：在用户点击的同步调用栈中立即解锁 iOS Safari 音频上下文
+      initAudioContext();
+
+      // 停止之前正在播放的示范音频
+      if (currentSampleAudio) {
+        try { currentSampleAudio.pause(); } catch (e) { }
+        currentSampleAudio = null;
+      }
+      if (activeSampleWs) {
+        try { activeSampleWs.close(); } catch (e) { }
+        activeSampleWs = null;
+      }
+      stopPlaybackImmediately();
+
+      const apiKey = localStorage.getItem('gemini_api_key');
+      const voice = localStorage.getItem('gemini_voice') || 'Aoede';
+      const accent = accentCode || localStorage.getItem('gemini_accent') || 'en-US';
+      const cacheKey = `${voice}_${accent}_${text.trim()}`;
+      const origBtnHtml = btnElement ? btnElement.innerHTML : null;
+
+      // 1. 若音频已被缓存（生成过一次），零延迟直接播放完整原声音频
+      if (geminiAudioWavCache.has(cacheKey)) {
+        const cachedBlob = geminiAudioWavCache.get(cacheKey);
+        showToast(`正在播放 Gemini (${voice}) ${accent === 'en-GB' ? '英式' : '美式'}示范原音...`);
+        highlightPlayingButton(btnElement, origBtnHtml);
+        playWavBlob(cachedBlob, () => restoreButton(btnElement, origBtnHtml));
+        return;
+      }
+
+      // 2. 检查 API Key
+      if (!apiKey) {
+        showToast('请先在“设置”中配置 API Key 以获取 Gemini 原生音色示范');
+        openSheet(settingsModal);
+        return;
+      }
+
+      // 3. 调动专职 Gemini Live 实时语音引擎 (gemini-3.1-flash-live-preview)
+      if (btnElement) {
+        btnElement.classList.add('loading');
+        btnElement.innerHTML = `
+          <svg class="spin-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+          </svg>
+          <span>AI 原音生成中...</span>
+        `;
+      }
+      showToast(`Gemini 正在以 ${voice} 音色演绎${accent === 'en-GB' ? '英式' : '美式'}发音...`);
+
+      generateGeminiLiveSpeech(text, voice, accent, {
+        onStart: () => {
+          highlightPlayingButton(btnElement, origBtnHtml);
+        },
+        onChunk: (pcmChunk) => {
+          initAudioContext();
+          playAudioChunk(pcmChunk);
+        },
+        onComplete: (allChunks) => {
+          if (allChunks && allChunks.length > 0) {
+            try {
+              const wavBlob = pcm16ChunksToWavBlob(allChunks, 24000);
+              geminiAudioWavCache.set(cacheKey, wavBlob);
+            } catch (e) {
+              console.warn("WAV synthesis notice:", e);
+            }
+          }
+          let totalBytes = 0;
+          for (const c of allChunks) totalBytes += atob(c).length;
+          const durationMs = (totalBytes / (24000 * 2)) * 1000 + 400;
+          setTimeout(() => restoreButton(btnElement, origBtnHtml), durationMs);
+        },
+        onError: (err) => {
+          console.warn("Gemini Live Speech Error, falling back to Web Speech:", err);
+          restoreButton(btnElement, origBtnHtml);
+          // 优雅降级兜底：若网络防火墙/代理阻断了 Live WebSocket，自动启用备用系统语音，确保绝无死寂
+          if ('speechSynthesis' in window) {
+            showToast(`Live 语音通道受阻(${err.message})，转为备用语音朗读`);
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = accent;
+            u.rate = 0.95;
+            highlightPlayingButton(btnElement, origBtnHtml);
+            u.onend = () => restoreButton(btnElement, origBtnHtml);
+            u.onerror = () => restoreButton(btnElement, origBtnHtml);
+            window.speechSynthesis.speak(u);
+          } else {
+            showToast(`示范发音连接异常: ${err.message || '请检查网络'}`);
+          }
+        }
+      });
+    }
+
+    function generateGeminiLiveSpeech(text, voice, accent, callbacks) {
+      const apiKey = localStorage.getItem('gemini_api_key');
+      // 统一采用 v1beta 双向 Live 全双工通道
+      const host = "generativelanguage.googleapis.com";
+      const uri = `wss://${host}/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key=${apiKey}`;
+
+      let ws = null;
+      try {
+        ws = new WebSocket(uri);
+        activeSampleWs = ws;
+      } catch (e) {
+        callbacks.onError(e);
+        return;
+      }
+
+      const allChunks = [];
+      let isCompleted = false;
+      let hasStarted = false;
+
+      const timeoutId = setTimeout(() => {
+        if (!isCompleted) {
+          isCompleted = true;
+          try { ws.close(); } catch (e) {}
+          activeSampleWs = null;
+          if (allChunks.length > 0) {
+            callbacks.onComplete(allChunks);
+          } else {
+            callbacks.onError(new Error("语音连接响应超时"));
+          }
+        }
+      }, 14000);
+
+      ws.onopen = () => {
+        // 专职使用实时语音模型，若被污染则坚决重置为 3.1 flash live
+        let liveModel = localStorage.getItem('gemini_live_model') || 'models/gemini-3.1-flash-live-preview';
+        if (!liveModel.includes('live')) {
+          liveModel = 'models/gemini-3.1-flash-live-preview';
+        }
+        if (!liveModel.startsWith('models/')) {
+          liveModel = 'models/' + liveModel;
+        }
+
+        const accentDirective = (accent === 'en-GB')
+          ? 'an authentic, elegant British Received Pronunciation (RP) accent, non-rhotic r, crisp consonants, natural conversational cadence'
+          : 'an authentic, relaxed General American accent, rhotic r, natural flap-t, conversational rhythm and intonation';
+
+        const promptDirective = `You are a native English voice coach.
+Vocalize the following sentence out loud with ${accentDirective}.
+Speak with natural human inflection, subtle conversational pauses, and authentic rhythm.
+Do NOT say anything else. Only vocalize the exact text inside the quotes:
+"${text.trim()}"`;
+
+        const setupMsg = {
+          setup: {
+            model: liveModel,
+            generationConfig: {
+              responseModalities: ["AUDIO"],
+              speechConfig: {
+                languageCode: accent,
+                voiceConfig: {
+                  prebuiltVoiceConfig: { voiceName: voice }
+                }
+              }
+            },
+            systemInstruction: {
+              parts: [{ text: promptDirective }]
+            }
+          }
+        };
+        ws.send(JSON.stringify(setupMsg));
+      };
+
+      ws.onmessage = async (event) => {
+        let data;
+        try {
+          data = event.data instanceof Blob ? JSON.parse(await event.data.text()) : JSON.parse(event.data);
+        } catch (e) {
+          return;
+        }
+
+        if (data.setupComplete) {
+          ws.send(JSON.stringify({
+            clientContent: {
+              turns: [{
+                role: "user",
+                parts: [{ text: `Please read and vocalize this sentence clearly now:\n"${text.trim()}"` }]
+              }],
+              turnComplete: true
+            }
+          }));
+          return;
+        }
+
+        if (data.serverContent?.modelTurn?.parts) {
+          for (const part of data.serverContent.modelTurn.parts) {
+            const pcmData = (part.inlineData && part.inlineData.mimeType && part.inlineData.mimeType.startsWith("audio/pcm"))
+              ? part.inlineData.data
+              : (part.audio && part.audio.data ? part.audio.data : null);
+
+            if (pcmData) {
+              allChunks.push(pcmData);
+              if (!hasStarted) {
+                hasStarted = true;
+                callbacks.onStart();
+              }
+              callbacks.onChunk(pcmData);
+            }
+          }
+        }
+
+        if (data.serverContent?.turnComplete) {
+          isCompleted = true;
+          clearTimeout(timeoutId);
+          try { ws.close(); } catch (e) {}
+          activeSampleWs = null;
+          callbacks.onComplete(allChunks);
+        }
+      };
+
+      ws.onerror = (e) => {
+        console.warn("Sample WS onerror:", e);
+        if (!isCompleted) {
+          isCompleted = true;
+          clearTimeout(timeoutId);
+          activeSampleWs = null;
+          if (allChunks.length > 0) {
+            callbacks.onComplete(allChunks);
+          } else {
+            callbacks.onError(new Error("Gemini 语音握手失败"));
+          }
+        }
+      };
+
+      ws.onclose = (event) => {
+        if (!isCompleted) {
+          isCompleted = true;
+          clearTimeout(timeoutId);
+          activeSampleWs = null;
+          if (allChunks.length > 0) {
+            callbacks.onComplete(allChunks);
+          } else {
+            const detail = event.code === 1008 ? "需使用海外节点或权限受限" : (event.code === 1007 ? "参数校验不通过" : "连接断开");
+            callbacks.onError(new Error(`通道关闭 [${event.code}]: ${detail}`));
+          }
+        }
+      };
+    }
+
+    function highlightPlayingButton(btn, origHtml) {
+      if (!btn) return;
+      btn.classList.remove('loading');
+      btn.classList.add('playing');
+      btn.innerHTML = `
+        <span style="display:inline-block; animation: pulse 1s infinite;">🔊</span>
+        <span>播放中...</span>
+      `;
+    }
+
+    function restoreButton(btn, origHtml) {
+      if (!btn || !origHtml) return;
+      btn.classList.remove('loading', 'playing');
+      btn.innerHTML = origHtml;
+    }
+
+
+    // =========================================================
+    // 播客语料库加载、回合切换与渲染逻辑
+    // =========================================================
+    const podcastModal = document.getElementById('podcastModal');
+    const openPodcastLibBtn = document.getElementById('openPodcastLibBtn');
+    const closePodcastSheetBtn = document.getElementById('closePodcastSheetBtn');
+    const podcastListContainer = document.getElementById('podcastListContainer');
+    const randomPodcastBtn = document.getElementById('randomPodcastBtn');
+    const generatePodcastBtn = document.getElementById('generatePodcastBtn');
+
+    const podcastSourceTag = document.getElementById('podcastSourceTag');
+    const podcastGuestTag = document.getElementById('podcastGuestTag');
+    const podcastDurationTag = document.getElementById('podcastDurationTag');
+    const turnStepperBar = document.getElementById('turnStepperBar');
+    const turnCounterLabel = document.getElementById('turnCounterLabel');
+    const userSpeakerRole = document.getElementById('userSpeakerRole');
+
+    openPodcastLibBtn.addEventListener('click', () => {
+      renderPodcastList();
+      openSheet(podcastModal);
+    });
+    closePodcastSheetBtn.addEventListener('click', () => closeSheet(podcastModal));
+
+    // 随机抽取一段真实访谈
+    randomPodcastBtn.addEventListener('click', () => {
+      triggerHaptic('medium');
+      if (podcastEpisodes.length <= 1) {
+        showToast('当前已在播放该播客片段');
+        return;
+      }
+      let newIdx;
+      do {
+        newIdx = Math.floor(Math.random() * podcastEpisodes.length);
+      } while (newIdx === currentPodcastIndex);
+
+      loadPodcastEpisode(newIdx, 0);
+      showToast(`已随机加载：${podcastEpisodes[newIdx].guest}`);
+    });
+
+    // 渲染播客节目目录
+    function renderPodcastList() {
+      podcastListContainer.innerHTML = podcastEpisodes.map((ep, i) => `
+        <div class="podcast-item-card ${i === currentPodcastIndex ? 'selected' : ''}" onclick="selectPodcastEpisode(${i})">
+          <div class="podcast-item-top">
+            <span class="podcast-badge">${escapeHtml(ep.podcast)}</span>
+            <span class="podcast-duration-tag">${ep.duration || '约 5 分钟'}</span>
+          </div>
+          <div class="podcast-item-title">${escapeHtml(ep.topic)}</div>
+          <div class="podcast-item-meta">
+            <span class="podcast-guest-tag">受访者: ${escapeHtml(ep.guest)}</span>
+            <span style="color:var(--accent-primary); font-size:0.72rem;">${ep.turns.length} 轮精选对话</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.selectPodcastEpisode = function(index) {
+      triggerHaptic('light');
+      loadPodcastEpisode(index, 0);
+      closeSheet(podcastModal);
+      showToast(`已切换至：${podcastEpisodes[index].guest}`);
+    };
+
+    function loadPodcastEpisode(epIndex, turnIndex = 0) {
+      if (epIndex < 0) epIndex = 0;
+      if (epIndex >= podcastEpisodes.length) epIndex = podcastEpisodes.length - 1;
+      currentPodcastIndex = epIndex;
+
+      const episode = podcastEpisodes[currentPodcastIndex];
+      if (turnIndex < 0) turnIndex = 0;
+      if (turnIndex >= episode.turns.length) turnIndex = episode.turns.length - 1;
+      currentTurnIndex = turnIndex;
+
+      const currentTurn = episode.turns[currentTurnIndex];
+
+      // 更新顶部播客标识
+      podcastSourceTag.innerText = `🎙️ ${episode.podcast}`;
+      podcastGuestTag.innerText = `受访者: ${episode.guest}`;
+      podcastDurationTag.innerText = episode.duration || '约 5 分钟';
+      shadowingTopicTitle.innerText = episode.topic;
+      scriptSceneContext.innerText = `场景背景：${episode.context} (第 ${currentTurnIndex + 1}/${episode.turns.length} 问答)`;
+
+      // 更新台词卡片
+      partnerSpeakerName.innerText = `${currentTurn.partner || episode.host} (主持人提问)`;
+      partnerEnText.innerText = currentTurn.partnerEn;
+      partnerZhText.innerText = currentTurn.partnerZh;
+
+      userSpeakerRole.innerText = `${episode.guestRole || 'Guest'} (您跟读受访者观点)`;
+      targetEnText.innerText = currentTurn.targetEn;
+      targetPhoneticText.innerText = currentTurn.targetPhonetic;
+      targetZhText.innerText = currentTurn.targetZh;
+
+      turnCounterLabel.innerText = `${currentTurnIndex + 1} / ${episode.turns.length}`;
+      prevLessonBtn.disabled = (currentTurnIndex === 0);
+      nextLessonBtn.disabled = (currentTurnIndex === episode.turns.length - 1);
+
+      // 渲染多回合步进胶囊
+      renderTurnStepper(episode.turns.length, currentTurnIndex);
+
+      // 清空旧评分卡
       evalReportWrapper.innerHTML = '';
+    }
+
+    function renderTurnStepper(totalTurns, activeIdx) {
+      turnStepperBar.innerHTML = '';
+      for (let i = 0; i < totalTurns; i++) {
+        const pill = document.createElement('div');
+        pill.className = `turn-step-pill ${i === activeIdx ? 'active' : ''}`;
+        pill.innerText = `回合 ${i + 1}`;
+        pill.addEventListener('click', () => {
+          triggerHaptic('light');
+          loadPodcastEpisode(currentPodcastIndex, i);
+        });
+        turnStepperBar.appendChild(pill);
+      }
     }
 
     prevLessonBtn.addEventListener('click', () => {
       triggerHaptic('light');
-      loadShadowingLesson(currentLessonIndex - 1);
+      loadPodcastEpisode(currentPodcastIndex, currentTurnIndex - 1);
     });
 
     nextLessonBtn.addEventListener('click', () => {
       triggerHaptic('light');
-      loadShadowingLesson(currentLessonIndex + 1);
+      loadPodcastEpisode(currentPodcastIndex, currentTurnIndex + 1);
     });
 
-    // 示范发音朗读 (优先使用 Web Speech Synthesis 地道朗读，支持英式与美式区分)
-    function playSpeechSample(text, accentCode) {
-      triggerHaptic('light');
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = accentCode === 'en-GB' ? 'en-GB' : 'en-US';
-        utterance.rate = 0.92; // 稍放慢语速方便练习者听清音节
-        utterance.pitch = 1.0;
-
-        // 智能匹配系统中的英美口音声音
-        const voices = window.speechSynthesis.getVoices();
-        const targetVoice = voices.find(v => v.lang.startsWith(utterance.lang) || v.name.toLowerCase().includes(accentCode === 'en-GB' ? 'british' : 'us'));
-        if (targetVoice) utterance.voice = targetVoice;
-
-        window.speechSynthesis.speak(utterance);
-        showToast(`正在播放${accentCode === 'en-GB' ? '英式' : '美式'}示范原音...`);
-      } else {
-        showToast('浏览器暂不支持离线语音合成');
-      }
-    }
-
     playPartnerSampleBtn.addEventListener('click', () => {
-      const lesson = SHADOWING_LESSONS[currentLessonIndex];
-      playSpeechSample(lesson.partnerEn, currentAccent);
+      const turn = podcastEpisodes[currentPodcastIndex].turns[currentTurnIndex];
+      playSpeechSample(turn.partnerEn, currentAccent, playPartnerSampleBtn);
     });
 
     playTargetSampleBtn.addEventListener('click', () => {
-      const lesson = SHADOWING_LESSONS[currentLessonIndex];
-      playSpeechSample(lesson.targetEn, currentAccent);
+      const turn = podcastEpisodes[currentPodcastIndex].turns[currentTurnIndex];
+      playSpeechSample(turn.targetEn, currentAccent, playTargetSampleBtn);
     });
+
+    // =========================================================
+    // Gemini 智能扩充生成最新真实播客/访谈文稿 (零代码配置，即点即生)
+    // =========================================================
+    generatePodcastBtn.addEventListener('click', async () => {
+      const apiKey = localStorage.getItem('gemini_api_key');
+      if (!apiKey) {
+        showToast('请先配置 Google API Key');
+        openSheet(settingsModal);
+        return;
+      }
+
+      triggerHaptic('medium');
+      const accent = localStorage.getItem('gemini_accent') || 'en-US';
+      const accentPref = (accent === 'en-GB') ? 'British English' : 'American English';
+
+      showToast('正在调动 Gemini 提取并构筑全新播客访谈 (约需数秒)...');
+      generatePodcastBtn.disabled = true;
+      generatePodcastBtn.innerHTML = '<span>⏳ 正在构筑...</span>';
+
+      const prompt = `
+You are a premier podcast curator and English linguistics specialist.
+Generate a brand new, highly realistic, intellectually engaging English podcast/interview transcript tailored for deep shadowing practice.
+Language accent style: ${accentPref}.
+
+Requirements:
+1. Target length: ~8 to 10 minutes deep speaking practice, structured into EXACTLY 10 continuous question-and-answer turns (from turn 1 to turn 10).
+2. The interviewee (Guest) must be an articulate, visionary person (e.g., tech founder, neuroscientist, philosopher, bestselling author, or world-class artist).
+3. The guest's spoken responses must be natural, colloquial yet intellectually deep, featuring authentic connectors, vivid idioms, and varied sentence rhythms.
+4. Provide accurate IPA phonetic transcription (targetPhonetic) and practical pronunciation tips (keyTip) for each turn.
+5. Output STRICT JSON format as follows (do NOT wrap with any markdown or code blocks):
+{
+  "id": "podcast_${Date.now()}",
+  "podcast": "Name of the show (e.g. The Joe Rogan Experience, On Purpose with Jay Shetty, The Economist Asks, Huberman Lab, etc.)",
+  "host": "Name of Host",
+  "guest": "Name of Guest",
+  "guestRole": "Role title",
+  "topic": "Compelling Title of the Episode",
+  "category": "Category name",
+  "duration": "约 8-10 分钟 · 10 回合",
+  "context": "Detailed scenario background in Chinese",
+  "turns": [
+    {
+      "partner": "Host Name",
+      "partnerEn": "Host question in English",
+      "partnerZh": "Host question in Chinese",
+      "targetEn": "Guest articulate response in English (20-40 words ideal for shadowing)",
+      "targetPhonetic": "Full IPA phonetic transcription for the guest response",
+      "targetZh": "Guest response translated into natural Chinese",
+      "keyTip": "Detailed pronunciation, linking, and stress tips in Chinese"
+    }
+  ]
+}
+`;
+
+      try {
+        const payload = {
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { responseMimeType: "application/json" }
+        };
+
+        const preferredTextModel = localStorage.getItem('gemini_text_model') || 'gemini-3.5-flash-lite';
+        const { data: resData, modelUsed } = await callGeminiGenerateContent(apiKey, payload, preferredTextModel);
+        const jsonText = resData.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!jsonText) throw new Error("未能生成文稿内容");
+
+        const cleanedJson = jsonText.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+        const newEpisode = JSON.parse(cleanedJson);
+        if (!newEpisode.turns || !Array.isArray(newEpisode.turns) || newEpisode.turns.length === 0) {
+          throw new Error("文稿结构不完整，缺少对话轮次");
+        }
+
+        podcastEpisodes.unshift(newEpisode);
+        localStorage.setItem('gemini_podcast_episodes', JSON.stringify(podcastEpisodes));
+
+        renderPodcastList();
+        loadPodcastEpisode(0, 0);
+        triggerHaptic('success');
+        showToast(`✨ 成功生成播客：《${newEpisode.topic}》 (${modelUsed})`);
+      } catch (err) {
+        console.error("Generate Podcast Error:", err);
+        showToast(`生成失败: ${err.message || '网络或 API Key 异常'}`);
+      } finally {
+        generatePodcastBtn.disabled = false;
+        generatePodcastBtn.innerHTML = '<span>✨ AI 扩充文稿</span>';
+      }
+    });
+
 
     // =========================================================
     // 抽屉弹窗控制
@@ -2199,6 +3681,10 @@
         card.classList.add('selected');
         pendingScenarioKey = card.getAttribute('data-key');
         customScenarioWrapper.style.display = pendingScenarioKey === 'custom' ? 'block' : 'none';
+        
+        if (pendingScenarioKey !== 'custom') {
+          setTimeout(() => confirmScenarioBtn.click(), 150);
+        }
       });
     });
 
@@ -2220,18 +3706,29 @@
       scenarioCurrentIcon.innerText = active.icon;
     }
 
-    modelSelect.addEventListener('change', () => {
-      customModelWrapper.style.display = modelSelect.value === 'custom' ? 'block' : 'none';
+    liveModelSelect.addEventListener('change', () => {
+      customLiveModelWrapper.style.display = liveModelSelect.value === 'custom' ? 'block' : 'none';
+    });
+
+    textModelSelect.addEventListener('change', () => {
+      customTextModelWrapper.style.display = textModelSelect.value === 'custom' ? 'block' : 'none';
     });
 
     saveSettingsBtn.addEventListener('click', () => {
       const key = apiKeyInput.value.trim();
       localStorage.setItem('gemini_api_key', key);
-      let selectedModel = modelSelect.value === 'custom' ? customModelInput.value.trim() : modelSelect.value;
-      if (selectedModel && !selectedModel.startsWith('models/')) {
-        selectedModel = 'models/' + selectedModel;
+
+      // 1. 保存实时语音模型
+      let selectedLive = liveModelSelect.value === 'custom' ? customLiveModelInput.value.trim() : liveModelSelect.value;
+      if (selectedLive && !selectedLive.startsWith('models/')) {
+        selectedLive = 'models/' + selectedLive;
       }
-      localStorage.setItem('gemini_model', selectedModel);
+      localStorage.setItem('gemini_live_model', selectedLive || 'models/gemini-3.1-flash-live-preview');
+
+      // 2. 保存文本扩充模型
+      let selectedText = textModelSelect.value === 'custom' ? customTextModelInput.value.trim() : textModelSelect.value;
+      localStorage.setItem('gemini_text_model', selectedText || 'gemini-3.5-flash-lite');
+
       localStorage.setItem('gemini_voice', voiceSelect.value);
       currentAccent = accentSelect.value;
       localStorage.setItem('gemini_accent', currentAccent);
@@ -2239,7 +3736,7 @@
 
       closeSheet(settingsModal);
       triggerHaptic('success');
-      showToast('配置已永久保存在本地');
+      showToast('语音与文本模型配置已永久保存');
       if (isLive) stopSession("设置已更新，请重新开启");
     });
 
@@ -2372,6 +3869,19 @@
           isSetupComplete = true;
           updateStatus('connected', 'Live 双向对话中');
           showToast('连接就绪，请开口交流');
+          
+          // 主动发送第一句话，引导 AI 开场发音
+          if (ws && ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify({
+              clientContent: {
+                turns: [{
+                  role: "user",
+                  parts: [{ text: "Hello! I am ready. Please start our conversation by greeting me first." }]
+                }],
+                turnComplete: true
+              }
+            }));
+          }
           return;
         }
 
@@ -2403,7 +3913,7 @@
     function sendInitialLiveSetup() {
       const voice = localStorage.getItem('gemini_voice') || 'Aoede';
       const accent = localStorage.getItem('gemini_accent') || 'en-US';
-      let model = localStorage.getItem('gemini_model') || 'models/gemini-3.1-flash-live-preview';
+      let model = localStorage.getItem('gemini_live_model') || 'models/gemini-3.1-flash-live-preview';
       if (!model.startsWith('models/')) {
         model = 'models/' + model;
       }
@@ -2769,7 +4279,8 @@ Do NOT vocalize the bracket tags.
     // 将音频转 Base64 并调用 Gemini REST 接口进行声学多维度评分
     async function evaluateShadowingWithAI(audioBlob) {
       const apiKey = localStorage.getItem('gemini_api_key');
-      const lesson = SHADOWING_LESSONS[currentLessonIndex];
+      const episode = podcastEpisodes[currentPodcastIndex];
+      const lesson = episode.turns[currentTurnIndex];
       const accent = localStorage.getItem('gemini_accent') || 'en-US';
       const accentName = accent === 'en-GB' ? 'British RP' : 'General American';
 
@@ -2802,34 +4313,30 @@ Output JSON only, do NOT wrap with markdown blocks or other text.
 
       try {
         const mimeType = audioBlob.type.split(';')[0] || 'audio/webm';
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-        
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{
-              parts: [
-                { text: prompt },
-                {
-                  inlineData: {
-                    mimeType: mimeType,
-                    data: base64Audio
-                  }
+        const payload = {
+          contents: [{
+            parts: [
+              { text: prompt },
+              {
+                inlineData: {
+                  mimeType: mimeType,
+                  data: base64Audio
                 }
-              ]
-            }],
-            generationConfig: {
-              responseMimeType: "application/json"
-            }
-          })
-        });
+              }
+            ]
+          }],
+          generationConfig: {
+            responseMimeType: "application/json"
+          }
+        };
 
-        const data = await response.json();
+        const preferredTextModel = localStorage.getItem('gemini_text_model') || 'gemini-3.5-flash-lite';
+        const { data, modelUsed } = await callGeminiGenerateContent(apiKey, payload, preferredTextModel);
         const jsonText = data.candidates?.[0]?.content?.parts?.[0]?.text;
         if (!jsonText) throw new Error("未能获得评分结果");
 
-        const result = JSON.parse(jsonText);
+        const cleanedJson = jsonText.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+        const result = JSON.parse(cleanedJson);
         renderShadowingEvaluation(result, lesson);
         updateStatus('disconnected', '评测完成');
         triggerHaptic('success');
@@ -2928,7 +4435,7 @@ Output JSON only, do NOT wrap with markdown blocks or other text.
       const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
       history.unshift({
         startTime: new Date().toLocaleString(),
-        scenario: `[跟读评测] ${lesson.topic}`,
+        scenario: `[播客跟读] ${episode.podcast} · ${episode.guest}`,
         exchanges: [
           { speaker: 'Target', text: lesson.targetEn },
           { speaker: 'Score', text: `${result.totalScore}分 (${result.grade})` },
@@ -3016,6 +4523,13 @@ Output JSON only, do NOT wrap with markdown blocks or other text.
       });
       activeSources = [];
       scheduledTime = 0;
+      if (currentSampleAudio) {
+        try { currentSampleAudio.pause(); } catch (e) { }
+        currentSampleAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch (e) { }
+      }
     }
 
     // =========================================================
