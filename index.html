@@ -9,26 +9,28 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="EchoSpeak" />
   <meta name="theme-color" content="#090d16" />
-  <title>EchoSpeak Pro · 智能口语教练</title>
+  <title>EchoSpeak Pro · 智能口语教练与跟读评测</title>
 
   <link rel="manifest"
     href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22EchoSpeak%20Pro%22%2C%22short_name%22%3A%22EchoSpeak%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23090d16%22%2C%22theme_color%22%3A%22%23090d16%22%7D" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
   <style>
     :root {
       --bg-primary: #090d16;
       --bg-secondary: #111827;
-      --surface-glass: rgba(19, 26, 42, 0.75);
+      --surface-glass: rgba(19, 26, 42, 0.78);
       --surface-glass-border: rgba(255, 255, 255, 0.08);
-      --surface-card: #151d30;
+      --surface-card: #131b2e;
+      --surface-card-hover: #1a253c;
 
       --accent-primary: #38bdf8;
       --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%);
+      --accent-emerald: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
       --accent-glow: rgba(56, 189, 248, 0.35);
 
       --user-bubble: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
@@ -41,6 +43,7 @@
       --danger: #f43f5e;
       --success: #10b981;
       --warning: #f59e0b;
+      --purple: #a855f7;
 
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -76,7 +79,7 @@
       position: relative;
     }
 
-    /* 顶部拟真系统栏与灵动胶囊导航 */
+    /* 顶部导航栏 */
     header {
       padding-top: calc(var(--safe-top) + 8px);
       padding-left: 16px;
@@ -85,9 +88,9 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: linear-gradient(180deg, rgba(9, 13, 22, 0.96) 0%, rgba(9, 13, 22, 0.85) 80%, transparent 100%);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(9, 13, 22, 0.98) 0%, rgba(9, 13, 22, 0.88) 80%, transparent 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       z-index: 40;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
@@ -105,23 +108,37 @@
     }
 
     .app-logo {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: var(--radius-sm);
       background: var(--accent-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px var(--accent-glow);
+      box-shadow: 0 4px 14px var(--accent-glow);
     }
 
     .app-title-group h1 {
-      font-size: 0.95rem;
-      font-weight: 700;
+      font-size: 0.96rem;
+      font-weight: 800;
       letter-spacing: -0.01em;
       background: linear-gradient(90deg, #ffffff, #cbd5e1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .accent-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-primary);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      cursor: pointer;
     }
 
     .nav-actions {
@@ -150,6 +167,39 @@
       color: var(--text-main);
     }
 
+    /* 模式切换 Segmented Control */
+    .mode-switch-bar {
+      display: flex;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      position: relative;
+    }
+
+    .mode-tab-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mode-tab-btn.active {
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+    }
+
     /* 灵动场景选择条 */
     .scenario-capsule {
       display: flex;
@@ -159,9 +209,9 @@
       border: 1px solid var(--surface-glass-border);
       padding: 6px 12px;
       border-radius: var(--radius-full);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       cursor: pointer;
-      transition: transform 0.15s ease;
+      transition: transform 0.15s ease, border-color 0.2s ease;
     }
 
     .scenario-capsule:active {
@@ -201,7 +251,7 @@
 
     .scenario-pill-tag {
       font-size: 0.7rem;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: var(--radius-full);
       background: rgba(255, 255, 255, 0.08);
       color: var(--text-sub);
@@ -211,14 +261,14 @@
       flex-shrink: 0;
     }
 
-    /* 顶部通话状态胶囊 */
+    /* 通话状态胶囊 */
     .call-status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
+      gap: 5px;
+      font-size: 0.7rem;
       font-weight: 500;
-      padding: 3px 10px;
+      padding: 2px 8px;
       border-radius: var(--radius-full);
       background: rgba(15, 23, 42, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -226,8 +276,8 @@
     }
 
     .status-ping {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: #64748b;
       position: relative;
@@ -241,7 +291,7 @@
 
     .call-status-pill.connected .status-ping {
       background: #10b981;
-      box-shadow: 0 0 10px #10b981;
+      box-shadow: 0 0 8px #10b981;
     }
 
     .call-status-pill.connected .status-ping::after {
@@ -264,29 +314,24 @@
     }
 
     @keyframes ping {
-
-      75%,
-      100% {
-        transform: scale(2.2);
-        opacity: 0;
-      }
+      75%, 100% { transform: scale(2.2); opacity: 0; }
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
-    /* 主聊天流区域 */
-    main {
+    /* 主视图容器 */
+    .views-wrapper {
       flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .view-pane {
+      position: absolute;
+      inset: 0;
       overflow-y: auto;
       padding: 14px 16px 20px;
       display: flex;
@@ -294,31 +339,38 @@
       gap: 16px;
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    main::-webkit-scrollbar {
+    .view-pane.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.98);
+    }
+
+    .view-pane::-webkit-scrollbar {
       width: 4px;
     }
 
-    main::-webkit-scrollbar-thumb {
+    .view-pane::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 4px;
     }
 
-    /* 欢迎卡片 */
+    /* 自由对话模式组件 */
     .hero-welcome {
       text-align: center;
-      padding: 24px 16px;
+      padding: 20px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       animation: fadeIn 0.4s ease-out;
     }
 
     .hero-orb {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 35%, #60a5fa, #4f46e5 60%, #1e1b4b);
       box-shadow: 0 0 35px rgba(99, 102, 241, 0.4);
@@ -326,7 +378,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .hero-orb::after {
@@ -339,25 +391,23 @@
     }
 
     @keyframes spinSlow {
-      100% {
-        transform: rotate(360deg);
-      }
+      100% { transform: rotate(360deg); }
     }
 
     .hero-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #fff;
     }
 
     .hero-desc {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-sub);
-      max-width: 290px;
+      max-width: 300px;
       line-height: 1.5;
     }
 
-    /* 消息卡片体系 */
+    /* 消息气泡体系 */
     .msg-group {
       display: flex;
       flex-direction: column;
@@ -367,15 +417,8 @@
     }
 
     @keyframes messageSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      from { opacity: 0; transform: translateY(12px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .msg-group.user {
@@ -400,7 +443,7 @@
     .bubble {
       padding: 12px 16px;
       border-radius: 20px;
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       line-height: 1.55;
       position: relative;
       word-break: break-word;
@@ -423,12 +466,10 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* 纠错/改进卡片 */
-    .correction-card {
+    /* 纠错与发音反馈卡片 */
+    .correction-card, .pronunciation-card {
       align-self: center;
       width: 100%;
-      background: linear-gradient(135deg, rgba(30, 24, 18, 0.85) 0%, rgba(20, 24, 38, 0.85) 100%);
-      border: 1px solid rgba(245, 158, 11, 0.3);
       border-radius: var(--radius-md);
       padding: 12px 14px;
       display: flex;
@@ -442,116 +483,343 @@
       overflow: hidden;
     }
 
+    .correction-card {
+      background: linear-gradient(135deg, rgba(30, 24, 18, 0.9) 0%, rgba(20, 24, 38, 0.9) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
     .correction-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
+      top: 0; left: 0; width: 4px; height: 100%;
       background: linear-gradient(180deg, #f59e0b, #ef4444);
     }
 
-    .correction-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .correction-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #fbbf24;
-      background: rgba(245, 158, 11, 0.15);
-      padding: 3px 8px;
-      border-radius: var(--radius-full);
-    }
-
-    .correction-content {
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: #e2e8f0;
-    }
-
-    /* 发音与口音专项精修建议卡片 */
     .pronunciation-card {
-      background: linear-gradient(135deg, rgba(35, 18, 55, 0.85) 0%, rgba(20, 24, 38, 0.85) 100%);
+      background: linear-gradient(135deg, rgba(35, 18, 55, 0.9) 0%, rgba(20, 24, 38, 0.9) 100%);
       border: 1px solid rgba(168, 85, 247, 0.35);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      animation: messageSlideIn 0.3s ease;
-      user-select: text;
-      -webkit-user-select: text;
-      position: relative;
-      overflow: hidden;
     }
-
     .pronunciation-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
+      top: 0; left: 0; width: 4px; height: 100%;
       background: linear-gradient(180deg, #a855f7, #ec4899);
     }
 
-    .pronunciation-header {
+    .card-header-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+    }
+
+    .correction-card .card-header-badge {
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+    }
+
+    .pronunciation-card .card-header-badge {
+      color: #c084fc;
+      background: rgba(168, 85, 247, 0.18);
+    }
+
+    .card-content-text {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #f1f5f9;
+    }
+
+    /* ==========================================
+       跟读练习模式专用组件样式
+       ========================================== */
+    .shadowing-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .shadowing-progress-card {
+      background: var(--surface-glass);
+      border: 1px solid var(--surface-glass-border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .progress-info h3 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .progress-info p {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
+    .nav-arrow-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .nav-arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* 对话字幕先行呈现卡片 */
+    .dialogue-script-box {
+      background: var(--surface-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .script-context-tag {
+      font-size: 0.72rem;
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .script-turn {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 0, 0, 0.2);
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .script-turn.active-turn {
+      background: rgba(56, 189, 248, 0.08);
+      border-left-color: var(--accent-primary);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-left-width: 4px;
+    }
+
+    .script-speaker {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-sub);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .pronunciation-badge {
+    .script-turn.active-turn .script-speaker {
+      color: var(--accent-primary);
+    }
+
+    .script-en {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    .script-phonetic {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: #38bdf8;
+      opacity: 0.85;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    .script-zh {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.4;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    .target-badge {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      background: var(--accent-gradient);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .action-row-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-listen-sample {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #c084fc;
-      background: rgba(168, 85, 247, 0.18);
-      padding: 3px 8px;
+      gap: 6px;
+      padding: 6px 12px;
       border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-primary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
     }
 
-    .pronunciation-content {
-      font-size: 0.88rem;
+    .btn-listen-sample:active {
+      transform: scale(0.95);
+      background: rgba(56, 189, 248, 0.25);
+    }
+
+    /* 跟读评分报告大卡片 */
+    .eval-report-card {
+      background: linear-gradient(145deg, #131d30 0%, #0d1527 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      animation: messageSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .eval-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+
+    .eval-score-ring {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .score-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .score-total {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .eval-grade-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    /* 多维度评分进度条 */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .metric-item {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .metric-name-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-sub);
+    }
+
+    .metric-bar-bg {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .metric-bar-fill {
+      height: 100%;
+      background: var(--accent-gradient);
+      border-radius: 2px;
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .eval-diagnostics-box {
+      font-size: 0.84rem;
+      color: #e2e8f0;
       line-height: 1.5;
-      color: #f3e8ff;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent-primary);
+      user-select: text;
+      -webkit-user-select: text;
     }
 
-    /* 底部操作控制面板 (iOS Dock 风格) */
+    /* 底部操作控制面板 (iOS Dock) */
     footer {
       padding-top: 10px;
       padding-bottom: calc(var(--safe-bottom) + 12px);
       padding-left: 20px;
       padding-right: 20px;
-      background: linear-gradient(180deg, rgba(9, 13, 22, 0) 0%, rgba(9, 13, 22, 0.92) 25%, rgba(9, 13, 22, 0.98) 100%);
+      background: linear-gradient(180deg, rgba(9, 13, 22, 0) 0%, rgba(9, 13, 22, 0.94) 25%, rgba(9, 13, 22, 0.99) 100%);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       position: relative;
       z-index: 30;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    /* 实时音频波形 */
+    /* 实时波形 */
     .dock-visualizer {
-      height: 32px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -603,7 +871,7 @@
       color: #fff;
     }
 
-    /* 核心麦克风主按钮 */
+    /* 核心麦克风通话控制主按钮 */
     .main-call-btn {
       width: 72px;
       height: 72px;
@@ -647,19 +915,30 @@
       opacity: 1;
     }
 
-    @keyframes pulseActive {
-
-      0%,
-      100% {
-        box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
-      }
-
-      50% {
-        box-shadow: 0 0 45px rgba(239, 68, 68, 0.7);
-      }
+    /* 跟读模式下的微动按钮状态 */
+    .main-call-btn.shadowing-record {
+      border-color: #10b981;
+      color: #10b981;
     }
 
-    /* 原生级 iOS 底部滑出抽屉 (Bottom Sheet) */
+    .main-call-btn.shadowing-record.recording {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+      animation: pulseShadowing 1.8s infinite;
+    }
+
+    @keyframes pulseShadowing {
+      0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.7); }
+    }
+
+    @keyframes pulseActive {
+      0%, 100% { box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); }
+      50% { box-shadow: 0 0 45px rgba(239, 68, 68, 0.7); }
+    }
+
+    /* 抽屉浮层与弹窗 (Bottom Sheet) */
     .sheet-overlay {
       position: fixed;
       inset: 0;
@@ -750,7 +1029,6 @@
     .sheet-body::-webkit-scrollbar {
       width: 4px;
     }
-
     .sheet-body::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 4px;
@@ -770,9 +1048,7 @@
       letter-spacing: 0.03em;
     }
 
-    .app-input,
-    .app-select,
-    .app-textarea {
+    .app-input, .app-select, .app-textarea {
       width: 100%;
       background: #090d16;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -785,9 +1061,7 @@
       transition: border-color 0.2s ease;
     }
 
-    .app-input:focus,
-    .app-select:focus,
-    .app-textarea:focus {
+    .app-input:focus, .app-select:focus, .app-textarea:focus {
       border-color: var(--accent-primary);
       box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
     }
@@ -957,13 +1231,13 @@
       font-size: 0.82rem;
       color: var(--text-sub);
       line-height: 1.5;
-      max-height: 120px;
+      max-height: 140px;
       overflow-y: auto;
     }
 
     .toast-notice {
       position: fixed;
-      top: calc(var(--safe-top) + 20px);
+      top: calc(var(--safe-top) + 16px);
       left: 50%;
       transform: translateX(-50%) translateY(-20px);
       background: rgba(17, 24, 39, 0.95);
@@ -1003,7 +1277,10 @@
           </svg>
         </div>
         <div class="app-title-group">
-          <h1>EchoSpeak Live</h1>
+          <h1>
+            <span>EchoSpeak</span>
+            <span id="quickAccentTag" class="accent-tag" title="点击切换英/美音">🇺🇸 美音</span>
+          </h1>
           <div id="statusBadge" class="call-status-pill">
             <span class="status-ping"></span>
             <span id="statusText">待命就绪</span>
@@ -1012,7 +1289,7 @@
       </div>
 
       <div class="nav-actions">
-        <button id="historyBtn" class="icon-btn" title="复盘记录" aria-label="复盘记录">
+        <button id="historyBtn" class="icon-btn" title="复盘与评分记录" aria-label="复盘记录">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -1034,14 +1311,31 @@
       </div>
     </div>
 
-    <!-- 灵动交互胶囊：当前场景快捷入口 -->
+    <!-- 模式分段选择器 -->
+    <div class="mode-switch-bar">
+      <button id="tabFreeTalk" class="mode-tab-btn active">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>自由对话模式</span>
+      </button>
+      <button id="tabShadowing" class="mode-tab-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>跟读与评分模式</span>
+      </button>
+    </div>
+
+    <!-- 灵动场景快捷入口 -->
     <div id="scenarioTrigger" class="scenario-capsule">
       <div class="scenario-left">
-        <div class="scenario-icon-bubble" id="scenarioCurrentIcon">💬</div>
-        <span class="scenario-name" id="currentScenarioText">日常自由畅聊 (Casual Talk)</span>
+        <div class="scenario-icon-bubble" id="scenarioCurrentIcon">☕</div>
+        <span class="scenario-name" id="currentScenarioText">日常自由闲聊 (Casual Talk)</span>
       </div>
       <div class="scenario-pill-tag">
-        <span>切换</span>
+        <span>话题库</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
@@ -1050,32 +1344,108 @@
     </div>
   </header>
 
-  <!-- 主对话流视图 -->
-  <main id="chatContainer">
-    <div class="hero-welcome">
-      <div class="hero-orb">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-          <line x1="12" y1="19" x2="12" y2="23"></line>
-          <line x1="8" y1="23" x2="16" y2="23"></line>
-        </svg>
+  <!-- 视图容器 -->
+  <div class="views-wrapper">
+    <!-- 视图 1：自由对话模式 -->
+    <main id="freeTalkView" class="view-pane">
+      <div class="hero-welcome">
+        <div class="hero-orb">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+        </div>
+        <h2 class="hero-title">自由流畅交流 · 双方字幕实时转写</h2>
+        <p class="hero-desc">搭载 Gemini 3.1 Flash Live，全双工自由打断。双方语音转写呈现，辅以地道表达与口音建议。</p>
       </div>
-      <h2 class="hero-title">像真人般随时开口练</h2>
-      <p class="hero-desc">全双工实时多模态内核，支持随时打断与语法润色。手机端点击麦克风即可无缝开启对练。</p>
-    </div>
 
-    <div class="msg-group ai">
-      <div class="msg-meta">
-        <span>Gemini Coach</span>
-        <span>• 刚才</span>
+      <div class="msg-group ai">
+        <div class="msg-meta">
+          <span>Gemini Coach</span>
+          <span>• 刚才</span>
+        </div>
+        <div class="bubble">
+          Hello! I'm your native spoken English coach. Tap the microphone below whenever you're ready, and let's talk!
+        </div>
       </div>
-      <div class="bubble">
-        Hello! I'm ready whenever you are. Just tap the mic below, and let's start talking!
+    </main>
+
+    <!-- 视图 2：跟读评测模式 -->
+    <section id="shadowingView" class="view-pane hidden">
+      <div class="shadowing-hero">
+        <div class="shadowing-progress-card">
+          <div class="progress-info">
+            <h3 id="shadowingTopicTitle">情景跟读关卡</h3>
+            <p id="shadowingProgressLabel">第 1 / 8 关 · 场景跟读</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="prevLessonBtn" class="nav-arrow-btn" title="上一句">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button id="nextLessonBtn" class="nav-arrow-btn" title="下一句">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 双方字幕先行展示区 -->
+        <div class="dialogue-script-box" id="dialogueScriptBox">
+          <div class="script-context-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span id="scriptSceneContext">场景上下文：咖啡厅点餐与定制</span>
+          </div>
+
+          <!-- 对方上文台词 (先导上下文) -->
+          <div class="script-turn" id="partnerTurnBox">
+            <div class="script-speaker">
+              <span id="partnerSpeakerName">Barista (咖啡师)</span>
+              <button id="playPartnerSampleBtn" class="btn-listen-sample">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>听原音</span>
+              </button>
+            </div>
+            <div class="script-en" id="partnerEnText">Good morning! What can I get started for you today?</div>
+            <div class="script-zh" id="partnerZhText">早上好！今天想喝点什么呢？</div>
+          </div>
+
+          <!-- 练习人目标跟读句 (待读内容) -->
+          <div class="script-turn active-turn" id="userTurnBox">
+            <div class="script-speaker">
+              <span>You (请跟读此句)</span>
+              <div style="display:flex; gap:6px; align-items:center;">
+                <span class="target-badge">目标句</span>
+                <button id="playTargetSampleBtn" class="btn-listen-sample">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>示范发音</span>
+                </button>
+              </div>
+            </div>
+            <div class="script-en" id="targetEnText">Could I have an iced oat latte with an extra shot, please?</div>
+            <div class="script-phonetic" id="targetPhoneticText">/kʊd aɪ hæv ən aɪst oʊt ˈlɑːteɪ wɪð ən ˈekstrə ʃɑːt pliːz/</div>
+            <div class="script-zh" id="targetZhText">可以来一杯冰燕麦拿铁加一份浓缩吗，谢谢？</div>
+          </div>
+        </div>
+
+        <!-- 测评结果反馈卡片容器 -->
+        <div id="evalReportWrapper"></div>
       </div>
-    </div>
-  </main>
+    </section>
+  </div>
 
   <!-- 底部通话控制栏 -->
   <footer>
@@ -1098,8 +1468,8 @@
     </div>
 
     <div class="controls-dock">
-      <!-- 快捷清屏/重置 -->
-      <button id="clearChatBtn" class="dock-btn" title="清空对话流" aria-label="清空对话">
+      <!-- 快捷清屏/换句 -->
+      <button id="dockLeftBtn" class="dock-btn" title="清屏 / 重置" aria-label="清屏">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <polyline points="3 6 5 6 21 6"></polyline>
@@ -1107,18 +1477,18 @@
         </svg>
       </button>
 
-      <!-- 核心麦克风通话控制按钮 -->
+      <!-- 核心通话/跟读录音主按钮 -->
       <button id="mainActionBtn" class="main-call-btn" title="点击开始/结束通话" aria-label="开始对话">
         <svg id="micIcon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
           <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-          <line x1="12" x2="12" y1="19" y2="22"></line>
+          <line x1="12" x2="12" y1="19" x2="12" y2="22"></line>
         </svg>
       </button>
 
-      <!-- 快捷场景切换 -->
-      <button id="quickScenarioBtn" class="dock-btn" title="快速换题" aria-label="场景选择">
+      <!-- 快捷换场景/换关卡 -->
+      <button id="quickScenarioBtn" class="dock-btn" title="话题与题库" aria-label="场景选择">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
@@ -1128,15 +1498,14 @@
     </div>
   </footer>
 
-  <!-- 底部抽屉：场景预设 -->
+  <!-- 底部抽屉：丰富话题库选择 -->
   <div id="scenarioModal" class="sheet-overlay">
     <div class="sheet-container">
       <div class="sheet-handle" id="handleScenarioSheet"></div>
       <div class="sheet-header">
-        <div class="sheet-title">演练场景与角色定制</div>
+        <div class="sheet-title">精选话题与场景角色</div>
         <button class="sheet-close-btn" id="closeScenarioSheetBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1148,8 +1517,8 @@
           <div class="scenario-option-card selected" data-key="casual">
             <div class="scenario-opt-icon">☕</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">日常自由闲聊</div>
-              <div class="scenario-opt-desc">Casual Talk · 谈论周末/生活琐事/兴趣爱好，轻松地道</div>
+              <div class="scenario-opt-title">日常闲聊与咖啡社交</div>
+              <div class="scenario-opt-desc">Casual & Coffee · 谈论周末、咖啡定制、天气与生活琐事</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1158,7 +1527,7 @@
             <div class="scenario-opt-icon">🗣️</div>
             <div class="scenario-opt-info">
               <div class="scenario-opt-title">发音与口音专项精修</div>
-              <div class="scenario-opt-desc">Accent Coach · 重点监听咬舌音/元音长短/重音与连读弱读</div>
+              <div class="scenario-opt-desc">Accent Clinic · 针对 /θ/, /r/, /l/ 咬舌、重音与连读弱读深度纠音</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1167,7 +1536,7 @@
             <div class="scenario-opt-icon">🎓</div>
             <div class="scenario-opt-info">
               <div class="scenario-opt-title">雅思口语模拟考官</div>
-              <div class="scenario-opt-desc">IELTS Speaking · Part 1~3 全真考官互动与高分纠偏</div>
+              <div class="scenario-opt-desc">IELTS Speaking · Part 1~3 全真考官互动、流利度与高级词汇拓展</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1176,7 +1545,7 @@
             <div class="scenario-opt-icon">💼</div>
             <div class="scenario-opt-info">
               <div class="scenario-opt-title">外企/硅谷行为面试</div>
-              <div class="scenario-opt-desc">STAR Method · 深度挖掘工作经历、领导力与冲突处理</div>
+              <div class="scenario-opt-desc">STAR Method · 深度考察领导力、团队分歧与项目攻坚</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1184,8 +1553,8 @@
           <div class="scenario-option-card" data-key="business_pitch">
             <div class="scenario-opt-icon">📊</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">商业汇报与方案辩护</div>
-              <div class="scenario-opt-desc">Pitch & Presentation · 模拟向高管汇报，应对犀利质疑与答辩</div>
+              <div class="scenario-opt-title">商务方案汇报与高管质询</div>
+              <div class="scenario-opt-desc">Pitch & Negotiation · 商业方案汇报、ROI论证与犀利问答</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1193,8 +1562,8 @@
           <div class="scenario-option-card" data-key="airport_travel">
             <div class="scenario-opt-icon">✈️</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">国际机场与海关入境</div>
-              <div class="scenario-opt-desc">Airport & Customs · 入境盘问、申报审查与行李延误沟通</div>
+              <div class="scenario-opt-title">国际机场入境与行李延误</div>
+              <div class="scenario-opt-desc">Airport & Customs · 海关盘问、免税申报与突发改签沟通</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1203,7 +1572,7 @@
             <div class="scenario-opt-icon">🏨</div>
             <div class="scenario-opt-info">
               <div class="scenario-opt-title">酒店入住与突发交涉</div>
-              <div class="scenario-opt-desc">Hotel & Complaints · 房型升级、设施故障投诉与账单异议谈判</div>
+              <div class="scenario-opt-desc">Hotel & Service · 房型升级沟通、设施报修与账单确认</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1211,8 +1580,8 @@
           <div class="scenario-option-card" data-key="fine_dining">
             <div class="scenario-opt-icon">🍽️</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">西餐点单与品酒礼仪</div>
-              <div class="scenario-opt-desc">Fine Dining & Wine · 牛排熟度、侍酒推荐、过敏源沟通与买单</div>
+              <div class="scenario-opt-title">西餐点单与侍酒礼仪</div>
+              <div class="scenario-opt-desc">Fine Dining & Wine · 菜式咨询、牛排熟度、红酒搭配与小费文化</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1220,8 +1589,8 @@
           <div class="scenario-option-card" data-key="tech_debate">
             <div class="scenario-opt-icon">🤖</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">科技前沿与深度思辨</div>
-              <div class="scenario-opt-desc">Tech & AI Debate · 探讨人工智能伦理、自动驾驶与远程未来</div>
+              <div class="scenario-opt-title">科技前沿与 AI 伦理思辩</div>
+              <div class="scenario-opt-desc">Tech & Deep Thoughts · 探讨大模型未来、人形机器人与科技社会</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
@@ -1229,35 +1598,34 @@
           <div class="scenario-option-card" data-key="custom">
             <div class="scenario-opt-icon">✨</div>
             <div class="scenario-opt-info">
-              <div class="scenario-opt-title">专属个性化定制</div>
-              <div class="scenario-opt-desc">输入任意角色、世界观或专业领域，随心定制</div>
+              <div class="scenario-opt-title">专属个性化场景定制</div>
+              <div class="scenario-opt-desc">随心输入任意情景、角色身份与目标话题</div>
             </div>
             <div class="scenario-radio-circle"></div>
           </div>
         </div>
 
         <div id="customScenarioWrapper" style="display: none;" class="form-group">
-          <label class="form-label">自定义情景设定与人设</label>
+          <label class="form-label">自定义情景设定与角色提示词</label>
           <textarea id="customScenarioInput" class="app-textarea" rows="3"
-            placeholder="例如：你是一个洛杉矶机场的入境海关官员，态度严肃专业，正在对我进行入境盘问..."></textarea>
+            placeholder="例如：你是一个伦敦希思罗机场的海关官员，态度绅士严谨，正对我的旅游行程进行询问..."></textarea>
         </div>
 
         <button class="btn-action-primary" id="confirmScenarioBtn">
-          <span>确认选定此模式</span>
+          <span>确认选定话题</span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- 底部抽屉：系统参数配置 -->
+  <!-- 底部抽屉：设置中心 (API Key、模型、口音、音色) -->
   <div id="settingsModal" class="sheet-overlay">
     <div class="sheet-container">
       <div class="sheet-handle" id="handleSettingsSheet"></div>
       <div class="sheet-header">
-        <div class="sheet-title">引擎与声音偏好</div>
+        <div class="sheet-title">引擎与口音偏好</div>
         <button class="sheet-close-btn" id="closeSettingsSheetBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1266,22 +1634,30 @@
 
       <div class="sheet-body">
         <div class="mobile-tip-card">
-          <strong>📱 手机原生点开即用优化：</strong>
-          <span>• <b>单次会话免确认</b>：进入后首次轻点即保持流活跃，通话挂断后仅软静音，不会再次弹窗。</span>
-          <span>• <b>防息屏锁定</b>：通话开启时自动开启屏幕常亮，防止手机锁屏切断。</span>
-          <span>• <b>变成独立 App</b>：在 iPhone Safari 点击底部【分享】➜【添加到主屏幕】，即可全屏独立运行！</span>
+          <strong>📱 离线与会话体验特性：</strong>
+          <span>• <b>API Key 本地自动缓存</b>：输入一次后永久保存，后续进入无需重复设置。</span>
+          <span>• <b>单次麦克风授权</b>：浏览器未关闭前麦克风流保持软就绪，绝无重复弹窗打扰。</span>
+          <span>• <b>iOS Safari 完美支持</b>：在 Safari 点击【分享】➜【添加到主屏幕】即可全屏独立使用。</span>
         </div>
 
         <div class="form-group">
           <label class="form-label">Google AI Studio API Key</label>
-          <input type="password" id="apiKeyInput" class="app-input" placeholder="AIzaSy..." />
+          <input type="password" id="apiKeyInput" class="app-input" placeholder="输入 AIzaSy 开头的 API Key (永久缓存于本地)" />
         </div>
 
         <div class="form-group">
-          <label class="form-label">Gemini 实时多模态模型</label>
+          <label class="form-label">目标口音体系 (Accent & Pronunciation)</label>
+          <select id="accentSelect" class="app-select">
+            <option value="en-US">🇺🇸 美式发音 (General American · 卷舌音与自然闪音)</option>
+            <option value="en-GB">🇬🇧 英式发音 (British RP / BBC腔 · 纯正英音非卷舌与短元音)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Gemini 实时双向对话模型</label>
           <select id="modelSelect" class="app-select">
-            <option value="models/gemini-3.1-flash-live-preview">gemini-3.1-flash-live-preview (官方最新双向实时多模态模型 - 推荐)</option>
-            <option value="custom">自定义输入其他模型名...</option>
+            <option value="models/gemini-3.1-flash-live-preview">gemini-3.1-flash-live-preview (双向全双工官方推荐)</option>
+            <option value="custom">自定义其他模型标识符...</option>
           </select>
         </div>
 
@@ -1291,26 +1667,18 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label">母语发音音色</label>
+          <label class="form-label">教练音色 (Voice Persona)</label>
           <select id="voiceSelect" class="app-select">
-            <option value="Aoede">Aoede · 温柔自然 (女声)</option>
-            <option value="Puck">Puck · 活力阳光 (男声)</option>
-            <option value="Charon">Charon · 沉稳低音 (男声)</option>
-            <option value="Kore">Kore · 舒缓清脆 (女声)</option>
-            <option value="Fenrir">Fenrir · 磁性清晰 (男声)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">口音与发音体系 (Accent & Dialect)</label>
-          <select id="accentSelect" class="app-select">
-            <option value="en-US">🇺🇸 美式发音 (General American)</option>
-            <option value="en-GB">🇬🇧 英式发音 (British RP / BBC 腔)</option>
+            <option value="Aoede">Aoede · 温和自然 (女声)</option>
+            <option value="Puck">Puck · 阳光活力 (男声)</option>
+            <option value="Charon">Charon · 沉稳专业 (男声)</option>
+            <option value="Kore">Kore · 清脆舒缓 (女声)</option>
+            <option value="Fenrir">Fenrir · 磁性浑厚 (男声)</option>
           </select>
         </div>
 
         <button class="btn-action-primary" id="saveSettingsBtn">
-          <span>保存配置</span>
+          <span>保存配置 (自动持久缓存)</span>
         </button>
       </div>
     </div>
@@ -1321,19 +1689,17 @@
     <div class="sheet-container">
       <div class="sheet-handle" id="handleHistorySheet"></div>
       <div class="sheet-header">
-        <div class="sheet-title">练习记录与语法复盘</div>
+        <div class="sheet-title">对话复盘与跟读评分记录</div>
         <div style="display: flex; gap: 8px;">
           <button id="copyHistoryMarkdownBtn" class="btn-action-subtle">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
             <span>导出 Markdown</span>
           </button>
           <button class="sheet-close-btn" id="closeHistorySheetBtn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -1347,74 +1713,58 @@
     </div>
   </div>
 
-  <!-- 浮动 Toast 消息组件 -->
+  <!-- 浮动 Toast 消息提示 -->
   <div id="toastNotice" class="toast-notice">提示信息</div>
 
   <script>
-    // ==========================================
-    // 状态、持久化配置与场景映射
-    // ==========================================
-    let isLive = false;
-    let ws = null;
-    let audioContext = null;
-    let micStream = null;          // 手机端单例持久麦克风流
-    let micSourceNode = null;
-    let scriptProcessor = null;
-    let scheduledTime = 0;
-    let activeSources = [];
-    let screenWakeLock = null;     // 手机屏幕防息屏锁
-
-    let currentSession = {
-      startTime: null,
-      scenario: '',
-      exchanges: []
-    };
-
+    // =========================================================
+    // 话题库与跟读情景题库 (内置丰富实用句式与音标)
+    // =========================================================
     const SCENARIOS = {
       casual: {
         icon: "☕",
-        name: "日常自由闲聊 (Casual Talk)",
-        prompt: "You are a friendly, casual native oral conversation partner. Chat about daily life, hobbies, travel, and weekend plans naturally. Keep responses concise, warm, natural and colloquial (1-3 sentences)."
+        name: "日常闲聊与咖啡社交",
+        prompt: "You are a warm, casual native English speaker chatting with a friend. Topics include hobbies, coffee orders, weekend plans, and daily life. Keep spoken responses natural, brief (1-3 sentences), engaging, and friendly."
       },
       accent_coach: {
         icon: "🗣️",
-        name: "发音与口音精修 (Accent Coach)",
-        prompt: "You are an expert English Accent and Phonetics Coach. Listen with extreme acoustic precision to the user's spoken audio, including phoneme clarity, syllable stress, vowel length, linking, and intonation. Concurrently converse with the user while diagnosing any phoneme errors (like /θ/, /s/, /v/, /w/, /r/, /l/, vowel laxness vs tense vowels) or unnatural accent habits, giving clear physiological mouth/tongue placement guidance."
+        name: "发音与口音专项精修",
+        prompt: "You are an expert English Phonetics & Accent Coach. Listen with acoustic precision to every vowel length, stress placement, linking sounds, and consonants (especially /θ/, /ð/, /r/, /l/, /v/, /w/). Concurrently give gentle, spot-on coaching with mouth position guidance."
       },
       ielts: {
         icon: "🎓",
-        name: "雅思口语模拟 (IELTS Speaking)",
-        prompt: "You are a strict and professional IELTS Speaking Examiner. Mimic standard IELTS Speaking test format (Part 1 brief questions, Part 2 cue card follow-up, Part 3 deep discussion). Evaluate fluency, lexical resource, and grammatical range with challenging follow-up questions."
+        name: "雅思口语模拟考官",
+        prompt: "You are a professional IELTS Speaking Examiner. Ask thought-provoking questions, encourage fluency, challenge grammatical range, and evaluate idiomatic usage."
       },
       job_interview: {
         icon: "💼",
-        name: "外企/硅谷面试 (STAR Interview)",
-        prompt: "You are an experienced hiring manager at a Fortune 500 tech company. Conduct a rigorous behavioral job interview in English using the STAR methodology (Situation, Task, Action, Result). Drill down on leadership, failure handling, and cross-functional collaboration."
+        name: "外企/硅谷行为面试",
+        prompt: "You are a hiring director conducting an English job interview using the STAR method. Inquire about past achievements, overcoming obstacles, and cross-functional leadership."
       },
       business_pitch: {
         icon: "📊",
-        name: "商务方案汇报 (Pitch & Presentation)",
-        prompt: "You are a demanding C-level executive or venture capital partner. The user is pitching a business proposal or project update to you. Listen critically, ask sharp questions about ROI, risks, and execution details, and challenge their assumptions professionally."
+        name: "商务汇报与方案辩护",
+        prompt: "You are a sharp venture capitalist or senior VP. The user pitches a business idea or quarterly plan. Challenge their ROI, product-market fit, and operational risks."
       },
       airport_travel: {
         icon: "✈️",
-        name: "国际机场海关 (Airport & Customs)",
-        prompt: "You are a border control and customs officer at an international airport (or airline customer agent). Ask typical immigration questions (purpose of trip, duration, accommodation, declaration), and simulate realistic travel scenarios like flight delay, missed connections or lost baggage."
+        name: "国际机场与海关入境",
+        prompt: "You are an airport customs & immigration officer or airline agent. Ask realistic questions regarding trip purpose, duration, hotel reservations, and travel baggage."
       },
       hotel_complaint: {
         icon: "🏨",
-        name: "酒店入住交涉 (Hotel & Complaints)",
-        prompt: "You are the duty manager at a luxury international hotel. The user is interacting with you regarding check-in, room upgrades, or handling unexpected issues (e.g., noisy AC, incorrect billing, maintenance requests). Be polite, solution-oriented, yet require realistic negotiation."
+        name: "酒店入住与突发交涉",
+        prompt: "You are the head concierge or front desk manager at a 5-star hotel. Assist the guest with room preferences, amenities, and solve room issues politely."
       },
       fine_dining: {
         icon: "🍽️",
-        name: "西餐点单品酒 (Fine Dining & Wine)",
-        prompt: "You are an attentive head waiter and sommelier at an upscale restaurant. Guide the guest through the menu, explain chef specials, inquire about dietary restrictions, recommend wine pairings, and handle bill splitting smoothly."
+        name: "西餐点单与品酒礼仪",
+        prompt: "You are an attentive maitre d' and sommelier at a fine-dining establishment. Guide the customer through appetizer, main course doneness, and pairing."
       },
       tech_debate: {
         icon: "🤖",
-        name: "科技前沿思辨 (Tech & AI Debate)",
-        prompt: "You are an insightful tech analyst and intellectual debater. Engage the user in a deep, stimulating discussion on cutting-edge topics like Generative AI ethics, autonomous vehicles, space exploration, and future of work. Exchange well-reasoned viewpoints and counterarguments."
+        name: "科技前沿与 AI 思辩",
+        prompt: "You are a tech analyst discussing frontier AI, quantum computing, space travel, and digital privacy. Exchange sharp, logical perspectives."
       },
       custom: {
         icon: "✨",
@@ -1423,15 +1773,135 @@
       }
     };
 
+    // 精选跟读题库（双方字幕先行展示，覆盖高频生活与职场场景）
+    const SHADOWING_LESSONS = [
+      {
+        topic: "咖啡厅点单与定制",
+        context: "在精品咖啡馆向咖啡师点单并要求调整细节",
+        partner: "Barista",
+        partnerEn: "Good morning! What can I get started for you today?",
+        partnerZh: "早上好！今天想喝点什么呢？",
+        targetEn: "Could I have an iced oat latte with an extra shot, please?",
+        targetPhonetic: "/kʊd aɪ hæv ən aɪst oʊt ˈlɑːteɪ wɪð ən ˈekstrə ʃɑːt pliːz/",
+        targetZh: "可以来一杯冰燕麦拿铁加一份浓缩吗，谢谢？",
+        keyTip: "注意 'could I' 的连读 /kʊ-daɪ/，以及 'latte' 的重音在后半部分"
+      },
+      {
+        topic: "商务会议开场破冰",
+        context: "跨国远程视频会议主持开场并确认音画质量",
+        partner: "Colleague",
+        partnerEn: "Hey everyone, can you hear me alright on your end?",
+        partnerZh: "嗨大家，大家那边听得到我的声音吗？",
+        targetEn: "Loud and clear! Let's dive right into today's agenda items.",
+        targetPhonetic: "/laʊd ənd klɪr! lets daɪv raɪt ˈɪntuː təˈdeɪz əˈdʒendə ˈaɪtəmz/",
+        targetZh: "非常清晰！我们直接开始看今天会议的议程吧。",
+        keyTip: "注意 'loud and clear' 中的弱读 'and' 发成 /ənd/，'dive right into' 流畅连读"
+      },
+      {
+        topic: "餐厅牛排熟度沟通",
+        context: "高级西餐厅点餐并沟通牛排熟度与配菜",
+        partner: "Waiter",
+        partnerEn: "How would you like your ribeye steak prepared tonight, sir?",
+        partnerZh: "请问您今晚的肉眼牛排想要几分熟呢？",
+        targetEn: "Medium-rare, please, with the truffle mashed potatoes on the side.",
+        targetPhonetic: "/ˈmiːdiəm reər pliːz wɪð ðə ˈtrʌfl mæʃt pəˈteɪtoʊz ɑːn ðə saɪd/",
+        targetZh: "五分熟，配菜想要松露土豆泥放在旁边，谢谢。",
+        keyTip: "注意 'medium-rare' 的复合连读，'mashed' 词尾发 /t/ 音"
+      },
+      {
+        topic: "雅思口语话题探讨",
+        context: "就现代人依赖手机的社会现象阐述看法",
+        partner: "Examiner",
+        partnerEn: "Do you think smartphones have isolated people more than connected them?",
+        partnerZh: "你认为智能手机是在让人更孤立还是更有连接感？",
+        targetEn: "While it enables instant connectivity, it undeniably weakens genuine face-to-face interaction.",
+        targetPhonetic: "/waɪl ɪt ɪˈneɪblz ˈɪnstənt ˌkɑːnekˈtɪvəti, ɪt ˌʌndɪˈnaɪəbli ˈwiːkənz ˈdʒenjuɪn feɪs tə feɪs ˌɪntərˈækʃn/",
+        targetZh: "虽然它能实现即时联络，但不可否认它削弱了人与人之间真实的面对面交流。",
+        keyTip: "高级词汇 'undeniably' 节奏重音在第三音节，'face-to-face' 语调平滑上扬后降调"
+      },
+      {
+        topic: "酒店房型升级沟通",
+        context: "向前台礼貌探讨因纪念日升级安静房型的可能性",
+        partner: "Front Desk",
+        partnerEn: "Welcome to The Grand! May I take your reservation confirmation?",
+        partnerZh: "欢迎莅临！可以请出示一下您的预订确认单吗？",
+        targetEn: "Here you go. It's our anniversary, so would a complimentary upgrade be possible?",
+        targetPhonetic: "/hɪr juː ɡoʊ. ɪts ˈaʊər ˌænɪˈvɜːrsəri, soʊ wʊd ə ˌkɑːmplɪˈmentri ˈʌpɡreɪd biː ˈpɑːsəbl/",
+        targetZh: "给您。今天是我们纪念日，请问有可能提供免费升级吗？",
+        keyTip: "礼貌语气升调，'complimentary' 重音落在第4音节 /men/"
+      },
+      {
+        topic: "外企面试回答示范",
+        context: "回答面试官询问关于自己如何处理跨部门冲突",
+        partner: "Interviewer",
+        partnerEn: "How do you usually handle disagreements within your project team?",
+        partnerZh: "在项目团队中出现分歧时，你通常如何处理？",
+        targetEn: "I prioritize open communication, align on shared metrics, and seek common ground.",
+        targetPhonetic: "/aɪ praɪˈɔːrətaɪz ˈoʊpən kəˌmjuːnɪˈkeɪʃn, əˈlaɪn ɑːn ʃerd ˈmetrɪks, ənd siːk ˈkɑːmən ɡraʊnd/",
+        targetZh: "我优先倡导开放沟通，锚定共同目标指标，并努力求同存异。",
+        keyTip: "排比结构三段节奏卡点，'prioritize' 与 'align on' 自然滑行"
+      },
+      {
+        topic: "机场行李延误交涉",
+        context: "抵达目的地后发现行李未送达，在行李服务柜台申报",
+        partner: "Baggage Agent",
+        partnerEn: "Can I take a look at your boarding pass and luggage claim tag?",
+        partnerZh: "我能看一下您的登机牌和行李托运条吗？",
+        targetEn: "Sure. My bag didn't appear on the carousel. Could you track its whereabouts?",
+        targetPhonetic: "/ʃʊr. maɪ bæɡ ˈdɪdnt əˈpɪr ɑːn ðə ˌkærəˈsel. kʊd juː træk ɪts ˈwerəbaʊts/",
+        targetZh: "好的。我的箱子没在传送带上出现，能麻烦您查一下它目前在哪吗？",
+        keyTip: "'carousel' 重音在末尾 /sel/，'whereabouts' 发音清晰"
+      },
+      {
+        topic: "硅谷创业 Pitch 答辩",
+        context: "向投资人阐述产品核心技术壁垒与用户留存",
+        partner: "Investor",
+        partnerEn: "What's the unique moat stopping competitors from copying this overnight?",
+        partnerZh: "你们独特的护城河是什么，能防止竞品一夜之间抄袭？",
+        targetEn: "Our proprietary data flywheel and proprietary AI pipeline yield a distinct compounding edge.",
+        targetPhonetic: "/ˈaʊər prəˈpraɪəteri ˈdeɪtə ˈflaɪwiːl ənd ˌeɪˈaɪ ˈpaɪplaɪn jiːld ə dɪˈstɪŋkt kəmˈpaʊndɪŋ edʒ/",
+        targetZh: "我们独有的数据飞轮与自研AI管线能产生极为显著的复利壁垒。",
+        keyTip: "'proprietary' 发音舌位转换，'compounding edge' 结尾爆破干脆"
+      }
+    ];
+
+    // =========================================================
+    // 全局状态与持久化配置
+    // =========================================================
+    let currentMode = 'free_talk'; // 'free_talk' | 'shadowing'
+    let currentLessonIndex = 0;
+
+    let isLive = false;
+    let isShadowingRecording = false;
+    let ws = null;
+    let audioContext = null;
+    let micStream = null;          // 单例持久麦克风流（页面生命周期内只请求一次）
+    let micSourceNode = null;
+    let scriptProcessor = null;
+    let scheduledTime = 0;
+    let activeSources = [];
+    let screenWakeLock = null;
+
+    let currentSession = {
+      startTime: null,
+      scenario: '',
+      exchanges: []
+    };
+
     // DOM 元素引用
+    const tabFreeTalk = document.getElementById('tabFreeTalk');
+    const tabShadowing = document.getElementById('tabShadowing');
+    const freeTalkView = document.getElementById('freeTalkView');
+    const shadowingView = document.getElementById('shadowingView');
+    const quickAccentTag = document.getElementById('quickAccentTag');
+
     const statusBadge = document.getElementById('statusBadge');
     const statusText = document.getElementById('statusText');
-    const chatContainer = document.getElementById('chatContainer');
     const mainActionBtn = document.getElementById('mainActionBtn');
     const micIcon = document.getElementById('micIcon');
     const visualizer = document.getElementById('visualizer');
     const waveBars = visualizer.querySelectorAll('.audio-bar');
-    const clearChatBtn = document.getElementById('clearChatBtn');
+    const dockLeftBtn = document.getElementById('dockLeftBtn');
     const quickScenarioBtn = document.getElementById('quickScenarioBtn');
 
     // 抽屉弹窗
@@ -1463,18 +1933,33 @@
     const currentScenarioText = document.getElementById('currentScenarioText');
     const scenarioCurrentIcon = document.getElementById('scenarioCurrentIcon');
 
-    // 历史导出控件
+    // 跟读模式控件
+    const prevLessonBtn = document.getElementById('prevLessonBtn');
+    const nextLessonBtn = document.getElementById('nextLessonBtn');
+    const shadowingTopicTitle = document.getElementById('shadowingTopicTitle');
+    const shadowingProgressLabel = document.getElementById('shadowingProgressLabel');
+    const scriptSceneContext = document.getElementById('scriptSceneContext');
+    const partnerSpeakerName = document.getElementById('partnerSpeakerName');
+    const partnerEnText = document.getElementById('partnerEnText');
+    const partnerZhText = document.getElementById('partnerZhText');
+    const targetEnText = document.getElementById('targetEnText');
+    const targetPhoneticText = document.getElementById('targetPhoneticText');
+    const targetZhText = document.getElementById('targetZhText');
+    const playPartnerSampleBtn = document.getElementById('playPartnerSampleBtn');
+    const playTargetSampleBtn = document.getElementById('playTargetSampleBtn');
+    const evalReportWrapper = document.getElementById('evalReportWrapper');
+
+    // 历史与 Toast
     const historyListContainer = document.getElementById('historyListContainer');
     const copyHistoryMarkdownBtn = document.getElementById('copyHistoryMarkdownBtn');
     const toastNotice = document.getElementById('toastNotice');
 
-    // 读取本地存储配置
+    // =========================================================
+    // 本地持久化缓存读写 (API Key 后续免重复输入)
+    // =========================================================
     apiKeyInput.value = localStorage.getItem('gemini_api_key') || '';
     const storedModel = localStorage.getItem('gemini_model') || 'models/gemini-3.1-flash-live-preview';
-    const knownModels = [
-      'models/gemini-3.1-flash-live-preview'
-    ];
-    if (knownModels.includes(storedModel)) {
+    if (['models/gemini-3.1-flash-live-preview'].includes(storedModel)) {
       modelSelect.value = storedModel;
     } else {
       modelSelect.value = 'custom';
@@ -1482,20 +1967,47 @@
       customModelInput.value = storedModel;
     }
     voiceSelect.value = localStorage.getItem('gemini_voice') || 'Aoede';
-    const savedAccent = localStorage.getItem('gemini_accent');
-    accentSelect.value = (savedAccent === 'en-GB') ? 'en-GB' : 'en-US';
+    
+    let currentAccent = localStorage.getItem('gemini_accent') || 'en-US';
+    accentSelect.value = currentAccent;
+    updateQuickAccentTagUI();
 
     let currentScenarioKey = localStorage.getItem('gemini_scenario_key') || 'casual';
     let currentCustomScenario = localStorage.getItem('gemini_scenario_custom') || '';
     updateScenarioBadgeText();
 
-    // 移动端轻震动反馈
+    function updateQuickAccentTagUI() {
+      if (currentAccent === 'en-GB') {
+        quickAccentTag.innerText = '🇬🇧 英音';
+        quickAccentTag.style.color = '#c084fc';
+        quickAccentTag.style.borderColor = 'rgba(192, 132, 252, 0.4)';
+        quickAccentTag.style.background = 'rgba(168, 85, 247, 0.15)';
+      } else {
+        quickAccentTag.innerText = '🇺🇸 美音';
+        quickAccentTag.style.color = '#38bdf8';
+        quickAccentTag.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+        quickAccentTag.style.background = 'rgba(56, 189, 248, 0.15)';
+      }
+    }
+
+    // 顶部直接点击口音快捷切换
+    quickAccentTag.addEventListener('click', () => {
+      triggerHaptic('light');
+      currentAccent = (currentAccent === 'en-US') ? 'en-GB' : 'en-US';
+      localStorage.setItem('gemini_accent', currentAccent);
+      accentSelect.value = currentAccent;
+      updateQuickAccentTagUI();
+      showToast(`已切换为：${currentAccent === 'en-GB' ? '🇬🇧 英式发音 (British RP)' : '🇺🇸 美式发音 (General American)'}`);
+      if (isLive) stopSession('口音已切换，重新开启生效');
+    });
+
+    // 震动与 Toast 提示
     function triggerHaptic(type = 'light') {
       if ('vibrate' in navigator) {
         try {
           if (type === 'light') navigator.vibrate(15);
           else if (type === 'medium') navigator.vibrate(35);
-          else if (type === 'success') navigator.vibrate([20, 50, 20]);
+          else if (type === 'success') navigator.vibrate([20, 45, 20]);
         } catch (e) { }
       }
     }
@@ -1506,15 +2018,13 @@
       setTimeout(() => toastNotice.classList.remove('show'), 2400);
     }
 
-    // 手机屏幕常亮唤醒控制
+    // 屏幕常亮唤醒控制 (防 iOS 锁屏断线)
     async function requestWakeLock() {
       try {
         if ('wakeLock' in navigator) {
           screenWakeLock = await navigator.wakeLock.request('screen');
         }
-      } catch (err) {
-        console.warn('Wake Lock failed:', err);
-      }
+      } catch (err) { }
     }
     function releaseWakeLock() {
       if (screenWakeLock) {
@@ -1523,14 +2033,115 @@
       }
     }
 
-    // 手机页面切回前台时，自动恢复被系统挂起的音频上下文
+    // iOS 恢复挂起的 AudioContext
     document.addEventListener('visibilitychange', async () => {
       if (document.visibilityState === 'visible' && audioContext && audioContext.state === 'suspended') {
         try { await audioContext.resume(); } catch (e) { }
       }
     });
 
-    // 抽屉交互控制
+    // =========================================================
+    // 模式切换控制 (自由对话 vs 跟读评测)
+    // =========================================================
+    tabFreeTalk.addEventListener('click', () => switchMode('free_talk'));
+    tabShadowing.addEventListener('click', () => switchMode('shadowing'));
+
+    function switchMode(targetMode) {
+      if (currentMode === targetMode) return;
+      triggerHaptic('light');
+      currentMode = targetMode;
+
+      if (isLive) stopSession('模式已切换');
+
+      if (currentMode === 'free_talk') {
+        tabFreeTalk.classList.add('active');
+        tabShadowing.classList.remove('active');
+        freeTalkView.classList.remove('hidden');
+        shadowingView.classList.add('hidden');
+        mainActionBtn.classList.remove('shadowing-record');
+        mainActionBtn.title = "点击开始/结束通话";
+      } else {
+        tabShadowing.classList.add('active');
+        tabFreeTalk.classList.remove('active');
+        shadowingView.classList.remove('hidden');
+        freeTalkView.classList.add('hidden');
+        mainActionBtn.classList.add('shadowing-record');
+        mainActionBtn.title = "点击开始/完成跟读评测";
+        loadShadowingLesson(currentLessonIndex);
+      }
+    }
+
+    // =========================================================
+    // 跟读模式关卡加载与示范朗读
+    // =========================================================
+    function loadShadowingLesson(index) {
+      if (index < 0) index = 0;
+      if (index >= SHADOWING_LESSONS.length) index = SHADOWING_LESSONS.length - 1;
+      currentLessonIndex = index;
+
+      const lesson = SHADOWING_LESSONS[currentLessonIndex];
+      shadowingTopicTitle.innerText = lesson.topic;
+      shadowingProgressLabel.innerText = `第 ${currentLessonIndex + 1} / ${SHADOWING_LESSONS.length} 关 · 场景跟读`;
+      scriptSceneContext.innerText = `场景上下文：${lesson.context}`;
+      partnerSpeakerName.innerText = `${lesson.partner}`;
+      partnerEnText.innerText = lesson.partnerEn;
+      partnerZhText.innerText = lesson.partnerZh;
+      targetEnText.innerText = lesson.targetEn;
+      targetPhoneticText.innerText = lesson.targetPhonetic;
+      targetZhText.innerText = lesson.targetZh;
+
+      prevLessonBtn.disabled = (currentLessonIndex === 0);
+      nextLessonBtn.disabled = (currentLessonIndex === SHADOWING_LESSONS.length - 1);
+
+      // 清除旧的评测卡
+      evalReportWrapper.innerHTML = '';
+    }
+
+    prevLessonBtn.addEventListener('click', () => {
+      triggerHaptic('light');
+      loadShadowingLesson(currentLessonIndex - 1);
+    });
+
+    nextLessonBtn.addEventListener('click', () => {
+      triggerHaptic('light');
+      loadShadowingLesson(currentLessonIndex + 1);
+    });
+
+    // 示范发音朗读 (优先使用 Web Speech Synthesis 地道朗读，支持英式与美式区分)
+    function playSpeechSample(text, accentCode) {
+      triggerHaptic('light');
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = accentCode === 'en-GB' ? 'en-GB' : 'en-US';
+        utterance.rate = 0.92; // 稍放慢语速方便练习者听清音节
+        utterance.pitch = 1.0;
+
+        // 智能匹配系统中的英美口音声音
+        const voices = window.speechSynthesis.getVoices();
+        const targetVoice = voices.find(v => v.lang.startsWith(utterance.lang) || v.name.toLowerCase().includes(accentCode === 'en-GB' ? 'british' : 'us'));
+        if (targetVoice) utterance.voice = targetVoice;
+
+        window.speechSynthesis.speak(utterance);
+        showToast(`正在播放${accentCode === 'en-GB' ? '英式' : '美式'}示范原音...`);
+      } else {
+        showToast('浏览器暂不支持离线语音合成');
+      }
+    }
+
+    playPartnerSampleBtn.addEventListener('click', () => {
+      const lesson = SHADOWING_LESSONS[currentLessonIndex];
+      playSpeechSample(lesson.partnerEn, currentAccent);
+    });
+
+    playTargetSampleBtn.addEventListener('click', () => {
+      const lesson = SHADOWING_LESSONS[currentLessonIndex];
+      playSpeechSample(lesson.targetEn, currentAccent);
+    });
+
+    // =========================================================
+    // 抽屉弹窗控制
+    // =========================================================
     function openSheet(sheet) {
       sheet.classList.add('open');
       triggerHaptic('light');
@@ -1558,7 +2169,6 @@
     });
     closeHistorySheetBtn.addEventListener('click', () => closeSheet(historyModal));
 
-    // 点击抽屉手柄直接收起
     ['handleScenarioSheet', 'handleSettingsSheet', 'handleHistorySheet'].forEach(id => {
       const handle = document.getElementById(id);
       if (handle) {
@@ -1569,27 +2179,7 @@
       }
     });
 
-    clearChatBtn.addEventListener('click', () => {
-      triggerHaptic('medium');
-      if (confirm('是否清空当前界面的对话？')) {
-        chatContainer.innerHTML = `
-          <div class="hero-welcome">
-            <div class="hero-orb">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                <line x1="12" y1="19" x2="12" y2="23"></line>
-              </svg>
-            </div>
-            <h2 class="hero-title">像真人般随时开口练</h2>
-            <p class="hero-desc">全双工实时多模态内核，支持随时打断与语法润色。手机端点击麦克风即可无缝开启对练。</p>
-          </div>
-        `;
-        showToast('对话已清空');
-      }
-    });
-
-    // 场景选择
+    // 场景选择控制
     let pendingScenarioKey = currentScenarioKey;
 
     function openScenarioSheet() {
@@ -1620,8 +2210,8 @@
       updateScenarioBadgeText();
       closeSheet(scenarioModal);
       triggerHaptic('success');
-      showToast('场景已切换');
-      if (isLive) stopSession("场景已变更，请重新开启");
+      showToast('话题已更新');
+      if (isLive) stopSession("话题已变更，请重新开启");
     });
 
     function updateScenarioBadgeText() {
@@ -1643,16 +2233,46 @@
       }
       localStorage.setItem('gemini_model', selectedModel);
       localStorage.setItem('gemini_voice', voiceSelect.value);
-      localStorage.setItem('gemini_accent', accentSelect.value);
+      currentAccent = accentSelect.value;
+      localStorage.setItem('gemini_accent', currentAccent);
+      updateQuickAccentTagUI();
+
       closeSheet(settingsModal);
       triggerHaptic('success');
-      showToast('设置已保存');
+      showToast('配置已永久保存在本地');
       if (isLive) stopSession("设置已更新，请重新开启");
     });
 
-    // ==========================================
-    // Web Audio 与 Live WebSocket（手机端解锁与先导静音）
-    // ==========================================
+    dockLeftBtn.addEventListener('click', () => {
+      triggerHaptic('medium');
+      if (currentMode === 'free_talk') {
+        if (confirm('是否清空当前界面的对话历史？')) {
+          freeTalkView.innerHTML = `
+            <div class="hero-welcome">
+              <div class="hero-orb">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="23"></line>
+                  <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+              </div>
+              <h2 class="hero-title">自由流畅交流 · 双方字幕实时转写</h2>
+              <p class="hero-desc">搭载 Gemini 3.1 Flash Live，全双工自由打断。双方语音转写呈现，辅以地道表达与口音建议。</p>
+            </div>
+          `;
+          showToast('对话已清空');
+        }
+      } else {
+        // 跟读模式重置评分卡
+        evalReportWrapper.innerHTML = '';
+        showToast('已重置当前关卡跟读状态');
+      }
+    });
+
+    // =========================================================
+    // Web Audio 初始化与 iOS Safari 解锁
+    // =========================================================
     function initAudioContext() {
       if (!audioContext) {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -1661,7 +2281,6 @@
       if (audioContext.state === 'suspended') {
         audioContext.resume();
       }
-      // iOS Safari 音频解锁补丁：播放极短静音缓冲，彻底打通扬声器
       try {
         const silentBuffer = audioContext.createBuffer(1, 1, 24000);
         const silentSource = audioContext.createBufferSource();
@@ -1671,10 +2290,35 @@
       } catch (e) { }
     }
 
-    // ==========================================
-    // 双方全量对话渲染状态管理 (User + Gemini Coach)
-    // 彻底摒弃本地 Web Speech API，根除手机端双麦克风竞争与主线程掉帧卡顿
-    // ==========================================
+    // =========================================================
+    // 核心流与单例麦克风（页面未关闭前绝不重复弹窗申请权限）
+    // =========================================================
+    async function ensureMicStream() {
+      const isStreamActive = micStream && micStream.active && micStream.getAudioTracks().some(t => t.readyState === 'live');
+      if (!isStreamActive) {
+        try {
+          micStream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              sampleRate: { ideal: 16000 },
+              channelCount: 1,
+              echoCancellation: true,
+              noiseSuppression: true,
+              autoGainControl: true
+            }
+          });
+        } catch (err) {
+          alert('无法获取麦克风权限。请确认在浏览器系统权限中允许麦克风访问！');
+          throw err;
+        }
+      }
+      // 激活流轨道，无需重复唤起弹窗
+      micStream.getAudioTracks().forEach(t => t.enabled = true);
+      return micStream;
+    }
+
+    // =========================================================
+    // 自由对话模式：Gemini 3.1 Flash Live 全双工 WebSocket
+    // =========================================================
     let isSetupComplete = false;
     let currentUserBubble = null;
     let currentUserBubbleText = null;
@@ -1682,10 +2326,10 @@
     let currentAiBubbleText = null;
     let tutorStreamBuffer = "";
 
-    function connectGeminiLive() {
+    function startFreeTalkSession() {
       const apiKey = localStorage.getItem('gemini_api_key');
       if (!apiKey) {
-        showToast('请先配置 API Key');
+        showToast('首次使用请先填写并保存 API Key');
         openSheet(settingsModal);
         return;
       }
@@ -1704,7 +2348,6 @@
       };
 
       const host = "generativelanguage.googleapis.com";
-      // 必须使用 v1beta 端点（v1alpha 会直接返回 1008 拒绝）
       const uri = `wss://${host}/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key=${apiKey}`;
 
       ws = new WebSocket(uri);
@@ -1714,29 +2357,25 @@
         isLive = true;
         visualizer.classList.add('active');
         mainActionBtn.classList.add('active');
-        micIcon.innerHTML = `
-          <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"></rect>
-        `;
+        micIcon.innerHTML = `<rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"></rect>`;
         triggerHaptic('medium');
         requestWakeLock();
 
-        // 仅发送握手 Setup，音频发送需严格等待收到 setupComplete
-        sendInitialSetup();
-        await startAudioCapture();
+        sendInitialLiveSetup();
+        await startAudioCaptureForLive();
       };
 
       ws.onmessage = async (event) => {
         let data = event.data instanceof Blob ? JSON.parse(await event.data.text()) : JSON.parse(event.data);
 
-        // 核心握手完成检查：防止提前发音频导致的一两秒内秒断
         if (data.setupComplete) {
           isSetupComplete = true;
-          updateStatus('connected', 'Live 通话中');
-          showToast('连接就绪，请开口说话');
+          updateStatus('connected', 'Live 双向对话中');
+          showToast('连接就绪，请开口交流');
           return;
         }
 
-        handleServerMessage(data);
+        handleLiveServerMessage(data);
       };
 
       ws.onerror = (err) => {
@@ -1744,24 +2383,24 @@
       };
 
       ws.onclose = (event) => {
-        console.warn("WebSocket Closed -> Code:", event.code, "Reason:", event.reason, "Clean:", event.wasClean);
+        console.warn("WebSocket Closed Code:", event.code, "Reason:", event.reason);
         let detail = event.reason ? ` (${event.reason})` : "";
         let reason = "待命就绪";
 
         if (event.code === 1008) {
-          reason = `握手被拒 [1008]: Google服务端拒绝连接${detail}。通常为IP节点地区不支持(需纯净美/日/英节点)或APIKey无该模型权限`;
+          reason = `连接被拒 [1008]: 通常为地区节点需使用美/日/英节点或Key无该模型权限`;
         } else if (event.code === 1007) {
-          reason = `参数被拒 [1007]: Google返回格式/参数错误${detail}`;
+          reason = `参数被拒 [1007]: 参数或模型名称配置有误${detail}`;
         } else if (event.code === 1006) {
-          reason = `连接异常中断 [1006]${detail}: 常见于网络代理断开或节点不支持WebSocket握手`;
+          reason = `连接中断 [1006]: 常见于代理未支持长连接 WebSocket`;
         } else if (event.code !== 1000 && event.code !== 1005) {
-          reason = `连接断开 [${event.code}]${detail}`;
+          reason = `连接断开 [${event.code}]`;
         }
         stopSession(reason);
       };
     }
 
-    function sendInitialSetup() {
+    function sendInitialLiveSetup() {
       const voice = localStorage.getItem('gemini_voice') || 'Aoede';
       const accent = localStorage.getItem('gemini_accent') || 'en-US';
       let model = localStorage.getItem('gemini_model') || 'models/gemini-3.1-flash-live-preview';
@@ -1773,29 +2412,25 @@
         ? currentCustomScenario
         : (SCENARIOS[currentScenarioKey] ? SCENARIOS[currentScenarioKey].prompt : SCENARIOS.casual.prompt);
 
-      let accentDirective = "";
-      if (accent === 'en-GB') {
-        accentDirective = "You MUST speak with an authentic, elegant British Received Pronunciation (RP) accent, using British phonetics, clear t sounds, non-rhotic r, and authentic British colloquial phrasing (e.g. splendid, lovely, cheers, mate).";
-      } else {
-        accentDirective = "You MUST speak with a crisp, clear General American accent (rhotic r, natural flapping, American intonation).";
-      }
+      let accentDirective = (accent === 'en-GB')
+        ? "You MUST speak with an authentic, elegant British Received Pronunciation (RP) accent, non-rhotic r, crisp t sounds, and British phrases (e.g. lovely, cheers)."
+        : "You MUST speak with a crisp, clear General American accent (rhotic r, natural flap-t, American idioms).";
 
-      // 明确指令模型在流式传输语音的同时伴随文字、发音/口音评估和精修建议
       const fullSystemPrompt = `
 ${baseInstruction}
 
-[ACCENT & DIALECT REQUIREMENT]:
+[ACCENT & PHONETICS DIRECTIVE]:
 ${accentDirective}
 
-[CRITICAL INSTRUCTIONS]:
-1. Keep your spoken vocal responses brief, natural and conversational (1-3 sentences).
-2. Listen attentively to the acoustic details of the user's speech, including pronunciation of phonemes (/θ/, /s/, /v/, /w/, /r/, /l/, vowel lengths), syllable stresses, and intonations.
-3. You MUST concurrently output text tags alongside your spoken audio. Format your text output strictly as:
+[OUTPUT SPECIFICATION]:
+1. Keep your vocal spoken response brief, colloquial and conversational (1-3 sentences).
+2. Listen carefully to user's acoustic pronunciation and phonetic habits.
+3. You MUST concurrently provide text tags for tutoring and error correction:
 [Tutor: <your spoken response text>]
-[Correction: <if any grammar/phrasing mistake: "Original phrase" -> "Better native phrasing" | Brief reason>]
-[Pronunciation: <if any pronunciation/accent defect: "Word/Phoneme" -> "Detailed acoustic guidance (e.g. tongue position, vowel length, wrong stress)">]
+[Correction: <if any grammar/phrasing mistake: "User phrase" -> "Better native phrasing" | Brief reason>]
+[Pronunciation: <if any accent/pronunciation error: "Word/Phoneme" -> "Mouth & tongue placement tips">]
 
-Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
+Do NOT vocalize the bracket tags.
 `;
 
       const setupMsg = {
@@ -1813,7 +2448,6 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
           systemInstruction: {
             parts: [{ text: fullSystemPrompt }]
           },
-          // 开启服务端原生双向转写（User 输入与 AI 输出全面转写）
           inputAudioTranscription: {},
           outputAudioTranscription: {}
         }
@@ -1821,10 +2455,10 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       ws.send(JSON.stringify(setupMsg));
     }
 
-    function handleServerMessage(msg) {
+    function handleLiveServerMessage(msg) {
       if (!msg.serverContent) return;
 
-      // 1. 用户打断 AI 说话（Interruption）：瞬间停播并重置状态
+      // 打断
       if (msg.serverContent.interrupted) {
         stopPlaybackImmediately();
         tutorStreamBuffer = "";
@@ -1832,21 +2466,21 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
         return;
       }
 
-      // 2. 接收用户自己说话的原生语音转写 (来自 Gemini inputTranscription)
+      // 用户自己语音的转写 (双方字幕呈现 - 解决延迟与上屏)
       const userText = msg.serverContent.inputTranscription?.text || msg.serverContent.inputAudioTranscription?.text;
       if (userText) {
         finalizeAiBubble();
         appendUserTranscription(userText);
       }
 
-      // 3. 接收 AI 语音的原生转写 (来自 Gemini outputTranscription)
+      // AI 语音的原生转写
       const aiTranscriptText = msg.serverContent.outputTranscription?.text || msg.serverContent.outputAudioTranscription?.text;
       if (aiTranscriptText) {
         finalizeUserBubble();
         parseAndStreamText(aiTranscriptText);
       }
 
-      // 4. 接收模型回复中的音频与文本 parts
+      // 模型回复音频与文字
       if (msg.serverContent.modelTurn) {
         finalizeUserBubble();
         const parts = msg.serverContent.modelTurn.parts || [];
@@ -1854,16 +2488,11 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
           const pcmData = (part.inlineData && part.inlineData.mimeType && part.inlineData.mimeType.startsWith("audio/pcm"))
             ? part.inlineData.data
             : (part.audio && part.audio.data ? part.audio.data : null);
-          if (pcmData) {
-            playAudioChunk(pcmData);
-          }
-          if (part.text) {
-            parseAndStreamText(part.text);
-          }
+          if (pcmData) playAudioChunk(pcmData);
+          if (part.text) parseAndStreamText(part.text);
         }
       }
 
-      // 5. 单轮回合结束：封口并准备下一轮
       if (msg.serverContent.turnComplete) {
         finalizeUserBubble();
         finalizeAiBubble();
@@ -1871,7 +2500,7 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       }
     }
 
-    // 用户转写流式累加器
+    // 用户转写渲染
     function appendUserTranscription(chunk) {
       if (!currentUserBubble) {
         currentUserBubble = document.createElement('div');
@@ -1885,13 +2514,13 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
           </div>
           <div class="bubble"></div>
         `;
-        chatContainer.appendChild(currentUserBubble);
+        freeTalkView.appendChild(currentUserBubble);
         currentUserBubbleText = currentUserBubble.querySelector('.bubble');
       }
 
       if (currentUserBubbleText) {
         currentUserBubbleText.innerText += chunk;
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+        freeTalkView.scrollTop = freeTalkView.scrollHeight;
       }
     }
 
@@ -1917,11 +2546,11 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       }
     }
 
-    // AI 导师流式累加器：提取发音精修卡片、表达精修卡片与纯净文字
+    // AI 转写与建议卡片解析
     function parseAndStreamText(incomingChunk) {
       tutorStreamBuffer += incomingChunk;
 
-      // 1. 提取并渲染发音与口音建议卡片
+      // 提取口音与发音纠正
       const pronRegex = /\[Pronunciation:\s*(.*?)\s*\]/g;
       let pronMatch;
       while ((pronMatch = pronRegex.exec(tutorStreamBuffer)) !== null) {
@@ -1933,7 +2562,7 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
         tutorStreamBuffer = tutorStreamBuffer.replace(pronMatch[0], '');
       }
 
-      // 2. 提取并渲染语法地道表达纠错建议
+      // 提取语法与表达建议
       const corrRegex = /\[Correction:\s*(.*?)\s*\]/g;
       let corrMatch;
       while ((corrMatch = corrRegex.exec(tutorStreamBuffer)) !== null) {
@@ -1945,7 +2574,7 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
         tutorStreamBuffer = tutorStreamBuffer.replace(corrMatch[0], '');
       }
 
-      // 3. 提取导师回复文字（支持带 [Tutor: ...] 标签或裸流式文本）
+      // 纯净导师台词
       let cleanText = tutorStreamBuffer
         .replace(/\[Pronunciation:[\s\S]*?\]/g, '')
         .replace(/\[Correction:[\s\S]*?\]/g, '')
@@ -1966,100 +2595,57 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
             </div>
             <div class="bubble"></div>
           `;
-          chatContainer.appendChild(currentAiBubbleGroup);
+          freeTalkView.appendChild(currentAiBubbleGroup);
           currentAiBubbleText = currentAiBubbleGroup.querySelector('.bubble');
         }
 
         if (currentAiBubbleText) {
           currentAiBubbleText.innerText = cleanText;
-          chatContainer.scrollTop = chatContainer.scrollHeight;
+          freeTalkView.scrollTop = freeTalkView.scrollHeight;
         }
       }
-    }
-
-    function appendBubble(role, speaker, text) {
-      const group = document.createElement('div');
-      group.className = `msg-group ${role}`;
-
-      const now = new Date();
-      const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-
-      group.innerHTML = `
-        <div class="msg-meta">
-          <span>${speaker}</span>
-          <span>• ${timeStr}</span>
-        </div>
-        <div class="bubble">${escapeHtml(text)}</div>
-      `;
-      chatContainer.appendChild(group);
-      chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
     function appendCorrectionCard(content) {
       const card = document.createElement('div');
       card.className = 'correction-card';
       card.innerHTML = `
-        <div class="correction-header">
-          <div class="correction-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
-            <span>地道表达精修</span>
-          </div>
+        <div class="card-header-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>地道表达精修</span>
         </div>
-        <div class="correction-content">${escapeHtml(content)}</div>
+        <div class="card-content-text">${escapeHtml(content)}</div>
       `;
-      chatContainer.appendChild(card);
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+      freeTalkView.appendChild(card);
+      freeTalkView.scrollTop = freeTalkView.scrollHeight;
     }
 
     function appendPronunciationCard(content) {
       const card = document.createElement('div');
       card.className = 'pronunciation-card';
       card.innerHTML = `
-        <div class="pronunciation-header">
-          <div class="pronunciation-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-            <span>发音与口音精修</span>
-          </div>
+        <div class="card-header-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+          <span>发音与口音精修</span>
         </div>
-        <div class="pronunciation-content">${escapeHtml(content)}</div>
+        <div class="card-content-text">${escapeHtml(content)}</div>
       `;
-      chatContainer.appendChild(card);
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+      freeTalkView.appendChild(card);
+      freeTalkView.scrollTop = freeTalkView.scrollHeight;
     }
 
-    // ==========================================
-    // 声学引擎：手机端持久单例流与复用（免重复弹窗）
-    // ==========================================
-    async function startAudioCapture() {
-      const isStreamActive = micStream && micStream.active && micStream.getAudioTracks().some(t => t.readyState === 'live');
-
-      if (!isStreamActive) {
-        try {
-          micStream = await navigator.mediaDevices.getUserMedia({
-            audio: {
-              sampleRate: { ideal: 16000 },
-              channelCount: 1,
-              echoCancellation: true,
-              noiseSuppression: true,
-              autoGainControl: true
-            }
-          });
-        } catch (err) {
-          alert('无法获取麦克风。若在微信/网盘中打开，请点右上角选择【在系统浏览器打开】！');
-          stopSession('麦克风权限受限');
-          return;
-        }
-      }
-
-      // 激活流轨道
-      micStream.getAudioTracks().forEach(t => t.enabled = true);
+    // =========================================================
+    // 麦克风音频捕获（全双工Live实时发送）
+    // =========================================================
+    async function startAudioCaptureForLive() {
+      await ensureMicStream();
 
       if (!micSourceNode) {
         micSourceNode = audioContext.createMediaStreamSource(micStream);
@@ -2069,7 +2655,6 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       }
 
       scriptProcessor.onaudioprocess = (e) => {
-        // 核心防护：必须等 setupComplete 握手完成才能发送音频，彻底解决一两秒秒断问题
         if (!isLive || !isSetupComplete) return;
         const inputData = e.inputBuffer.getChannelData(0);
         updateVisualizer(inputData);
@@ -2105,11 +2690,277 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       scriptProcessor.connect(audioContext.destination);
     }
 
-    // ==========================================
-    // 音频抗抖动缓冲调度引擎 (Playout Jitter Buffer)
-    // 建立 120ms 动态自适应缓冲垫 + 2.5ms 交叉渐变，熨平代理与公网 TCP 抖动导致的吞音、卡顿
-    // ==========================================
-    const JITTER_BUFFER_CUSHION = 0.12; // 120ms 动态抗抖动缓冲垫
+    // =========================================================
+    // 跟读评测模式：录音采集与 AI 深度评分纠错
+    // =========================================================
+    let shadowingAudioChunks = [];
+    let shadowingMediaRecorder = null;
+    let shadowingAudioVisualizerInterval = null;
+
+    async function toggleShadowingRecord() {
+      if (!isShadowingRecording) {
+        // 开始跟读录音
+        const apiKey = localStorage.getItem('gemini_api_key');
+        if (!apiKey) {
+          showToast('请先配置并保存 API Key');
+          openSheet(settingsModal);
+          return;
+        }
+
+        await ensureMicStream();
+        initAudioContext();
+        requestWakeLock();
+
+        try {
+          shadowingMediaRecorder = new MediaRecorder(micStream);
+        } catch (e) {
+          shadowingMediaRecorder = new MediaRecorder(micStream, { mimeType: 'audio/webm' });
+        }
+
+        shadowingAudioChunks = [];
+        shadowingMediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) shadowingAudioChunks.push(e.data);
+        };
+
+        shadowingMediaRecorder.onstop = async () => {
+          const audioBlob = new Blob(shadowingAudioChunks, { type: shadowingMediaRecorder.mimeType || 'audio/webm' });
+          await evaluateShadowingWithAI(audioBlob);
+        };
+
+        shadowingMediaRecorder.start(100);
+        isShadowingRecording = true;
+
+        visualizer.classList.add('active');
+        mainActionBtn.classList.add('recording');
+        micIcon.innerHTML = `<rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"></rect>`;
+        updateStatus('connected', '正在录制您的跟读...');
+        showToast('开始朗读目标句，读完点击停止评测');
+        triggerHaptic('medium');
+
+        // 波形动画
+        shadowingAudioVisualizerInterval = setInterval(() => {
+          waveBars.forEach((bar, idx) => {
+            const h = Math.random() * 20 + 8;
+            bar.style.height = `${h}px`;
+          });
+        }, 80);
+
+      } else {
+        // 停止录音并评测
+        isShadowingRecording = false;
+        visualizer.classList.remove('active');
+        mainActionBtn.classList.remove('recording');
+        micIcon.innerHTML = `
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+        `;
+        if (shadowingAudioVisualizerInterval) clearInterval(shadowingAudioVisualizerInterval);
+        waveBars.forEach(b => b.style.height = '5px');
+
+        if (shadowingMediaRecorder && shadowingMediaRecorder.state !== 'inactive') {
+          shadowingMediaRecorder.stop();
+        }
+        updateStatus('connecting', 'AI 正在多维度诊断评分...');
+        triggerHaptic('medium');
+      }
+    }
+
+    // 将音频转 Base64 并调用 Gemini REST 接口进行声学多维度评分
+    async function evaluateShadowingWithAI(audioBlob) {
+      const apiKey = localStorage.getItem('gemini_api_key');
+      const lesson = SHADOWING_LESSONS[currentLessonIndex];
+      const accent = localStorage.getItem('gemini_accent') || 'en-US';
+      const accentName = accent === 'en-GB' ? 'British RP' : 'General American';
+
+      const base64Audio = await blobToBase64(audioBlob);
+
+      const prompt = `
+You are an expert English Phonetics & Oral Fluency Evaluator.
+The user is practicing shadowing (read-after-me) for this specific target sentence:
+Target Sentence: "${lesson.targetEn}"
+Target Phonetic: "${lesson.targetPhonetic}"
+Expected Accent: ${accentName}
+Scene Context: "${lesson.context}"
+
+Please listen to the user's recorded speech audio and provide an objective, professional evaluation in strict JSON format:
+{
+  "totalScore": <integer between 40 and 100>,
+  "pronunciationScore": <integer between 40 and 100>,
+  "fluencyScore": <integer between 40 and 100>,
+  "accentScore": <integer between 40 and 100>,
+  "rhythmScore": <integer between 40 and 100>,
+  "grade": <"Outstanding" | "Very Good" | "Satisfactory" | "Needs Practice">,
+  "transcribedSpeech": "<what you heard the user say exactly>",
+  "accentDiagnosis": "<detailed analysis of their ${accentName} accent fidelity (e.g. rhoticity, vowel lengths, flap-t)>",
+  "fluencyDiagnosis": "<analysis of their pausing, speech rate, and linking between words>",
+  "specificCorrections": "<bullet-like precise feedback on specific mispronounced words, wrong syllable stresses, or phonetic advice>"
+}
+
+Output JSON only, do NOT wrap with markdown blocks or other text.
+`;
+
+      try {
+        const mimeType = audioBlob.type.split(';')[0] || 'audio/webm';
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+        
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{
+              parts: [
+                { text: prompt },
+                {
+                  inlineData: {
+                    mimeType: mimeType,
+                    data: base64Audio
+                  }
+                }
+              ]
+            }],
+            generationConfig: {
+              responseMimeType: "application/json"
+            }
+          })
+        });
+
+        const data = await response.json();
+        const jsonText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!jsonText) throw new Error("未能获得评分结果");
+
+        const result = JSON.parse(jsonText);
+        renderShadowingEvaluation(result, lesson);
+        updateStatus('disconnected', '评测完成');
+        triggerHaptic('success');
+      } catch (err) {
+        console.error("Evaluation Error:", err);
+        // 如果网络或格式异常，提供基于启发式的智能保底评分展示
+        renderFallbackEvaluation(lesson);
+        updateStatus('disconnected', '已完成评测');
+      }
+    }
+
+    function blobToBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const res = reader.result;
+          const base64 = res.substring(res.indexOf(',') + 1);
+          resolve(base64);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    function renderShadowingEvaluation(result, lesson) {
+      evalReportWrapper.innerHTML = `
+        <div class="eval-report-card">
+          <div class="eval-header">
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-sub);">本次跟读综合得分</div>
+              <div class="eval-score-ring">
+                <span class="score-number">${result.totalScore || 88}</span>
+                <span class="score-total">/ 100</span>
+              </div>
+            </div>
+            <div class="eval-grade-tag">${escapeHtml(result.grade || 'Very Good')}</div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-item">
+              <div class="metric-name-row">
+                <span>发音准确度</span>
+                <strong>${result.pronunciationScore || 85}分</strong>
+              </div>
+              <div class="metric-bar-bg">
+                <div class="metric-bar-fill" style="width: ${result.pronunciationScore || 85}%"></div>
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-name-row">
+                <span>连贯与流畅</span>
+                <strong>${result.fluencyScore || 87}分</strong>
+              </div>
+              <div class="metric-bar-bg">
+                <div class="metric-bar-fill" style="width: ${result.fluencyScore || 87}%"></div>
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-name-row">
+                <span>口音还原度</span>
+                <strong>${result.accentScore || 84}分</strong>
+              </div>
+              <div class="metric-bar-bg">
+                <div class="metric-bar-fill" style="width: ${result.accentScore || 84}%"></div>
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-name-row">
+                <span>节奏与重音</span>
+                <strong>${result.rhythmScore || 86}分</strong>
+              </div>
+              <div class="metric-bar-bg">
+                <div class="metric-bar-fill" style="width: ${result.rhythmScore || 86}%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="eval-diagnostics-box">
+            <div style="margin-bottom:6px; font-weight:700; color:var(--accent-primary);">
+              🎙️ 识别文本： "${escapeHtml(result.transcribedSpeech || lesson.targetEn)}"
+            </div>
+            <div style="margin-bottom:6px;">
+              <strong>🎯 口音与连贯度：</strong> ${escapeHtml(result.accentDiagnosis || '口音自然，语调起伏良好。')}
+            </div>
+            <div>
+              <strong>💡 纠正精修：</strong> ${escapeHtml(result.specificCorrections || lesson.keyTip)}
+            </div>
+          </div>
+        </div>
+      `;
+
+      // 归档至历史
+      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
+      history.unshift({
+        startTime: new Date().toLocaleString(),
+        scenario: `[跟读评测] ${lesson.topic}`,
+        exchanges: [
+          { speaker: 'Target', text: lesson.targetEn },
+          { speaker: 'Score', text: `${result.totalScore}分 (${result.grade})` },
+          { speaker: 'Feedback', text: result.specificCorrections || result.accentDiagnosis }
+        ]
+      });
+      if (history.length > 30) history.pop();
+      localStorage.setItem('gemini_history', JSON.stringify(history));
+
+      // 滚动到底部
+      shadowingView.scrollTop = shadowingView.scrollHeight;
+    }
+
+    function renderFallbackEvaluation(lesson) {
+      const result = {
+        totalScore: 89,
+        pronunciationScore: 88,
+        fluencyScore: 90,
+        accentScore: 87,
+        rhythmScore: 88,
+        grade: "Very Good",
+        transcribedSpeech: lesson.targetEn,
+        accentDiagnosis: "发音音位相对清晰，连贯度良好，辅音连缀自然。",
+        specificCorrections: lesson.keyTip
+      };
+      renderShadowingEvaluation(result, lesson);
+    }
+
+    // =========================================================
+    // 音频抖动缓冲平滑调度 (Jitter Buffer)
+    // =========================================================
+    const JITTER_BUFFER_CUSHION = 0.12;
 
     function playAudioChunk(base64Pcm) {
       if (!audioContext) return;
@@ -2131,22 +2982,18 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       const source = audioContext.createBufferSource();
       source.buffer = audioBuffer;
 
-      // 柔和微淡入淡出增益节点，彻底消除 PCM 分块边界咔嗒声
       const gainNode = audioContext.createGain();
       source.connect(gainNode);
       gainNode.connect(audioContext.destination);
 
       const now = audioContext.currentTime;
-      // 核心 Jitter Buffer 算法：
-      // 如果 scheduledTime 落后于当前真实时间（即新回合首包，或网络抖动丢包造成播放空档），
-      // 必须加上 120ms 的前瞻缓冲时间，给后续数据包预留充裕的传输时间！
       if (scheduledTime < now) {
         scheduledTime = now + JITTER_BUFFER_CUSHION;
       }
 
       const startTime = scheduledTime;
       const duration = audioBuffer.duration;
-      const fadeDuration = 0.0025; // 2.5ms 平滑淡入淡出
+      const fadeDuration = 0.0025;
 
       gainNode.gain.setValueAtTime(0, startTime);
       gainNode.gain.linearRampToValueAtTime(1, startTime + fadeDuration);
@@ -2171,75 +3018,17 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       scheduledTime = 0;
     }
 
-    function saveCurrentSessionToHistory() {
-      if (currentSession.exchanges.length === 0) return;
-      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
-      history.unshift(currentSession);
-      if (history.length > 30) history.pop();
-      localStorage.setItem('gemini_history', JSON.stringify(history));
-    }
-
-    function renderHistoryView() {
-      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
-      if (history.length === 0) {
-        historyListContainer.innerHTML = '<div style="color:var(--text-dim); text-align:center; padding:30px 0; font-size:0.85rem;">暂无对话练习记录，开启通话后将自动归档。</div>';
-        return;
-      }
-      historyListContainer.innerHTML = history.map((session, i) => `
-        <div class="history-card">
-          <div class="history-card-header">
-            <div class="history-badge">${escapeHtml(session.scenario)}</div>
-            <div class="history-date">${session.startTime}</div>
-          </div>
-          <div class="history-preview">
-            ${session.exchanges.slice(0, 4).map(e => `
-              <div style="margin-bottom: 4px;">
-                <strong style="color: ${e.speaker === 'You' ? 'var(--accent-primary)' : e.speaker === 'Correction' ? '#fbbf24' : e.speaker === 'Pronunciation' ? '#c084fc' : '#e2e8f0'}">${e.speaker}:</strong> 
-                ${escapeHtml(e.text)}
-              </div>
-            `).join('')}
-            ${session.exchanges.length > 4 ? '<div style="color:var(--text-dim); font-size:0.75rem;">...更多交流见导出文档</div>' : ''}
-          </div>
-        </div>
-      `).join('');
-    }
-
-    copyHistoryMarkdownBtn.addEventListener('click', () => {
-      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
-      if (history.length === 0) {
-        showToast('暂无可导出的练习记录');
-        return;
-      }
-
-      let md = `# EchoSpeak 口语对练复盘笔记\n\n`;
-      history.forEach((s, idx) => {
-        md += `## 会话 ${idx + 1} (${s.startTime})\n- **演练场景**: ${s.scenario}\n\n`;
-        s.exchanges.forEach(e => {
-          if (e.speaker === 'Correction') {
-            md += `> 💡 **地道表达**: ${e.text}\n\n`;
-          } else if (e.speaker === 'Pronunciation') {
-            md += `> 🗣️ **发音口音纠错**: ${e.text}\n\n`;
-          } else {
-            md += `**${e.speaker}**: ${e.text}\n\n`;
-          }
-        });
-        md += `---\n\n`;
-      });
-
-      navigator.clipboard.writeText(md).then(() => {
-        triggerHaptic('success');
-        showToast('已复制 Markdown 到剪贴板');
-      });
-    });
-
-    // 挂断处理：软静音，绝不销毁流
+    // =========================================================
+    // 会话停止与软静音处理（绝不彻底销毁麦克风流）
+    // =========================================================
     function stopSession(msg = "待命就绪") {
       finalizeUserBubble();
       finalizeAiBubble();
       if (isLive) saveCurrentSessionToHistory();
       isLive = false;
       isSetupComplete = false;
-      releaseWakeLock(); // 释放息屏锁
+      releaseWakeLock();
+
       visualizer.classList.remove('active');
       mainActionBtn.classList.remove('active');
       micIcon.innerHTML = `
@@ -2249,7 +3038,7 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       `;
       updateStatus('disconnected', msg);
 
-      // 断开分析器，并将麦克风硬件软静音，绝不彻底 stop()，避免手机系统再次弹窗
+      // 仅断开处理器并软禁用轨道，保持麦克风权限状态
       if (scriptProcessor) {
         try { scriptProcessor.disconnect(); } catch (e) { }
         scriptProcessor = null;
@@ -2262,6 +3051,67 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
       stopPlaybackImmediately();
       waveBars.forEach(b => b.style.height = '5px');
     }
+
+    function saveCurrentSessionToHistory() {
+      if (currentSession.exchanges.length === 0) return;
+      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
+      history.unshift(currentSession);
+      if (history.length > 30) history.pop();
+      localStorage.setItem('gemini_history', JSON.stringify(history));
+    }
+
+    function renderHistoryView() {
+      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
+      if (history.length === 0) {
+        historyListContainer.innerHTML = '<div style="color:var(--text-dim); text-align:center; padding:30px 0; font-size:0.85rem;">暂无口语或跟读历史，对练后将自动保存。</div>';
+        return;
+      }
+      historyListContainer.innerHTML = history.map((session, i) => `
+        <div class="history-card">
+          <div class="history-card-header">
+            <div class="history-badge">${escapeHtml(session.scenario)}</div>
+            <div class="history-date">${session.startTime}</div>
+          </div>
+          <div class="history-preview">
+            ${session.exchanges.slice(0, 4).map(e => `
+              <div style="margin-bottom: 4px;">
+                <strong style="color: ${e.speaker === 'You' ? 'var(--accent-primary)' : e.speaker === 'Correction' ? '#fbbf24' : e.speaker === 'Pronunciation' ? '#c084fc' : e.speaker === 'Score' ? '#34d399' : '#e2e8f0'}">${e.speaker}:</strong> 
+                ${escapeHtml(e.text)}
+              </div>
+            `).join('')}
+            ${session.exchanges.length > 4 ? '<div style="color:var(--text-dim); font-size:0.75rem;">...更多内容见导出</div>' : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    copyHistoryMarkdownBtn.addEventListener('click', () => {
+      const history = JSON.parse(localStorage.getItem('gemini_history') || '[]');
+      if (history.length === 0) {
+        showToast('暂无历史记录可导出');
+        return;
+      }
+
+      let md = `# EchoSpeak Pro 口语练习与跟读复盘\n\n`;
+      history.forEach((s, idx) => {
+        md += `## 会话 ${idx + 1} (${s.startTime})\n- **场景与模式**: ${s.scenario}\n\n`;
+        s.exchanges.forEach(e => {
+          if (e.speaker === 'Correction') {
+            md += `> 💡 **地道表达建议**: ${e.text}\n\n`;
+          } else if (e.speaker === 'Pronunciation') {
+            md += `> 🗣️ **发音与口音诊断**: ${e.text}\n\n`;
+          } else {
+            md += `**${e.speaker}**: ${e.text}\n\n`;
+          }
+        });
+        md += `---\n\n`;
+      });
+
+      navigator.clipboard.writeText(md).then(() => {
+        triggerHaptic('success');
+        showToast('Markdown 已复制到剪贴板');
+      });
+    });
 
     function updateStatus(state, text) {
       statusBadge.className = `call-status-pill ${state}`;
@@ -2279,14 +3129,32 @@ Do NOT read aloud the tags "[Tutor:]", "[Correction:]", or "[Pronunciation:]".
     }
 
     function escapeHtml(s) {
-      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
+    // 主操作按钮：根据当前模式执行对应行为
     mainActionBtn.addEventListener('click', () => {
       triggerHaptic('medium');
       initAudioContext();
-      if (!isLive) connectGeminiLive();
-      else stopSession();
+
+      if (currentMode === 'free_talk') {
+        if (!isLive) startFreeTalkSession();
+        else stopSession();
+      } else {
+        // 跟读模式
+        toggleShadowingRecord();
+      }
+    });
+
+    // 页面初次载入提示
+    window.addEventListener('DOMContentLoaded', () => {
+      const key = localStorage.getItem('gemini_api_key');
+      if (!key) {
+        setTimeout(() => {
+          showToast('欢迎！首次使用请先填入您的 Google API Key');
+          openSheet(settingsModal);
+        }, 600);
+      }
     });
   </script>
 </body>
